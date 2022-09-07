@@ -3,7 +3,9 @@
 # Important:
 
 ## To use my dotfile 
-** First You Have to install * stow * **
+
+** First You Have to install  stow  **
+
 Then Use 
 
 `stow *`
@@ -15,7 +17,7 @@ I use `Fira Code Nerd ` and `Source code pro `
 
 Just install `noto-fonts` and `Fira Code` From [Nerd Font](https://www.nerdfonts.com/)  and put them to the `/usr/share/fonts/`
 
-##Emoji 
+## Emoji 
 ### Be able to display emoji correctly in arch
 
 `yay -S libxft-bgra-git`
