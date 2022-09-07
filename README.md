@@ -45,4 +45,6 @@ Use `pip install ueberzug`
 ```sudo pacman -S newsboat```
 
 ### To use the audio  
-```sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseaudio-alsa sof-firmware```
+```
+sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseaudio-alsa sof-firmware
+```
