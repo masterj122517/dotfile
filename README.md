@@ -39,10 +39,10 @@ yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han
 Use `pip install ueberzug`
 
 ### To use keymaps<LeftRelease> 
-`sudo pacman -S xcape`
+```sudo pacman -S xcape```
 
 ### The RSS client 
-`sudo pacman -S newsboat`
+```sudo pacman -S newsboat```
 
 ### To use the audio  
-`sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseaudio-alsa sof-firmware`
+```sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseaudio-alsa sof-firmware```
