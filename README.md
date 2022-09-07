@@ -30,19 +30,30 @@ yay -S wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei adobe-source-han
 
 ## Some Dependencies
 ### set wallpapers 
-`yay -S xwallpaper`
+```
+yay -S xwallpaper
+```
 ### image Viewer
-`yay -S sxiv`
+```
+yay -S sxiv
+```
 
 ## To be able to use image preview in ranger 
 
-Use `pip install ueberzug`
+Use ```
+```
+pip install ueberzug
+```
 
 ### To use keymaps<LeftRelease> 
-```sudo pacman -S xcape```
+```
+sudo pacman -S xcape
+```
 
 ### The RSS client 
-```sudo pacman -S newsboat```
+```
+sudo pacman -S newsboat
+```
 
 ### To use the audio  
 ```
