@@ -4,7 +4,7 @@
 
 ## To use my dotfile 
 
-** First You Have to install  stow  **
+### First You Have to install  stow  
 
 Then Use 
 
@@ -42,7 +42,7 @@ yay -S sxiv
 
 ## To be able to use image preview in ranger 
 
-Use ```
+Use 
 ```
 pip install ueberzug
 ```
