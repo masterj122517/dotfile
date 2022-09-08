@@ -64,7 +64,7 @@ sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseau
 
 **NOW JUST USE PIPEWIRE** 
 ```
-yay -S pipewire-alsa pipewire-jack pipewire pipewire-pulse wireplumber
+yay -S pipewire-alsa pipewire-jack pipewire pipewire-pulse wireplumber qjackctl
 ```
 
 
