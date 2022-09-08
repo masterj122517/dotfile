@@ -62,6 +62,12 @@ sudo pacman -S newsboat
 sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseaudio-alsa sof-firmware
 ```
 
+**NOW JUST USE PIPEWIRE** 
+```
+yay -S pipewire-alsa pipewire-jack pipewire pipewire-pulse wireplumber
+```
+
+
 ### Notify 
 
 ```
