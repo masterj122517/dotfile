@@ -61,3 +61,9 @@ sudo pacman -S newsboat
 ```
 sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseaudio-alsa sof-firmware
 ```
+
+### Notify 
+
+```
+sudo pacman -S libnotify dunst
+```
