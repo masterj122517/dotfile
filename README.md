@@ -66,7 +66,11 @@ sudo pacman -S alsa-firmware alsa-lib alsa-plugins alsa-tools alsa-utils pulseau
 ```
 yay -S pipewire-alsa pipewire-jack pipewire pipewire-pulse wireplumber qjackctl
 ```
-
+### To be able to convert doc to pdf 
+```
+sudo pacman -S libreoffice
+```
+### I use  **xournalpp** to take notes  
 
 ### Notify 
 
