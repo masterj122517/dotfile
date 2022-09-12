@@ -77,3 +77,9 @@ sudo pacman -S libreoffice
 ```
 sudo pacman -S libnotify dunst
 ```
+
+### Install latex 
+```
+sudo pacman -S texlive-most  texlive-lang
+```
+
