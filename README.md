@@ -83,3 +83,10 @@ sudo pacman -S libnotify dunst
 sudo pacman -S texlive-most  texlive-lang
 ```
 
+
+### Take screen shot 
+```
+sudo pacman -S hacksaw shotgun
+
+```
+
