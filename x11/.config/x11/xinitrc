@@ -7,6 +7,7 @@
 # because that file is run automatically if someone uses a display manager
 # (login screen) and so they are needed there. To prevent doubling up commands,
 # I source them here with the line below.
+
 export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_CN:en_US
 

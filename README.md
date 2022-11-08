@@ -89,4 +89,3 @@ sudo pacman -S texlive-most  texlive-lang
 sudo pacman -S hacksaw shotgun
 
 ```
-
