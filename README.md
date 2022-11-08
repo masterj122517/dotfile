@@ -89,3 +89,9 @@ sudo pacman -S texlive-most  texlive-lang
 sudo pacman -S hacksaw shotgun
 
 ```
+
+
+### QQ and Wechat 
+```
+yay -S icalingua com.qq.weixin.deepin
+```
