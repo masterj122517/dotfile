@@ -95,3 +95,9 @@ sudo pacman -S hacksaw shotgun
 ```
 yay -S icalingua com.qq.weixin.deepin
 ```
+### picom version i use
+```
+yay -S picom-jonaburg-fix
+```
+
+
