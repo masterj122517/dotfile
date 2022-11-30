@@ -1,7 +1,7 @@
 
 export EDITOR="nvim"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER="brave"
 
 export FILMANAGER=/usr/bin/ranger
 # ~/ Clean-up:
