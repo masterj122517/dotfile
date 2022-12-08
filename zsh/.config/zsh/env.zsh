@@ -39,3 +39,4 @@ export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export DWM="$HOME/.config/dwm"
+export SCREEN_MODE=ONE
