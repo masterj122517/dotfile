@@ -32,6 +32,9 @@
 (scroll-bar-mode 0)
 (column-number-mode 1)
 (show-paren-mode 1)
+(defun display-startup-echo-area-message ()
+  (message "Let the hacking begin!"))
+
 
 ;; Evil Mode 
 ;; Download Evil
