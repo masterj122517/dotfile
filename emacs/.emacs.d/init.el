@@ -44,3 +44,22 @@
 ;; Enable Evil
 (require 'evil)
 (evil-mode 1)
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; ido
+(unless (package-installed-p 'smex)
+  (package-install 'smex))
+
+(unless (package-installed-p 'ido-completing-read+)
+  (package-install 'ido-completing-read+))
+  (require 'smex) 
+  (smex-initialize)
+
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;; mappings
