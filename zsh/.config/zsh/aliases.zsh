@@ -30,3 +30,4 @@ alias ten="trans en:zh"
 alias nb='newsboat'
 alias pcnb='proxychains4 newsboat'
 alias lg='lazygit'
+alias cbg='cd ~/.local/blog/MasterJ/source/_posts/'

@@ -11,7 +11,7 @@ setbg &			# set the background with the `setbg` script
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 sxhkd & 
 picom --experimental-backend -b & 
-autostart="mpd dunst unclutter pipewire wireplumber "
+autostart="mpd dunst unclutter pipewire wireplumber utools "
 
 for program in $autostart; do
 	pidof -s "$program" || "$program" &
