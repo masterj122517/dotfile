@@ -93,7 +93,7 @@ sudo pacman -S hacksaw shotgun
 
 ### QQ and Wechat 
 ```
-yay -S icalingua com.qq.weixin.deepin
+yay -S linuxqq com.qq.weixin.deepin
 ```
 ### picom version i use
 ```
@@ -102,6 +102,8 @@ yay -S picom-jonaburg-fix
 
 ### power manager 
 
+```
 yay -S xfce4-power-manager
+```
 
 
