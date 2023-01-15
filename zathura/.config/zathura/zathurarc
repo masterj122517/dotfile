@@ -2,8 +2,8 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 map u scroll half-up 
-map n scroll half-down 
-map D toggle_page_mode
+map d scroll half-down 
+map N toggle_page_mode
 map + zoom in 
 map - zoom out
 map = zoom in 
