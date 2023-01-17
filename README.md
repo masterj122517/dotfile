@@ -116,3 +116,10 @@ yay -S nerd-fonts-jetbrains-mono
 yay -S ttf-material-design-icons
 yay -S ttf-joypixels
 yay -S wqy-microhei
+
+
+### 记得下载openssh
+```
+sudo pacman -S openssh
+
+```
