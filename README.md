@@ -107,3 +107,12 @@ yay -S xfce4-power-manager
 ```
 
 
+### 字体显示不全
+
+#### 请自行安装字体 仅以archlinux举例
+
+```shell
+yay -S nerd-fonts-jetbrains-mono
+yay -S ttf-material-design-icons
+yay -S ttf-joypixels
+yay -S wqy-microhei

@@ -71,4 +71,4 @@ source ~/.config/zsh/env.zsh
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/fzf.zsh
-
+source ~/.config/omz/omz.zsh
