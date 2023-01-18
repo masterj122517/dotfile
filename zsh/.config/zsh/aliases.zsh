@@ -5,8 +5,8 @@ alias mpv='ws mpv'
 
 
 
-alias l='exa'
-alias ll='exa -al'
+alias ll='exa'
+alias l='exa -al'
 alias la='exa -a'
 alias pacin='sudo pacman -S'
 alias gita='git add'
