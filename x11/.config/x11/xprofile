@@ -10,6 +10,26 @@ setbg &			# set the background with the `setbg` script
 #xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 picom --experimental-backend -b & 
+
+$DWM/statusbar/statusbar.sh cron &
+
+settings() {
+    [ $1 ] && sleep $1
+    $DWM/statusbar/statusbar.sh cron &
+}
+
+
+daemons() {
+    [ $1 ] && sleep $1
+    fcitx5 &
+    nm-applet &
+    xfce4-power-manager &
+    vpn &
+}
+
+settings 1 &
+daemons 3 &
+
 autostart="mpd dunst unclutter pipewire wireplumber utools "
 
 for program in $autostart; do
