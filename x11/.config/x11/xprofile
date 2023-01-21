@@ -6,6 +6,8 @@
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto 
 xrandr --dpi 96		# Set DPI. User may want to use a larger number for larger screens.
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
 setbg &			# set the background with the `setbg` script
 #xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
@@ -24,7 +26,6 @@ daemons() {
     fcitx5 &
     nm-applet &
     xfce4-power-manager &
-    vpn &
 }
 
 settings 1 &
