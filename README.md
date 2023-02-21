@@ -123,3 +123,9 @@ yay -S wqy-microhei
 sudo pacman -S openssh
 
 ```
+### the sliver searcher 
+```
+yay -S the_silver_searcher 
+```
+
+<++>

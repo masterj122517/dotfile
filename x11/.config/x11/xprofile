@@ -10,7 +10,8 @@ export LANG=zh_CN.UTF-8
 export LANGUAGE=zh_CN:en_US
 setbg &			# set the background with the `setbg` script
 #xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
-remaps &		# run the remaps script, switching caps/esc and more; check it for more info
+#remaps &		# run the remaps script, switching caps/esc and more; check it for more info
+remaps_ctrl &
 picom --experimental-backend -b & 
 
 $DWM/statusbar/statusbar.sh cron &
@@ -26,7 +27,7 @@ daemons() {
     fcitx5 &
     nm-applet &
     xfce4-power-manager &
-    vpn &
+    #vpn &
 }
 
 settings 1 &
