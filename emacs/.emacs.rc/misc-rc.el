@@ -129,7 +129,6 @@ This command does the inverse of `fill-paragraph'."
     (forward-char column)))
 
 
-
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
 
 ;;; A little hack which fixes a problem with meta key in fluxbox under VNC.
@@ -137,5 +136,8 @@ This command does the inverse of `fill-paragraph'."
 
 (setq-default initial-scratch-message
               (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
+
+(defun display-startup-echo-area-message ()
+  (message "Let the hacking begin!"))
 
 (setq confirm-kill-emacs 'y-or-n-p)
