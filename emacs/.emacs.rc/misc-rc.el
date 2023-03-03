@@ -131,11 +131,22 @@ This command does the inverse of `fill-paragraph'."
 
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
 
+;; Download Evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+;; Enable Evil
+(require 'evil)
+(evil-mode 1)
+
+
+
+
 ;;; A little hack which fixes a problem with meta key in fluxbox under VNC.
 (setq x-alt-keysym 'meta)
 
 (setq-default initial-scratch-message
-              (concat ";; Happy hacking, " user-login-name " - Emacs ♥ you!\n\n"))
+              (concat ";; Happy hacking, " user-login-name ))
 
 (defun display-startup-echo-area-message ()
   (message "Let the hacking begin!"))
