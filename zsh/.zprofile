@@ -14,7 +14,7 @@ export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
 #export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
-#export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 #export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
 #export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
@@ -40,6 +40,5 @@ export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
-export DWM="$HOME/.config/dwm"
+export DWM="$HOME/.local/src/dwm"
 export SCREEN_MODE=ONE
-

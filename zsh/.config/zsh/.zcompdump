@@ -1020,6 +1020,7 @@ _comps=(
 'pdftops' '_pdf'
 'pdftotext' '_pdf'
 'pdksh' '_sh'
+'pdm' '_pdm'
 'perf' '_perf'
 'periscope' '_periscope'
 'perl' '_perl'
