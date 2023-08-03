@@ -66,9 +66,9 @@ unset key
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
- source ~/.config/zsh/aliases.zsh 
+source ~/.config/zsh/aliases.zsh 
 #source ~/.config/zsh/env.zsh 
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/fzf.zsh
-source ~/.config/omz/omz.zsh
+source ~/.config/zsh/plugins/extract/extract.plugin.zsh
