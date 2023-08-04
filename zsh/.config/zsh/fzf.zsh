@@ -23,7 +23,7 @@ fzf-redraw-prompt() {
 zle -N fzf-redraw-prompt
 
 zle -N fzf-find-widget
-bindkey '^p' fzf-find-widget
+bindkey '^a' fzf-find-widget
 
 fzf-cd-widget() {
 	local tokens=(${(z)LBUFFER})
@@ -62,5 +62,5 @@ find-in-file() {
 	grep --line-buffered --color=never -r "" * | fzf
 }
 zle -N find-in-file
-bindkey '^f' find-in-file
+bindkey '^z' find-in-file
 
