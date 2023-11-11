@@ -11,6 +11,9 @@ set si
 set belloff=all
 set nobackup 
 set nowritebackup
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar
 set noswapfile
 autocmd GUIEnter * set vb t_vb=
 set vb t_vb=
