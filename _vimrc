@@ -9,6 +9,9 @@ set ts=4
 set sw=4
 set si
 set belloff=all
+set nobackup 
+set nowritebackup
+set noswapfile
 autocmd GUIEnter * set vb t_vb=
 set vb t_vb=
 cd C:\Users\MasterJ/code
