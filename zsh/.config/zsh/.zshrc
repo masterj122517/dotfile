@@ -1,3 +1,8 @@
+#source .zprofile first
+if [ -f ~/.zprofile ]; then
+    source ~/.zprofile
+fi
+
 # -----------------
 # Zsh configuration
 # -----------------
