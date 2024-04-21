@@ -1,0 +1,13 @@
+var:
+  last_build_time: 1713706110
+  option:
+    ascii_punct: false
+    full_shape: false
+    transcription: false
+  previously_selected_schema: rime_mint
+  schema_access_time:
+    double_pinyin_flypy: 1713706221
+    rime_mint: 1713706786
+    rime_mint_flypy: 1713706683
+    terra_pinyin: 1713706706
+    wubi98_mint: 1713706241
