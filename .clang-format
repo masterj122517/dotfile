@@ -66,7 +66,7 @@ BraceWrapping:
   SplitEmptyNamespace: true  # 空命名空间换行
 
 DerivePointerAlignment: false
-PointerAlignment: Right  # 指针对齐到变量名右侧
+PointerAlignment: Left  # 指针对齐到变量名右侧
 
 AlignAfterOpenBracket: Align  # 在括号之后对齐
 AlignConsecutiveAssignments: true  # 对齐连续的赋值
