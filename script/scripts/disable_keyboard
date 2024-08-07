@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# 检查当前键盘状态
+keyboard_status=$(xinput list-props "AT Translated Set 2 keyboard" | grep "Device Enabled" | awk '{print $NF}')
+
+if [ "$keyboard_status" -eq 0 ]; then
+    # 如果键盘已经禁用，则启用它
+    xinput enable "AT Translated Set 2 keyboard"
+    echo "键盘已启用"
+else
+    # 如果键盘已经启用，则禁用它
+    xinput disable "AT Translated Set 2 keyboard"
+    echo "键盘已禁用"
+fi
