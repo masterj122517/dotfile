@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# 检测是否在 tmux 会话中
+if [[ -z "$TMUX" ]]; then
+    # 如果不在 tmux 会话中，创建一个名为 ide 的 session，确保工作目录为当前目录，并创建三个 window
+    tmux new-session -d -s ide -c "$PWD" -n editor # 创建第一个 window，命名为 editor
+    tmux new-window -t ide:2 -n terminal -c "$PWD" # 创建第二个 window，命名为 terminal
+    tmux new-window -t ide:3 -n logs -c "$PWD"     # 创建第三个 window
+
+    # 切换到第一个 window 并连接到 ide session
+    tmux select-window -t ide:1
+    tmux attach -t ide
+else
+    # 如果已经在 tmux 会话中，检查窗口并重命名
+    if tmux list-windows | grep -q "1:"; then
+        tmux rename-window -t 1 editor
+    else
+        tmux new-window -n editor -c "$PWD"
+    fi
+
+    if tmux list-windows | grep -q "2:"; then
+        tmux rename-window -t 2 terminal
+    else
+        tmux new-window -n terminal -c "$PWD"
+    fi
+
+    if tmux list-windows | grep -q "3:"; then
+        tmux rename-window -t 3 logs
+    else
+        tmux new-window -n logs -c "$PWD"
+    fi
+
+    # 切换到第一个 window
+    tmux select-window -t 1
+fi
