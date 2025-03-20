@@ -1,4 +1,4 @@
-#files: 972	version: 5.9
+#files: 967	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -199,7 +199,6 @@ _comps=(
 'bpython3-gtk' '_bpython'
 'bpython3-urwid' '_bpython'
 'brctl' '_brctl'
-'brew' '_brew'
 'bsdconfig' '_bsdconfig'
 'bsdgrep' '_grep'
 'bsdinstall' '_bsdinstall'
@@ -585,6 +584,11 @@ _comps=(
 'git' '_git'
 'git-branch-delete-interactive' '_git-branch-delete-interactive'
 'git-buildpackage' '_git-buildpackage'
+'git-cvsserver' '_git'
+'git-receive-pack' '_git'
+'git-shell' '_git'
+'git-upload-archive' '_git'
+'git-upload-pack' '_git'
 'gitk' '_git'
 'gjoin' '_join'
 'glance' '_openstack'
@@ -795,7 +799,6 @@ _comps=(
 'jobs' '_jobs_builtin'
 'joe' '_joe'
 'join' '_join'
-'joshuto' '_joshuto'
 'jot' '_jot'
 'jq' '_jq'
 'kdeconnect-cli' '_kdeconnect'
@@ -1450,6 +1453,7 @@ _comps=(
 'texindex' '_texinfo'
 'tg' '_topgit'
 'tidy' '_tidy'
+'tig' '_git'
 'time' '_precommand'
 'timeout' '_timeout'
 'times' '_nothing'
@@ -1655,12 +1659,10 @@ _comps=(
 'xxd' '_xxd'
 'xz' '_xz'
 'xzcat' '_xz'
-'ya' '_ya'
 'yafc' '_yafc'
 'yash' '_sh'
 'yast' '_yast'
 'yast2' '_yast'
-'yazi' '_yazi'
 'ypbind' '_yp'
 'ypcat' '_yp'
 'ypmatch' '_yp'
@@ -1837,8 +1839,7 @@ bindkey '^[,' _history-complete-newer
 bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
-autoload -Uz _git-branch-delete-interactive _brew _git _joshuto _ya \
-            _yazi _SUSEconfig __arguments _a2ps _a2utils \
+autoload -Uz _git-branch-delete-interactive _SUSEconfig __arguments _a2ps _a2utils \
             _aap _abcde _absolute_command_paths _ack _acpi \
             _acpitool _acroread _adb _add-zle-hook-widget _add-zsh-hook \
             _alias _aliases _all_labels _all_matches _alsa-utils \
