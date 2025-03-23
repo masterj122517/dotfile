@@ -47,3 +47,9 @@ require("yaziline"):setup({
   separator_head = "", -- to match the style
   separator_tail = "" -- to match the style
 })
+
+require("full-border"):setup {
+	-- Available values: ui.Border.PLAIN, ui.Border.ROUNDED
+	type = ui.Border.ROUNDED,
+}
+
