@@ -1,14 +1,10 @@
-# window swallow 
-
-
-
 alias ll='ls'
 alias l='ls -al'
 alias la='ls -a'
 alias gita='git add'
 alias gitc='git commit'
-alias ra='ranger'
-alias r='joshuto'
+alias r='yazi'
+alias ra='joshuto'
 alias gitp='git push'
 alias c='clear'
 alias cat='bat'

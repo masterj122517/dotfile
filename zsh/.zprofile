@@ -2,8 +2,10 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/scripts/:$PATH
 
 export EDITOR="nvim"
-export TERMINAL="iTem2"
+export TERMINAL="iTerm2"
 export BROWSER="google-chrome"
+
+export TERM=xterm-256color
 
 export FILMANAGER=/opt/homebrew/bin/joshuto
 # ~/ Clean-up:
