@@ -5,3 +5,6 @@ source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/plugins/extract/extract.plugin.zsh
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/vi.zsh
+
+test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
+
