@@ -2,7 +2,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/scripts/:$PATH
 
 export EDITOR="nvim"
-export TERMINAL="iTerm2"
+export TERMINAL="kitty"
 export BROWSER="google-chrome"
 
 export TERM=xterm-256color
@@ -30,4 +30,5 @@ export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 # setup homebrew
 eval $(/opt/homebrew/bin/brew shellenv)
-
+# setup zoxide
+eval "$(zoxide init zsh)"
