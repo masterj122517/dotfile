@@ -1,13 +1,14 @@
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/scripts/:$PATH
-
+eval $(/opt/homebrew/bin/brew shellenv)
+eval "$(zoxide init zsh)"
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="google-chrome"
 
 export TERM=xterm-256color
 
-export FILMANAGER=/opt/homebrew/bin/joshuto
+export FILMANAGER=/opt/homebrew/bin/yazi
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -28,7 +29,12 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
-# setup homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
-# setup zoxide
-eval "$(zoxide init zsh)"
+
+
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+# use gnu software
+export PATH=$PATH:/opt/homebrew/opt/llvm/bin
+export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
+export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/bin:$PATH"
+export PAHT="$HOME/.local/share/venv/bin"

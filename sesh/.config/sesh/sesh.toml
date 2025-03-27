@@ -1,0 +1,17 @@
+[[session]]
+name = "home (~)"
+path = "~"
+startup_command = "l"
+
+[[session]]
+name = "Dotfile Config"
+path = "~/dotfile"
+
+[[session]]
+name = "Programming"
+path = "~/programming"
+startup_command = "ide"
+
+[[session]]
+name = "nvim"
+path = "~/.config/nvim"

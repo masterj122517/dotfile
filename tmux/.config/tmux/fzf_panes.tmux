@@ -60,16 +60,16 @@ do_action() {
         i=1
         tmux_cmd="tmux "
         while ((i < id_n)); do
-            tmux_cmd+="move-pane -t${ids[i-1]} -s${ids[i]} \; select-layout -t$id1 'tiled' \; "
+            tmux_cmd+="move-pane -t${ids[i - 1]} -s${ids[i]} \; select-layout -t$id1 'tiled' \; "
             ((i++))
         done
 
         # my personally configuration
-        if (( id_n == 2 )); then
+        if ((id_n == 2)); then
             w_size=($(tmux display-message -p '#{window_width} #{window_height}'))
             w_wid=${w_size[0]}
             w_hei=${w_size[1]}
-            if (( 9*w_wid > 16*w_hei )); then
+            if ((9 * w_wid > 16 * w_hei)); then
                 layout='even-horizontal'
             else
                 layout='even-vertical'
