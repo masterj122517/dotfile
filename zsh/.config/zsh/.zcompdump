@@ -583,6 +583,7 @@ _comps=(
 'ggv' '_gnome-gv'
 'ghead' '_head'
 'ghostscript' '_ghostscript'
+'ghostty' '_ghostty'
 'ghostview' '_pspdf'
 'gid' '_id'
 'ginstall' '_install'
@@ -1591,7 +1592,6 @@ _comps=(
 'watch' '_watch'
 'watcher' '_openstack'
 'wc' '_wc'
-'wezterm' '_wezterm'
 'wget' '_wget'
 'what' '_sccs'
 'whatis' '_man'
@@ -1848,8 +1848,8 @@ bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
 autoload -Uz _git-branch-delete-interactive _bat _brew _eza _fd \
-            _git _gum _joshuto _rg _starship \
-            _the_silver_searcher _wezterm _ya _yazi _yt-dlp \
+            _ghostty _git _gum _joshuto _rg \
+            _starship _the_silver_searcher _ya _yazi _yt-dlp \
             _zoxide _SUSEconfig __arguments _a2ps _a2utils \
             _aap _abcde _absolute_command_paths _ack _acpi \
             _acpitool _acroread _adb _add-zle-hook-widget _add-zsh-hook \
