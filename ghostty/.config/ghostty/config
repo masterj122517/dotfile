@@ -1,6 +1,7 @@
 # 字体设置
-font-family = "JetBrainsMono Nerd Font Mono"
-font-size = 13.4
+font-family = "ComicShannsMono Nerd Font" 
+# font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 16.4
 font-thicken = true
 grapheme-width-method = "unicode"
 
@@ -11,7 +12,7 @@ window-padding-balance = true
 macos-titlebar-style = tabs
 
 shell-integration = zsh
-# term = xterm-256color
+term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
 background-opacity = 0.89
@@ -22,6 +23,8 @@ theme = dark:tokyonight,light:tokyonight-day
 macos-option-as-alt = true
 scrollback-limit = 100000
 
+window-height=510
+window-width=1640
 
 # keymaps 
 keybind =cmd+a=ignore
