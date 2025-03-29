@@ -1,6 +1,13 @@
 # 字体设置
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 13.4
+font-thicken = true
+grapheme-width-method = "unicode"
+
+mouse-hide-while-typing = true
+
+window-padding-balance = true
+window-colorspace = display-p3
 
 shell-integration = zsh
 term = xterm-256color
@@ -8,6 +15,7 @@ clipboard-read = allow
 clipboard-write = allow
 background-opacity = 0.89
 background-blur = 32
+
 # theme = dark:tokyonight,light:tokyonight-day
 macos-titlebar-style = tabs
 theme = Solarized Dark Higher Contrast
@@ -34,4 +42,10 @@ palette = 12=#178ec8
 palette = 13=#e24d8e
 palette = 14=#00b39e
 palette = 15=#fcf4dc
+
 macos-option-as-alt = true
+scrollback-limit = 100000
+
+
+# keymaps 
+keybind =cmd+a=ignore
