@@ -1,7 +1,17 @@
 # 字体设置
-font-family = "ComicShannsMono Nerd Font" 
+# font-family = "ComicShannsMono Nerd Font" 
+# font-family = "FiraMono Nerd Font" 
 # font-family = "JetBrainsMono Nerd Font Mono"
-font-size = 16.4
+# font-family = "Monaco"
+# font-family = "Hack Nerd Font Mono"
+# font-family = "Monaspace Neon"
+# font-family = "Monaspace Argon"
+# font-family = "Monaspace Xenon"
+# font-family = "Monaspace Radon"
+font-family = "Monaspace Krypton"
+
+
+font-size = 14.0
 font-thicken = true
 grapheme-width-method = "unicode"
 
@@ -16,9 +26,22 @@ term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
 background-opacity = 0.89
+# background-opacity = 1
 background-blur = 32
 
-theme = dark:tokyonight,light:tokyonight-day
+# theme = dark:tokyonight,light:tokyonight-day
+# theme = nord 
+# theme = Retro
+# theme = rose-pine
+# theme = royal
+# theme = Doom Peacock
+# theme = Horizon 
+# theme = JetBrains Darcula 
+# theme = Kanagawa Dragon
+# theme = Kanagawa Wave 
+# theme = kanagawabones 
+# theme = Fairyfloss    
+theme = AlienBlood
 
 macos-option-as-alt = true
 scrollback-limit = 100000

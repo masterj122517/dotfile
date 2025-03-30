@@ -1,7 +1,8 @@
+
 [[session]]
 name = "home (~)"
 path = "~"
-startup_command = "l"
+startup_command = "eza --all --git --icons --color=always"
 
 [[session]]
 name = "Dotfile Config"
@@ -13,5 +14,12 @@ path = "~/programming"
 startup_command = "ide"
 
 [[session]]
-name = "nvim"
+name = "Neovim Config "
 path = "~/.config/nvim"
+startup_command = "nvim"
+
+[[session]]
+name = "tmux config"
+path = "~/.config/tmux"
+startup_command = "ide && nvim ~/.tmux.conf"
+preview_command = "bat --color=always ~/.tmux.conf"
