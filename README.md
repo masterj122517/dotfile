@@ -7,7 +7,7 @@
 brew install automake gcc gdb cmake gnu-getopt gnu-sed node go
 
 # Utils
-brew install git rainbarf bat ccat wget tree fzf the_silver_searcher ripgrep fd eza
+brew install git rainbarf bat ccat wget tree fzf the_silver_searcher ripgrep fd eza sesh
 
 # Apps
 brew install tmux neovim jesseduffield/lazygit/lazygit yazi gh  
