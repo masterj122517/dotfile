@@ -1,6 +1,6 @@
 # 字体设置
 # font-family = "ComicShannsMono Nerd Font" 
-# font-family = "FiraMono Nerd Font" 
+font-family = "FiraCode Nerd Font" 
 # font-family = "JetBrainsMono Nerd Font Mono"
 # font-family = "Monaco"
 # font-family = "Hack Nerd Font Mono"
@@ -8,10 +8,10 @@
 # font-family = "Monaspace Argon"
 # font-family = "Monaspace Xenon"
 # font-family = "Monaspace Radon"
-font-family = "Monaspace Krypton"
+# font-family = "Monaspace Krypton"
 
 
-font-size = 14.0
+font-size = 16.0
 font-thicken = true
 grapheme-width-method = "unicode"
 
@@ -25,7 +25,7 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-background-opacity = 0.89
+background-opacity = 0.80
 # background-opacity = 1
 background-blur = 32
 

@@ -23,3 +23,14 @@ name = "tmux config"
 path = "~/.config/tmux"
 startup_command = "ide && nvim ~/.tmux.conf"
 preview_command = "bat --color=always ~/.tmux.conf"
+
+
+[[session]]
+name = "Note"
+path = "~/Note"
+startup_command = "nvim ."
+
+[[session]]
+name = "Ghostty Config"
+path = "~/.config/ghostty"
+startup_command = "nvim config"

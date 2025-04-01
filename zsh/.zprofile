@@ -38,3 +38,5 @@ export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/bin:$PATH"
 export PAHT="$HOME/.local/share/venv/bin"
+
+. /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh
