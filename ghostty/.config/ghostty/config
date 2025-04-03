@@ -1,6 +1,6 @@
 # 字体设置
-# font-family = "ComicShannsMono Nerd Font" 
-font-family = "FiraCode Nerd Font" 
+# font-family = "FiraCode Nerd Font" 
+font-family = "Comic Mono" 
 # font-family = "JetBrainsMono Nerd Font Mono"
 # font-family = "Monaco"
 # font-family = "Hack Nerd Font Mono"
@@ -12,7 +12,7 @@ font-family = "FiraCode Nerd Font"
 
 
 font-size = 16.0
-font-thicken = true
+# font-thicken = true
 grapheme-width-method = "unicode"
 
 mouse-hide-while-typing = true
