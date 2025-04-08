@@ -30,7 +30,7 @@ background-opacity = 0.80
 background-blur = 32
 
 # theme = dark:tokyonight,light:tokyonight-day
-# theme = nord 
+# theme = nord
 # theme = Retro
 # theme = rose-pine
 # theme = royal
@@ -42,6 +42,8 @@ background-blur = 32
 # theme = kanagawabones 
 # theme = Fairyfloss    
 theme = AlienBlood
+# theme = solarized-osaka-night
+# theme = Everforest Dark - Hard
 
 macos-option-as-alt = true
 scrollback-limit = 100000

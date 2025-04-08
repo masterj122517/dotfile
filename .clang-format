@@ -1,53 +1,8 @@
-# BasedOnStyle: Google
-# IndentWidth: 4
-# ColumnLimit: 100
-# AllowShortFunctionsOnASingleLine: None  # 不允许短函数写在一行
-# BreakBeforeBraces: Custom
-# BraceWrapping:
-#   AfterClass: true
-#   AfterControlStatement: false
-#   AfterEnum: true
-#   AfterFunction: true
-#   AfterNamespace: true
-#   AfterStruct: true
-#   AfterUnion: true
-#   BeforeCatch: true
-#   BeforeElse: true
-#   IndentBraces: false
-#   SplitEmptyFunction: true
-#   SplitEmptyRecord: true
-#   SplitEmptyNamespace: true
-# DerivePointerAlignment: false
-# PointerAlignment: Left  # 指针对齐到类型
-# UseTab: Never  # 使用空格，不使用制表符
-# IndentCaseLabels: true  # 缩进 case 标签
-# SortIncludes: true  # 自动排序 include 头文件
-# NamespaceIndentation: All  # 命名空间中的所有内容都进行缩进
-
-# # 指定列对齐选项
-# AlignAfterOpenBracket: true
-# AlignConsecutiveAssignments: true
-# AlignConsecutiveDeclarations: true
-# AlignEscapedNewlines: Right
-# AlignOperands: true
-# AlignTrailingComments: true
-
-# # 函数调用和声明中的参数对齐
-# BinPackArguments: false
-# BinPackParameters: false
-
-# # 指定注释样式
-# CommentPragmas: '^ IWYU pragma:'
-
-# # 访问修饰符缩进
-# AccessModifierOffset: -4
-#
 BasedOnStyle: LLVM  # 基于LLVM风格，作为Visual Studio风格的基础
 
 IndentWidth: 4  # 缩进宽度
 TabWidth: 4  # 制表符宽度（若使用制表符）
 UseTab: Never  # 使用空格而不是制表符
-ColumnLimit: 100  # 最大列宽
 
 BreakBeforeBraces: Custom
 BraceWrapping:
@@ -69,14 +24,11 @@ DerivePointerAlignment: false
 PointerAlignment: Left  # 指针对齐到变量名右侧
 
 AlignAfterOpenBracket: Align  # 在括号之后对齐
-AlignConsecutiveAssignments: true  # 对齐连续的赋值
-AlignConsecutiveDeclarations: true  # 对齐连续的声明
+AlignConsecutiveAssignments: false  # 对齐连续的赋值
+AlignConsecutiveDeclarations: false  # 对齐连续的声明
 AlignEscapedNewlines: Left  # 转义换行符对齐
-AlignOperands: true  # 对齐操作数
-AlignTrailingComments: true  # 对齐尾部注释
-
-BinPackArguments: false  # 参数不打包
-BinPackParameters: false  # 参数不打包
+AlignOperands: false  # 对齐操作数
+AlignTrailingComments: false  # 对齐尾部注释
 
 CommentPragmas: '^ IWYU pragma:'  # 注释样式匹配规则
 
@@ -84,3 +36,9 @@ AccessModifierOffset: -4  # 访问修饰符顶格
 NamespaceIndentation: All  # 命名空间中的所有内容都进行缩进
 IndentCaseLabels: true  # 缩进case标签
 SortIncludes: true  # 自动排序include头文件
+
+AllowAllArgumentsOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: false
+BinPackArguments: true
+BinPackParameters: true
+ColumnLimit: 0

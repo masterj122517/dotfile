@@ -78,6 +78,7 @@ rules = [
     ] },
     # Media
     { mime = "{audio,video}/*", use = [
+        "vlc",
         "play",
         "reveal",
     ] },
