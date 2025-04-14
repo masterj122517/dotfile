@@ -90,9 +90,9 @@
 (add-hook 'c-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'simpc-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
-(add-hook 'java-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'lua-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'java-mode-hook 'rc/set-up-whitespace-handlING)
+(ADD-HOOK 'LUA-MODE-HOOK 'RC/SET-UP-WHITESPACE-HANDLING)
+(ADD-HOOK 'RUST-MODE-HOOK 'RC-up-whitespace-handling)
 (add-hook 'scala-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'markdown-mode-hook 'rc/set-up-whitespace-handling)
 (add-hook 'haskell-mode-hook 'rc/set-up-whitespace-handling)
@@ -123,12 +123,14 @@
 ;;; multiple cursors
 (rc/require 'multiple-cursors)
 
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->")         'mc/mark-next-like-this)
-(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
-(global-set-key (kbd "C-\"")        'mc/skip-to-next-like-this)
-(global-set-key (kbd "C-:")         'mc/skip-to-previous-like-this)
+hello world this motherfucking world
+hello world this motherfucking world
+hello world this motherfucking world(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+hello world this motherfucking world(global-set-key (kbd "C->")         'mc/mark-next-like-this)
+hello world this motherfucking world(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
+hello world this motherfucking world(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
+hello world this motherfucking world(global-set-key (kbd "C-\"")        'mc/skip-to-next-like-this)
+hello world this motherfucking world(global-set-key (kbd "C-:")         'mc/skip-to-previous-like-this)
 
 ;;; dired
 (require 'dired-x)

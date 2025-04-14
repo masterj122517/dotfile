@@ -41,3 +41,8 @@ export PATH="/opt/homebrew/opt/coreutils/bin:$PATH"
 export PATH=$PATH:$HOME/Library/Python/3.9/bin
 
 . /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh
+
+
+# Set up Orb Environement (will pass to the vm ) 
+# export ORBENV=
+

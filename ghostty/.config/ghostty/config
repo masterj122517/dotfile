@@ -1,6 +1,7 @@
 # 字体设置
-# font-family = "FiraCode Nerd Font" 
-font-family = "Comic Mono" 
+font-family = "FiraCode Mono Nerd Font" 
+# font-family = "Comic Mono" 
+# font-family = "SauceCodePro Mono Nerd Font" 
 # font-family = "JetBrainsMono Nerd Font Mono"
 # font-family = "Monaco"
 # font-family = "Hack Nerd Font Mono"
@@ -25,8 +26,8 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-background-opacity = 0.80
-# background-opacity = 1
+# background-opacity = 0.80
+background-opacity = 1
 background-blur = 32
 
 # theme = dark:tokyonight,light:tokyonight-day
@@ -41,9 +42,12 @@ background-blur = 32
 # theme = Kanagawa Wave 
 # theme = kanagawabones 
 # theme = Fairyfloss    
-theme = AlienBlood
+# theme = AlienBlood
 # theme = solarized-osaka-night
 # theme = Everforest Dark - Hard
+# theme = batman
+theme = MasterJ
+# theme = Dracula
 
 macos-option-as-alt = true
 scrollback-limit = 100000
