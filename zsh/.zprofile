@@ -46,3 +46,5 @@ export PATH=$PATH:$HOME/Library/Python/3.9/bin
 # Set up Orb Environement (will pass to the vm ) 
 # export ORBENV=
 
+#setup haskell stack env 
+export PATH="~/.stack/programs/aarch64-osx/ghc-9.8.4/bin:$PATH"
