@@ -30,24 +30,7 @@ clipboard-write = allow
 background-opacity = 1
 background-blur = 32
 
-# theme = dark:tokyonight,light:tokyonight-day
-# theme = nord
-# theme = Retro
-# theme = rose-pine
-# theme = royal
-# theme = Doom Peacock
-# theme = Horizon 
-# theme = JetBrains Darcula 
-# theme = Kanagawa Dragon
-# theme = Kanagawa Wave 
-# theme = kanagawabones 
-# theme = Fairyfloss    
-# theme = AlienBlood
-# theme = solarized-osaka-night
-# theme = Everforest Dark - Hard
-# theme = batman
 theme = MasterJ
-# theme = Dracula
 
 macos-option-as-alt = true
 scrollback-limit = 100000
