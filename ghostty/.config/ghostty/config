@@ -1,5 +1,5 @@
 # 字体设置
-font-family = "FiraCode Mono Nerd Font" 
+# font-family = "FiraCode Mono Nerd Font" 
 # font-family = "Comic Mono" 
 # font-family = "SauceCodePro Mono Nerd Font" 
 # font-family = "JetBrainsMono Nerd Font Mono"
@@ -10,6 +10,8 @@ font-family = "FiraCode Mono Nerd Font"
 # font-family = "Monaspace Xenon"
 # font-family = "Monaspace Radon"
 # font-family = "Monaspace Krypton"
+font-family = "Comic Code"
+
 
 
 font-size = 16.0
@@ -26,7 +28,7 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-# background-opacity = 0.80
+# background-opacity = 0.8
 background-opacity = 1
 background-blur = 32
 
