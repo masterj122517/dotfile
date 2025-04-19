@@ -17,6 +17,11 @@
 (require 'evil-collection)
 (evil-collection-init)
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/evil-surround")
+(require 'evil-surround)
+
+(global-evil-surround-mode 1)
+
 
 ;; emacs tools
 (add-to-list 'load-path "~/.emacs.d/site-lisp/smex")

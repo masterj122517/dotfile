@@ -26,3 +26,7 @@
 (setq auto-save-default nil)          ;; 禁用自动保存
 ;; set font
 (set-face-attribute 'default nil :family "Comic Code" :height 190)
+
+
+;; auto pair
+(electric-pair-mode 1)
