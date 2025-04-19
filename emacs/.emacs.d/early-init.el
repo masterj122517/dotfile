@@ -29,3 +29,10 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; the best of all time as they said
+;; Magit
+(add-to-list 'load-path "~/.emacs.d/site-lisp/compat")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/transient/lisp")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/magit/lisp")
+(require 'magit)
