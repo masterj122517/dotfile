@@ -34,3 +34,8 @@ startup_command = "nvim ."
 name = "Ghostty Config"
 path = "~/.config/ghostty"
 startup_command = "nvim config"
+
+[[session]]
+name = "VM"
+path = "~/"
+startup_command = "orb"
