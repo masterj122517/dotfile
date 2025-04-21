@@ -2,7 +2,8 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/scripts/:$PATH
 eval $(/opt/homebrew/bin/brew shellenv)
 eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
+# we got a plugin to take care of direnv
+# eval "$(direnv hook zsh)"
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="google-chrome"
@@ -39,12 +40,9 @@ export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/bin:$PATH"
 export PATH=$PATH:$HOME/Library/Python/3.9/bin
-
-. /opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh
-
-
 # Set up Orb Environement (will pass to the vm ) 
 # export ORBENV=
 
 #setup haskell stack env 
 export PATH="~/.stack/programs/aarch64-osx/ghc-9.8.4/bin:$PATH"
+

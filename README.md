@@ -17,3 +17,10 @@ brew install poppler ffmpeg sevenzip jq starship imagemagick
 ```
 
 
+# When using MiniConda + direnv
+```
+# 载入 Conda
+export CONDA_PREFIX=$(conda info --base)    # 获取conda的基础路径
+source $CONDA_PREFIX/etc/profile.d/conda.sh # 加载conda脚本
+conda activate AI
+```
