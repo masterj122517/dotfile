@@ -19,4 +19,4 @@ zmodule Aloxaf/fzf-tab
 # Prompt
 # zmodule magicmace
 zmodule  sorin
-zmodule zimfw/direnv
+# zmodule zimfw/direnv

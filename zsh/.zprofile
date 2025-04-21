@@ -2,8 +2,6 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/scripts/:$PATH
 eval $(/opt/homebrew/bin/brew shellenv)
 eval "$(zoxide init zsh)"
-# we got a plugin to take care of direnv
-# eval "$(direnv hook zsh)"
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="google-chrome"
@@ -45,4 +43,5 @@ export PATH=$PATH:$HOME/Library/Python/3.9/bin
 
 #setup haskell stack env 
 export PATH="~/.stack/programs/aarch64-osx/ghc-9.8.4/bin:$PATH"
-
+# set up direnv
+# eval "$(direnv hook zsh)"
