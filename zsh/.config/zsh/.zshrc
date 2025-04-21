@@ -1,4 +1,5 @@
 source ~/.zprofile
+source ~/.config/zsh/env.zsh
 source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/aliases.zsh 
 # source ~/.config/zsh/prompt.zsh
@@ -23,5 +24,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-eval "$(direnv hook zsh)"

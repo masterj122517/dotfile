@@ -10,6 +10,7 @@ alias cat='bat'
 alias lg='lazygit'
 alias cbg='cd ~/.local/blog/MasterJ/source/_posts/'
 alias zad='ls -d */ | xargs -I {} zoxide add {}'
+alias python='python3'
 
 function sesh-sessions() {
   {
