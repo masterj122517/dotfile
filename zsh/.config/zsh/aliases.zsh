@@ -1,5 +1,6 @@
 alias ll='eza --all --git --icons --color=always '
-alias l='ls -al'
+alias l='eza -al'
+alias ls='eza'
 alias gita='git add'
 alias gitc='git commit'
 alias r='yazi'
@@ -8,9 +9,10 @@ alias gitp='git push'
 alias c='clear'
 alias cat='bat'
 alias lg='lazygit'
-alias cbg='cd ~/.local/blog/MasterJ/source/_posts/'
+alias cbg='cd ~/.local/src/masterj122517.github.io/'
 alias zad='ls -d */ | xargs -I {} zoxide add {}'
 alias python='python3'
+alias s='fastfetch'
 
 function sesh-sessions() {
   {

@@ -68,6 +68,35 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Caps Lock short press ESC, long press Control",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "mandatory": [],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "parameters": { "basic": { "hold_down_duration_milliseconds": 50 } },
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_control",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },

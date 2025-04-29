@@ -6,7 +6,7 @@ eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
 
 export EDITOR="nvim"
-export TERMINAL="kitty"
+export TERMINAL="ghostty"
 export BROWSER="google-chrome"
 
 export TERM=xterm-256color

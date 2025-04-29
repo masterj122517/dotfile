@@ -22,8 +22,6 @@ prepend_keymap = [
         "'",
         "r",
     ], run = "plugin yamb delete_by_key", desc = "Delete bookmark by key" },
-
-
 ]
 
 
