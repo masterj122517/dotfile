@@ -37,7 +37,7 @@ outer.right = 0
 #     '''
 
 [mode.main.binding]
-cmd-enter = '''exec-and-forget open -na Ghostty'''
+alt-enter = '''exec-and-forget open -na Ghostty'''
 
 # i3 wraps focus by default
 cmd-h = 'focus --boundaries-action wrap-around-the-workspace left'
