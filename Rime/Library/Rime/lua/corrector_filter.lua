@@ -10,7 +10,6 @@
 --]]
 
 local M = {}
-
 function M.init(env)
     local config = env.engine.schema.config
     local delimiter = config:get_string('speller/delimiter')
