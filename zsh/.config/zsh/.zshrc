@@ -6,4 +6,4 @@ source ~/.config/zsh/plugins/extract/extract.plugin.zsh
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/vi.zsh
 source ~/.config/zsh/fzf.zsh
-
+source ~/.config/zsh/functions/cd_git_root.zsh

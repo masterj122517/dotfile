@@ -11,7 +11,6 @@ path = "~/dotfile"
 [[session]]
 name = "Programming"
 path = "~/programming"
-startup_command = "ide"
 
 [[session]]
 name = "Neovim Config "
@@ -39,3 +38,8 @@ startup_command = "nvim config"
 name = "VM"
 path = "~/"
 startup_command = "orb"
+
+[[session]]
+name = "AI"
+path = "~/programming/AI/"
+startup_command = "ide && conda activate AI"
