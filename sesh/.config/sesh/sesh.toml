@@ -43,3 +43,9 @@ startup_command = "orb"
 name = "AI"
 path = "~/programming/AI/"
 startup_command = "ide && conda activate AI"
+
+
+[[session]]
+name = "blog"
+path = "~/.local/src/masterj122517.github.io/"
+startup_command = "ll"

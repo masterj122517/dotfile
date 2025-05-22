@@ -25,19 +25,62 @@ zle -N fzf-redraw-prompt
 zle -N fzf-find-widget
 bindkey '^a' fzf-find-widget
 
+# fzf-cd-widget() {
+# 	local tokens=(${(z)LBUFFER})
+# 	if (( $#tokens <= 1 )); then
+# 		zle fzf-find-widget 'only_dir'
+# 		if [[ -d $LBUFFER ]]; then
+# 			cd $LBUFFER
+# 			local ret=$?
+# 			LBUFFER=
+# 			zle fzf-redraw-prompt
+# 			return $ret
+# 		fi
+# 	fi
+# }
+# zle -N fzf-cd-widget
+# bindkey '^t' fzf-cd-widget
+# fzf-cd-widget: 使用 fzf 模糊查找目录并切换
 fzf-cd-widget() {
-	local tokens=(${(z)LBUFFER})
-	if (( $#tokens <= 1 )); then
-		zle fzf-find-widget 'only_dir'
-		if [[ -d $LBUFFER ]]; then
-			cd $LBUFFER
-			local ret=$?
-			LBUFFER=
-			zle fzf-redraw-prompt
-			return $ret
-		fi
-	fi
+  # 检查 fzf 和 fd 是否存在
+  if ! command -v fzf >/dev/null 2>&1; then
+    echo "Error: fzf is not installed." >&2
+    return 1
+  fi
+  if ! command -v fd >/dev/null 2>&1; then
+    echo "Warning: fd not found, falling back to find." >&2
+    local find_cmd="find . -type d -not -path '*/\.*' -not -path './proc/*' -not -path './sys/*' 2>/dev/null"
+  else
+    local find_cmd="fd --type d --hidden --follow --exclude .git --max-depth 3 . 2>/dev/null"
+  fi
+
+  # 检查 LBUFFER 是否为空或仅一个 token
+  local tokens=(${(z)LBUFFER})
+  if (( $#tokens <= 1 )); then
+    # 使用 fzf 查找目录
+    local selected_dir=$(
+      eval "$find_cmd" | fzf \
+        --height 40% \
+        --border \
+        --tiebreak=index \
+        --preview 'tree -C {} | head -n 20' \
+        --preview-window right:50%:wrap \
+        --query "${LBUFFER##* }" \
+        --prompt "Select directory> "
+    )
+
+    # 如果选择了目录，切换到该目录
+    if [[ -n "$selected_dir" && -d "$selected_dir" ]]; then
+      cd "$selected_dir"
+      local ret=$?
+      LBUFFER=
+      zle fzf-redraw-prompt
+      return $ret
+    fi
+  fi
 }
+
+# 注册 widget 并绑定到 Ctrl+T
 zle -N fzf-cd-widget
 bindkey '^t' fzf-cd-widget
 
