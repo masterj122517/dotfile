@@ -1,7 +1,7 @@
 # 机场订阅
 proxy-providers:
   Airport1:
-    url: "订阅地址"
+    url: "机场订阅"
     type: http
     interval: 86400
     health-check:
@@ -143,6 +143,8 @@ rules:
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,openai,🤖 ChatGPT
+  - RULE-SET,claude,🤖 AI
+  - RULE-SET,MetaAI,🤖 AI
   - RULE-SET,ai_ip,🤖 AI
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,youtube_domain,📹 YouTube
@@ -179,6 +181,8 @@ rule-providers:
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list"}
   openai: {  <<: *domain, url: "https://github.moeyy.xyz/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/openai.mrs" }
+  claude: {  <<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list" }
+  MetaAI: {  <<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/liandu2024/clash/refs/heads/main/list/MetaAi.list" }
   ai_ip: {  <<: *ip, url: "https://github.moeyy.xyz/https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/ai.mrs" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
