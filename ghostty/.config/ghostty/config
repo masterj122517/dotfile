@@ -35,6 +35,7 @@ background-blur = 32
 theme = rose-pine
 
 macos-option-as-alt = true
+
 scrollback-limit = 100000
 
 window-height=510
