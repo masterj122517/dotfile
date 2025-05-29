@@ -48,4 +48,4 @@ startup_command = "ide && conda activate AI"
 [[session]]
 name = "blog"
 path = "~/.local/src/masterj122517.github.io/"
-startup_command = "ll"
+startup_command = "ide"
