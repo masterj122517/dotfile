@@ -18,5 +18,6 @@ zmodule agkozak/zsh-z
 zmodule Aloxaf/fzf-tab
 # Prompt
 # zmodule magicmace
-zmodule  sorin
+# zmodule  sorin
 # zmodule zimfw/direnv
+zmodule gitster
