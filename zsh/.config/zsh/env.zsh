@@ -55,4 +55,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 # LLM's api's
-source $ZDOTDIR/keys.zsh
+# source $ZDOTDIR/keys.zsh
