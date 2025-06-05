@@ -11,7 +11,7 @@
 # font-family = "Monaspace Radon"
 # font-family = "Monaspace Krypton"
 font-family = "Comic Code"
-# font-family = "Codelia"
+#font-family = "Codelia"
 
 font-size = 16.0
 # font-thicken = true
@@ -27,12 +27,12 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-background-opacity = 0.8
-# background-opacity = 1
+# background-opacity = 0.8
+background-opacity = 1
 background-blur = 32
 
-# theme = MasterJ
-theme = rose-pine
+theme = MasterJ
+# theme = rose-pine
 
 macos-option-as-alt = true
 

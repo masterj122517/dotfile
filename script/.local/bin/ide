@@ -20,6 +20,7 @@ else
 
     if tmux list-windows | grep -q "2:"; then
         tmux rename-window -t 2 terminal
+
     else
         tmux new-window -n terminal -c "$PWD"
     fi
@@ -31,5 +32,8 @@ else
     fi
 
     # 切换到第一个 window
+    tmux select-window -t 3
+    tmux split-window -v -l 33%
+    # tmux split-window -h -l 50%
     tmux select-window -t 1
 fi
