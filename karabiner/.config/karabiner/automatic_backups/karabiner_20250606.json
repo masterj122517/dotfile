@@ -5,25 +5,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Left Option alone → left_option, with other keys → ⌘ + ⌃ + ⌥ + left_control",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "left_option",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_control",
-                                        "modifiers": ["command", "control", "option"]
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "left_option" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Caps Lock to Esc and Ctrl",
                         "manipulators": [
                             {
@@ -39,7 +20,6 @@
                     },
                     {
                         "description": "Swap Right Command and Right Option for all keyboards.",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": { "key_code": "right_command" },
@@ -135,23 +115,6 @@
                         {
                             "from": { "key_code": "left_option" },
                             "to": [{ "key_code": "left_command" }]
-                        },
-                        {
-                            "from": { "key_code": "right_command" },
-                            "to": [{ "key_code": "right_option" }]
-                        }
-                    ]
-                },
-                {
-                    "identifiers": { "is_keyboard": true },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "right_option" },
-                            "to": [{ "key_code": "right_command" }]
-                        },
-                        {
-                            "from": { "key_code": "right_command" },
-                            "to": [{ "key_code": "right_option" }]
                         }
                     ]
                 }
