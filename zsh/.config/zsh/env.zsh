@@ -7,7 +7,7 @@ eval "$(direnv hook zsh)"
 
 export EDITOR="nvim"
 export TERMINAL="ghostty"
-export BROWSER="google-chrome"
+export BROWSER="zen"
 
 export TERM=xterm-256color
 

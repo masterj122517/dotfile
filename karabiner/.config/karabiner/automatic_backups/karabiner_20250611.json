@@ -5,20 +5,20 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Right Option alone → Right_Option, with other keys → ⌘ + ⌃ + ⌥",
+                        "description": "Left Option alone → left_option, with other keys → ⌘ + ⌃ + ⌥ + left_control",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "right_option",
+                                    "key_code": "left_option",
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_control",
+                                        "key_code": "left_control",
                                         "modifiers": ["command", "control", "option"]
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "right_option" }],
+                                "to_if_alone": [{ "key_code": "left_option" }],
                                 "type": "basic"
                             }
                         ]
