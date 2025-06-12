@@ -1,7 +1,8 @@
 ;; colorscheme
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/everforest")
-(load-theme 'everforest-hard-dark t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'masterj t)
+
+
 ;; vim-like
 (add-to-list 'load-path "~/.emacs.d/site-lisp/evil")
 (add-to-list 'load-path (expand-file-name "site-lisp/annalist.el" user-emacs-directory))

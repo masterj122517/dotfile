@@ -2,7 +2,8 @@
   (kbd "s") nil
   (kbd ";") ":"
   (kbd ",") "@q"
-)
+
+  )
 (evil-define-key 'normal 'global (kbd "<backspace>") "\"_ciw")
 (evil-define-key 'visual 'global (kbd "<backspace>") "\"_d")
 ;; 分屏

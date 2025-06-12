@@ -10,6 +10,8 @@
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen t)       ;; 禁用启动画面
 
+(setq ring-bell-function 'ignore)
+
 ;; 关闭启动屏幕
 (setq inhibit-startup-screen t)
 
@@ -25,8 +27,8 @@
 (setq make-backup-files nil)          ;; 禁用备份文件
 (setq auto-save-default nil)          ;; 禁用自动保存
 ;; set font
-;; (set-face-attribute 'default nil :family "Comic Code" :height 190)
-(set-face-attribute 'default nil :family "Iosevka Nerd Font" :height 190)
+(set-face-attribute 'default nil :family "Comic Code" :height 190)
+;;(set-face-attribute 'default nil :family "Iosevka Nerd Font" :height 190)
 
 
 ;; auto pair

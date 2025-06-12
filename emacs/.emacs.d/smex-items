@@ -1,0 +1,19 @@
+
+;; ----- smex-history -----
+(
+ term
+ compile
+ make-directory
+ rust-ts-mode
+ cd
+ 5x5
+ arp
+)
+
+;; ----- smex-data -----
+(
+ (rust-ts-mode . 1)
+ (make-directory . 1)
+ (compile . 1)
+ (term . 1)
+)
