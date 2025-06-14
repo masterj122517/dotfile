@@ -45,3 +45,8 @@
       (string-suffix-p
       "gpg"
       (file-name-extension (buffer-name)) t))))
+
+
+(add-to-list 'load-path "~/.emacs.d/site-lisp/exec-path-from-shell") ; add auto-save to your load-path
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
