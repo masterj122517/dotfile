@@ -5,3 +5,5 @@ zsh/.config/zsh/.zcompcache/
 zsh/.config/zsh/keys.zsh
 zsh/.config/zsh/.zim/
 .aider*
+
+.DS_Store
