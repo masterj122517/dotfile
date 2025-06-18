@@ -32,7 +32,6 @@ app_options:
   # com.microsoft.VSCode:
   #   ascii_mode: false   # 关闭默认英文
 
-
 style:
   # 选择皮肤，亮色与暗色主题
   color_scheme: purity_of_form_custom

@@ -38,6 +38,14 @@ export PATH=$PATH:$HOME/Library/Python/3.9/bin
 #setup haskell stack env 
 export PATH="~/.stack/programs/aarch64-osx/ghc-9.8.4/bin:$PATH"
 
+# add $GOPATH/bin to path
+
+export PATH="$GOPATH/bin:$PATH"
+
+# LLVM 
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+
 test -e "${ZDOTDIR}/.iterm2_shell_integration.zsh" && source "${ZDOTDIR}/.iterm2_shell_integration.zsh"
 
 # >>> conda initialize >>>
