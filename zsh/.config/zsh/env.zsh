@@ -64,3 +64,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 # LLM's api's
 # source $ZDOTDIR/keys.zsh
+
+
+# OPENJDK
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
