@@ -31,3 +31,15 @@ function sesh-sessions() {
 # bindkey -M vicmd '\es' sesh-sessions
 # bindkey -M viins '\es' sesh-sessions
 alias st='sesh-sessions'
+
+function zle_eval {
+    echo -en "\e[2K\r"
+    eval "$@"
+    zle redisplay
+}
+
+function openlazygit {
+    zle_eval lazygit
+}
+
+zle -N openlazygit; bindkey "^G" openlazygit
