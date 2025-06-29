@@ -48,3 +48,5 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 (package! peep-dired)
+
+(package! lazycat-theme :recipe (:host github :repo "manateelazycat/lazycat-theme"))
