@@ -50,3 +50,5 @@
 (package! peep-dired)
 
 (package! lazycat-theme :recipe (:host github :repo "manateelazycat/lazycat-theme"))
+
+(package! lazycat-theme :recipe (:host github :repo "rexim/gruber-darker-theme"))

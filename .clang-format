@@ -1,7 +1,7 @@
 BasedOnStyle: LLVM  # 基于LLVM风格，作为Visual Studio风格的基础
 
-IndentWidth: 4  # 缩进宽度
-TabWidth: 4  # 制表符宽度（若使用制表符）
+IndentWidth: 2  # 缩进宽度
+TabWidth: 2  # 制表符宽度（若使用制表符）
 UseTab: Never  # 使用空格而不是制表符
 
 BreakBeforeBraces: Custom

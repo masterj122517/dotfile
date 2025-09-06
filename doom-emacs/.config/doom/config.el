@@ -42,7 +42,7 @@ doom-symbol-font (font-spec :family "FiraCode Nerd Font Mono" :size 15)
 ;; (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'lazycat-dark)
 (setq doom-theme 'doom-snazzy)
-;;(setq doom-theme 'everforest)
+;; (setq doom-theme 'gruber-darker)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
