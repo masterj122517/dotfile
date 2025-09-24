@@ -33,6 +33,7 @@ background-blur = 32
 
 # theme = MasterJ
 theme = osaka
+# theme = Dracula
 # theme = rose-pine
 
 macos-option-as-alt = true

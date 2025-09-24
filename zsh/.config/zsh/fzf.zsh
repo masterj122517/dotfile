@@ -107,4 +107,63 @@ find-in-file() {
 zle -N find-in-file
 bindkey '^z' find-in-file
 
+function fzf-cd-to-parent() {
+  local declare dirs=()
+  get_parent_dirs() {
+    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
+    if [[ "${1}" == '/' ]]; then
+      for _dir in "${dirs[@]}"; do echo $_dir; done
+    else
+      get_parent_dirs $(dirname "$1")
+    fi
+  }
+  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
+  cd "$DIR"
+  ls
+}
+alias cdp='fzf-cd-to-parent'
 
+fzf-git-status() {
+    git rev-parse --git-dir > /dev/null 2>&1 || { echo "You are not in a git repository" && return }
+    local selected
+    selected=$(git -c color.status=always status --short |
+        fzf --height 50% "$@" --border -m --ansi --nth 2..,.. \
+        --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
+        cut -c4- | sed 's/.* -> //')
+            if [[ $selected ]]; then
+                for prog in $(echo $selected);
+                do; $EDITOR $prog; done;
+            fi
+    }
+
+alias fgs='fzf-git-status'
+
+fzf-checkout(){
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        if [[ "$#" -eq 0 ]]; then
+            local branches branch
+            branches=$(git branch -a) &&
+            branch=$(echo "$branches" |
+            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+            git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+        elif [ `git rev-parse --verify --quiet $*` ] || \
+             [ `git branch --remotes | grep  --extended-regexp "^[[:space:]]+origin/${*}$"` ]; then
+            echo "Checking out to existing branch"
+            git checkout "$*"
+        else
+            echo "Creating new branch"
+            git checkout -b "$*"
+        fi
+    else
+        echo "Can't check out or create branch. Not in a git repo"
+    fi
+}
+alias fgc='fzf-checkout'
+
+function fzf-env-vars() {
+  local out
+  out=$(env | fzf)
+  echo $(echo $out | cut -d= -f2)
+}
+
+alias lse='fzf-env-vars'

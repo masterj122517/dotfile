@@ -11,7 +11,6 @@ alias cat='bat'
 alias lg='lazygit'
 alias cbg='cd ~/.local/src/masterj122517.github.io/'
 alias zad='ls -d */ | xargs -I {} zoxide add {}'
-alias python='python3'
 alias s='fastfetch'
 
 function sesh-sessions() {
