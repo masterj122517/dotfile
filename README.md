@@ -14,6 +14,9 @@ brew install tmux neovim jesseduffield/lazygit/lazygit yazi gh
 
 # Yazi
 brew install poppler ffmpeg sevenzip jq starship imagemagick
+
+# casks 
+brew install --cask raycast
 ```
 
 
