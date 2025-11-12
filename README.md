@@ -17,6 +17,15 @@ brew install poppler ffmpeg sevenzip jq starship imagemagick
 
 # casks 
 brew install --cask raycast
+
+# change default application 
+brew install duti
+# find the id of the app
+osascript -e 'id of app "zathura"'
+
+duti -s com.pwmt.zathura pdf all
+
+
 ```
 
 
@@ -27,3 +36,4 @@ export CONDA_PREFIX=$(conda info --base)    # 获取conda的基础路径
 source $CONDA_PREFIX/etc/profile.d/conda.sh # 加载conda脚本
 conda activate AI
 ```
+
