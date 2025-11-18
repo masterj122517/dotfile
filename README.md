@@ -28,6 +28,10 @@ duti -s com.pwmt.zathura pdf all
 
 ```
 
+# Or you can install all my pacakges 
+```bash
+brew bundle --file=./Brewfile
+```
 
 # When using MiniConda + direnv
 ```
