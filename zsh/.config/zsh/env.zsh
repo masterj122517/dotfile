@@ -67,7 +67,9 @@ unset __conda_setup
 
 
 # OPENJDK
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+# openjdk 17
+# export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # pyenv 
 export PATH="$HOME/.pyenv/bin:$PATH"

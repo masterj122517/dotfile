@@ -27,14 +27,13 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-background-opacity = 0.8
-# background-opacity = 1
+# background-opacity = 0.8
+background-opacity = 1
 background-blur = 32
 
-# theme = MasterJ
-theme = osaka
+theme = MasterJ
+# theme = osaka
 # theme = Dracula
-# theme = rose-pine
 
 macos-option-as-alt = true
 
