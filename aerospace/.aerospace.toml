@@ -37,33 +37,33 @@ outer.right = 0
 #     '''
 
 [mode.main.binding]
-alt-cmd-ctrl-enter = '''exec-and-forget open -na Ghostty'''
+alt-ctrl-enter = '''exec-and-forget open -na Ghostty'''
 
 
 # i3 wraps focus by default
-alt-cmd-ctrl-h = 'focus --boundaries-action wrap-around-the-workspace left'
-alt-cmd-ctrl-j = 'focus --boundaries-action wrap-around-the-workspace down'
-alt-cmd-ctrl-k = 'focus --boundaries-action wrap-around-the-workspace up'
-alt-cmd-ctrl-l = 'focus --boundaries-action wrap-around-the-workspace right'
+alt-ctrl-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-ctrl-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-ctrl-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-ctrl-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
-alt-cmd-ctrl-shift-h = 'move left'
-alt-cmd-ctrl-shift-j = 'move down'
-alt-cmd-ctrl-shift-k = 'move up'
-alt-cmd-ctrl-shift-l = 'move right'
+alt-ctrl-shift-h = 'move left'
+alt-ctrl-shift-j = 'move down'
+alt-ctrl-shift-k = 'move up'
+alt-ctrl-shift-l = 'move right'
 
 # Consider using 'join-with' command as a 'split' replacement if you want to enable
 # normalizations
 # alt-h = 'split horizontal'
 # alt-v = 'split vertical'
 
-alt-cmd-ctrl-f = 'fullscreen'
-alt-cmd-ctrl-shift-f = 'macos-native-fullscreen'
+alt-ctrl-f = 'fullscreen'
+alt-ctrl-shift-f = 'macos-native-fullscreen'
 
-alt-cmd-ctrl-s = 'layout v_accordion'               # 'layout stacking' in i3
-alt-cmd-ctrl-w = 'layout h_accordion'               # 'layout tabbed' in i3
-alt-cmd-ctrl-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+alt-ctrl-s = 'layout v_accordion'               # 'layout stacking' in i3
+alt-ctrl-w = 'layout h_accordion'               # 'layout tabbed' in i3
+alt-ctrl-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
-alt-cmd-ctrl-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+alt-ctrl-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 
 # Not supported, because this command is redundant in AeroSpace mental model.
 # See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
@@ -73,33 +73,33 @@ alt-cmd-ctrl-shift-space = 'layout floating tiling' # 'floating toggle' in i3
 # should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
 # alt-a = 'focus parent'
 
-alt-cmd-ctrl-1 = 'workspace 1'
-alt-cmd-ctrl-2 = 'workspace 2'
-alt-cmd-ctrl-3 = 'workspace 3'
-alt-cmd-ctrl-4 = 'workspace 4'
-alt-cmd-ctrl-5 = 'workspace 5'
-alt-cmd-ctrl-6 = 'workspace 6'
-alt-cmd-ctrl-7 = 'workspace 7'
-alt-cmd-ctrl-8 = 'workspace 8'
-alt-cmd-ctrl-9 = 'workspace 9'
-alt-cmd-ctrl-0 = 'workspace 10'
-alt-cmd-ctrl-tab = 'workspace-back-and-forth'
-alt-cmd-ctrl-u = "workspace prev"
-alt-cmd-ctrl-i = "workspace next"
+alt-ctrl-1 = 'workspace 1'
+alt-ctrl-2 = 'workspace 2'
+alt-ctrl-3 = 'workspace 3'
+alt-ctrl-4 = 'workspace 4'
+alt-ctrl-5 = 'workspace 5'
+alt-ctrl-6 = 'workspace 6'
+alt-ctrl-7 = 'workspace 7'
+alt-ctrl-8 = 'workspace 8'
+alt-ctrl-9 = 'workspace 9'
+alt-ctrl-0 = 'workspace 10'
+alt-ctrl-tab = 'workspace-back-and-forth'
+alt-ctrl-u = "workspace prev"
+alt-ctrl-i = "workspace next"
 
-alt-cmd-ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
-alt-cmd-ctrl-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
-alt-cmd-ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
-alt-cmd-ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
-alt-cmd-ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
-alt-cmd-ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
-alt-cmd-ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
-alt-cmd-ctrl-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
-alt-cmd-ctrl-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
-alt-cmd-ctrl-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
-alt-cmd-ctrl-shift-c = 'reload-config'
+alt-ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+alt-ctrl-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+alt-ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+alt-ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+alt-ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+alt-ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+alt-ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+alt-ctrl-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
+alt-ctrl-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
+alt-ctrl-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
+alt-ctrl-shift-c = 'reload-config'
 
-alt-cmd-ctrl-r = 'mode resize'
+alt-ctrl-r = 'mode resize'
 
 [mode.resize.binding]
 h = 'resize width -50'

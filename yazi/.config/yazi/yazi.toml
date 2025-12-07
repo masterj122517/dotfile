@@ -60,6 +60,7 @@ play = [
 
 [open]
 rules = [
+
     # Folder
     { name = "*/", use = [
         "edit",
@@ -258,3 +259,30 @@ run = "git"
 id = "git"
 name = "*/"
 run = "git"
+
+# Linux: Hyprland + Hyprpaper
+[[opener.set-wallpaper]]
+run  = 'hyprctl hyprpaper reload ,"$1"'
+for  = "linux"
+desc = "Set as wallpaper"
+
+# Linux: Swaybg
+[[opener.set-wallpaper]]
+run  = 'killall swaybg; swaybg -m fill -i "$1"'
+for  = "linux"
+desc = "Set as wallpaper"
+orphan = true
+
+# macOS
+[[opener.set-wallpaper]]
+run = '''
+	osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' "$1"
+'''
+for  = "macos"
+desc = "Set as wallpaper"
+
+# yazi.toml
+[[open.prepend_rules]]
+mime = "image/*"
+use  = [ "set-wallpaper", "open" ]
+
