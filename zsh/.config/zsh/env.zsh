@@ -9,7 +9,7 @@ export EDITOR="nvim"
 export TERMINAL="ghostty"
 export BROWSER="zen"
 
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 export FILMANAGER=/opt/homebrew/bin/yazi
 # Other program settings:

@@ -13,7 +13,7 @@
 font-family = "Comic Code"
 #font-family = "Codelia"
 
-font-size = 16.0
+font-size = 13.0
 # font-thicken = true
 grapheme-width-method = "unicode"
 
