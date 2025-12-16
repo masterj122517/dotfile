@@ -7,3 +7,5 @@ source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/vi.zsh
 source ~/.config/zsh/fzf.zsh
 source ~/.config/zsh/functions/cd_git_root.zsh
+
+source ~/.config/zsh/keys.zsh
