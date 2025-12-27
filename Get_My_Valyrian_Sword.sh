@@ -4,7 +4,7 @@
 NVIM_SRC_REPO="https://github.com/neovim/neovim"
 NVIM_CONFIG_REPO_HTTPS="https://github.com/masterj122517/nvim.git"
 NVIM_CONFIG_REPO_SSH="git@github.com:masterj122517/nvim.git"
-INSTALL_DIR="${HOME}/.local/nvim_build"
+INSTALL_DIR="${HOME}/.local/src/nvim_build"
 NVIM_CONFIG_DIR="${HOME}/.config/nvim"
 
 echo "BlackSmith is starting to forge your Valyrian Sword (Neovim setup)..."
@@ -35,6 +35,7 @@ install_dependencies() {
 # ----------------------------------------------------------------------
 install_nvim() {
     (
+        mkdir -p "${HOME}/.local/src"
         echo "Cloning Neovim source code into ${INSTALL_DIR}..."
         if [ -d "$INSTALL_DIR" ]; then
             echo "Removing existing build directory: ${INSTALL_DIR}"
@@ -62,8 +63,8 @@ install_config() {
     echo "Setting up Neovim configuration..."
 
     if [ -d "$NVIM_CONFIG_DIR" ]; then
-        echo "Existing Neovim config found at ${NVIM_CONFIG_DIR}. Backing up to ${NVIM_CONFIG_DIR}.bak.*"
-        mv "$NVIM_CONFIG_DIR" "${NVIM_CONFIG_DIR}.bak.$(date +%Y%m%d%H%M%S)"
+        echo "Existing Neovim config found at ${NVIM_CONFIG_DIR}. Skipping configuration clone."
+        return 0
     fi
 
     # Try SSH first
