@@ -80,3 +80,7 @@ eval "$(pyenv init -)"
 # nvm
   export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+
+
+# doom emacs
+export PATH="$HOME/.config/emacs/bin:$PATH"
