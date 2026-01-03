@@ -13,6 +13,7 @@ alias cbg='cd ~/.local/src/masterj122517.github.io/posts/'
 alias zad='ls -d */ | xargs -I {} zoxide add {}'
 alias s='fastfetch'
 alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+alias nb='newsboat'
  alias scp=~/.ssh/scp.sh
  alias ssh=~/.ssh/ssh.sh
 
