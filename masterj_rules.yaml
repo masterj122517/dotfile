@@ -113,18 +113,28 @@ proxy-groups:
   - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
   - {name: 🐟 漏网之鱼, <<: *pr}
   
-  # 地区与筛选
+# 地区与筛选
   - {name: 🇭🇰 香港节点, type: select, include-all: true, filter: "(?i)港|hk|hongkong|hong kong"}
-  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)(日本|日(?!用)|jp|japan)"}
+  
+  # 【重点修改】日本节点：
+  # filter 解释：匹配 日本 OR JP OR Japan OR 日(后面不能跟着'利'或'用')
+  # 这样 '尼日利亚' (日后面是利) 和 '日用' (日后面是用) 都会被剔除，但 '日01' 会保留。
+  - {name: 🇯🇵 日本节点, type: select, include-all: true, filter: "(?i)(日本|jp|japan|日(?![利用]))"}
+  
   - {name: 🇺🇲 美国节点, type: select, include-all: true, filter: "(?i)美|us|unitedstates|united states"}
   
-  # 故障转移
-  - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|日用)).)*$"}
-  - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|日用)).)*$" }
+  # 故障转移 (也同步在排除列表中加入 '尼'，双重保险)
+  - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|日用|尼)).)*$"}
   
-  # 自动选择
-  - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|日用)).)*$"}
-  - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|日用)).)*$" }
+  # 【重点修改】日本故转：排除列表加入 '日用' 和 '尼'
+  - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|日用|尼)).)*$" }
+  
+  # 自动选择 (同步修改)
+  - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(港|HK|(?i)Hong))^((?!(台|日|韩|新|深|美|日用|尼)).)*$"}
+  
+  # 【重点修改】日本自动：排除列表加入 '日用' 和 '尼'
+  - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日|JP|(?i)Japan))^((?!(港|台|韩|新|美|日用|尼)).)*$" }
+  
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(美|US|(?i)States|America))^((?!(港|台|日|韩|新)).)*$"}
   - {name: ♻️ 自动选择, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
   - {name: 🌐 全部节点, type: select, include-all: true}
