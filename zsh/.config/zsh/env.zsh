@@ -84,3 +84,6 @@ eval "$(pyenv init -)"
 
 # doom emacs
 export PATH="$HOME/.config/emacs/bin:$PATH"
+
+# grep
+export PATH="$(brew --prefix grep)/libexec/gnubin:$PATH"
