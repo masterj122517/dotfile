@@ -1,0 +1,33 @@
+# 格式: [URL] [标签1] [标签2] ["~别名"]
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBZA3z_u8LPiVuIo7YUdDcg "Youtube devaslife"
+
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCrqM0Ym_NbK1fqeQG2VIohg "tsoding"
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw
+
+http://feeds.feedburner.com/ruanyifeng
+
+https://manateelazycat.github.io/feed.xml
+
+https://hnrss.org/newest
+https://hnrss.org/newest?q=AI
+https://hnrss.org/newest?q=emacs
+https://hnrss.org/newest?q=neovim
+
+https://www.hecaitou.com/feeds/posts/default?alt=rss
+
+https://blog.codingnow.com/atom.xml
+
+https://hsu.cy/posts/feed.xml
+
+https://www.geedea.pro/index.xml
+
+https://limboy.me/index.xml
+
+https://blog.douchi.space/index.xml
+
+https://xiaozhou.net/atom.xml
+
+https://mednoter.com/feed.xml

@@ -41,3 +41,9 @@ source $CONDA_PREFIX/etc/profile.d/conda.sh # 加载conda脚本
 conda activate AI
 ```
 
+
+i use lxgw-wenkai as my chinese font
+
+```
+brew install font-lxgw-wenkai
+```

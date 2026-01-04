@@ -10,7 +10,9 @@
 # font-family = "Monaspace Xenon"
 # font-family = "Monaspace Radon"
 # font-family = "Monaspace Krypton"
+
 font-family = "Comic Code"
+font-family = "LXGW WenKai Mono"
 #font-family = "Codelia"
 
 font-size = 13.0
