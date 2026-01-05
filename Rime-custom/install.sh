@@ -51,6 +51,8 @@ cp -f squirrel.custom.yaml "$OUTPUT_DIR/"
 cp -f squirrel.yaml "$OUTPUT_DIR/"
 cp -f wanxiang_pro.custom.yaml "$OUTPUT_DIR/"
 cp -f wanxiang_pro.schema.yaml "$OUTPUT_DIR/"
+cp -f wanxiang_reverse.schema.yaml "$OUTPUT_DIR/"
+
 
 # Cleanup
 echo "Cleaning up..."
