@@ -51,7 +51,9 @@ style:
   border_width: -2e+0
   line_spacing: 5e+0
   spacing: 8e+0
-  font_face: ComicCode-Medium
+  font_face: "LXGWWenKai-Regular, ComicCode-Medium"
+  label_font_face: "LXGWWenKai-Regular, ComicCode-Medium"
+  label_font_point: 12
   font_point: 1.6e+1
   # color_scheme: midnight_comet
   # color_scheme: gboard_comet_black
