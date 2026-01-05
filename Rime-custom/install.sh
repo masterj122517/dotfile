@@ -50,12 +50,60 @@ cp -f custom_phrase.txt "$OUTPUT_DIR/"
 cp -f squirrel.custom.yaml "$OUTPUT_DIR/"
 cp -f squirrel.yaml "$OUTPUT_DIR/"
 cp -f wanxiang_pro.custom.yaml "$OUTPUT_DIR/"
-cp -f wanxiang_pro.schema.yaml "$OUTPUT_DIR/"
-cp -f wanxiang_reverse.schema.yaml "$OUTPUT_DIR/"
+cp -f wanxiang_reverse.custom.yaml "$OUTPUT_DIR/"
 
 
 # Cleanup
 echo "Cleaning up..."
 rm "$ZIP_FILE"
 
-echo "Installation complete! Files are in $OUTPUT_DIR/"
+# Detect OS and set target directory
+OS="$(uname -s)"
+
+case "$OS" in
+    Darwin*)
+        TARGET_DIR="$HOME/Library/Rime"
+        ;;
+    Linux*)
+        TARGET_DIR="$HOME/.config/ibus/rime"
+        ;;
+    CYGWIN*|MINGW*|MSYS*)
+        TARGET_DIR="$APPDATA/Rime"
+        ;;
+    *)
+        echo "Unsupported OS: $OS"
+        echo "Files are in $OUTPUT_DIR/"
+        exit 0
+        ;;
+esac
+
+# Ask user for installation mode
+echo ""
+echo "Choose installation mode:"
+echo "  1) auto  - Install to $TARGET_DIR"
+echo "  2) local - Keep files in local directory ($OUTPUT_DIR/)"
+read -p "Enter your choice (1/2): " choice
+
+case "$choice" in
+    1|auto)
+        # Backup existing directory if it exists
+        if [ -d "$TARGET_DIR" ]; then
+            BACKUP_DIR="${TARGET_DIR}_backup_$(date +%Y%m%d_%H%M%S)"
+            echo "Backing up existing directory to $BACKUP_DIR..."
+            cp -r "$TARGET_DIR" "$BACKUP_DIR"
+        fi
+
+        # Copy files to target directory
+        echo "Installing files to $TARGET_DIR..."
+        mkdir -p "$TARGET_DIR"
+        cp -r "$OUTPUT_DIR"/* "$TARGET_DIR/"
+
+        echo "Installation complete! Files are in $TARGET_DIR"
+        ;;
+    2|local)
+        echo "Installation complete! Files are in $OUTPUT_DIR/"
+        ;;
+    *)
+        echo "Invalid choice. Files are in $OUTPUT_DIR/"
+        ;;
+esac
