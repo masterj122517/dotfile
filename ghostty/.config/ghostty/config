@@ -35,7 +35,7 @@ background-blur = 32
 
 # theme = MasterJ
 theme = osaka
-# theme = Dracula
+ # theme = Dracula
 
 macos-option-as-alt = true
 
