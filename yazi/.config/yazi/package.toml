@@ -1,49 +1,27 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "c0ad8a3"
-hash = "a7ab702e1ef0c097defbc976ed34c186"
+rev = "de33976"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
-use = "KKV9/compress"
-rev = "17b87ae"
-hash = "e2e1c18d92be21060cfbf5a0a8a23eaa"
-
-[[plugin.deps]]
-use = "Rolv-Apneseth/starship"
-rev = "6fde3b2"
-hash = "7ddb7a790746fd91ecdd0350cc5a5d8c"
-
-[[plugin.deps]]
-use = "h-hg/yamb"
-rev = "22af003"
-hash = "7cc42012a7c2099f80064d228feb8d44"
-
-[[plugin.deps]]
-use = "llanosrocas/yaziline"
-rev = "1342efe"
-hash = "a84a339953a568fee1d8beb63e6dca73"
+use = "ciarandg/cd-git-root"
+rev = "a0e0f4b"
+hash = "b84a85f3b513bd9c0a0ab93cc7c8e4c3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "c0ad8a3"
+rev = "de33976"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "c0ad8a3"
-hash = "bf6f074cd41ee33c3360341d168f9733"
+rev = "de33976"
+hash = "36a484acf6a0a0219c543ccb4cee218f"
 
-[[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "657aaf3"
-hash = "662a1b35b98668d4f75746eb37af7fd"
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "de33976"
+hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
 
-[[flavor.deps]]
-use = "yazi-rs/flavors:dracula"
-rev = "657aaf3"
-hash = "b11081c23ae0fc647b2e70fcbb74f25"
-
-[[flavor.deps]]
-use = "Chromium-3-Oxide/everforest-medium"
-rev = "0158f0f"
-hash = "dbbbfe681e156c28303efb1f44b6cbc4"
+[flavor]
+deps = []

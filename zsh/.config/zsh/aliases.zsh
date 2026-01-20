@@ -3,8 +3,8 @@ alias l='eza -al'
 alias ls='eza'
 alias gita='git add'
 alias gitc='git commit'
-alias r='yazi'
-alias ra='joshuto'
+ # alias r='yazi'
+# alias ra='joshuto'
 alias gitp='git push'
 alias c='clear'
 alias cat='bat'
@@ -47,3 +47,11 @@ function openlazygit {
 }
 
 zle -N openlazygit; bindkey "^G" openlazygit
+
+function r() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

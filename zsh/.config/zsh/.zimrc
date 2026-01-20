@@ -21,3 +21,9 @@ zmodule Aloxaf/fzf-tab
 # zmodule  sorin
 # zmodule zimfw/direnv
 zmodule gitster
+
+# 1. 缓存插件：专门用来缓存 brew, zoxide, direnv 的初始化输出
+zmodule mroth/evalcache
+
+# 2. NVM 插件：比手动写脚本更智能，支持自动安装 node 和 lazy load
+zmodule lukechilds/zsh-nvm

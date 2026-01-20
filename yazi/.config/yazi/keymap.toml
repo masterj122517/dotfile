@@ -10,19 +10,11 @@ prepend_keymap = [
         "c",
         "a",
     ], run = "plugin compress", desc = "Archive selected files" },
-    { on = [
-        "'",
-        "a",
-    ], run = "plugin yamb save", desc = "Add bookmark" },
-    { on = [
-        "'",
-        "'",
-    ], run = "plugin yamb jump_by_fzf", desc = "Jump bookmark by fzf" },
-    { on = [
-        "'",
-        "r",
-    ], run = "plugin yamb delete_by_key", desc = "Delete bookmark by key" },
+    {on = ["g", "r"], run = "plugin cd-git-root", desc = "Go to git repo root"},
+    {on = ["b", "g"], run = '''shell --  osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' %s1''', desc = "setwallpaper"},
+    {on = ["c", "m"], run = "plugin chmod", desc = "Chmod on selected files"},
 ]
+
 
 
 keymap = [
