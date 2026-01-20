@@ -1,4 +1,5 @@
- source ~/.config/zsh/env.zsh
+# zmodload zsh/zprof
+source ~/.config/zsh/env.zsh
 source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/aliases.zsh 
 source ~/.config/zsh/prompt.zsh
@@ -9,3 +10,4 @@ source ~/.config/zsh/fzf.zsh
 source ~/.config/zsh/functions/cd_git_root.zsh
 
 source ~/.config/zsh/keys.zsh
+# zprof
