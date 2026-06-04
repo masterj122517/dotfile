@@ -1,22 +1,23 @@
-# 字体设置
-# font-family = "FiraCode Mono Nerd Font" 
-# font-family = "Comic Mono" 
-# font-family = "SauceCodePro Mono Nerd Font" 
-# font-family = "JetBrainsMono Nerd Font Mono"
-# font-family = "Monaco"
-# font-family = "Hack Nerd Font Mono"
-# font-family = "Monaspace Neon"
-# font-family = "Monaspace Argon"
-# font-family = "Monaspace Xenon"
-# font-family = "Monaspace Radon"
-# font-family = "Monaspace Krypton"
-
-font-family = "Comic Code"
+font-family = "Comic Code Ligatures"
+font-style = "Medium"
 font-family = "LXGW WenKai Mono"
-#font-family = "Codelia"
+
+font-family-bold = "Comic Code Ligatures"
+font-style-bold = "Semibold"
+
+font-family-italic = "Comic Code Ligatures"
+font-style-italic = "Medium Italic"
+
+font-family-bold-italic = "Comic Code Ligatures"
+font-style-bold-italic = "Semibold Italic"
+
+font-feature = +liga
+font-feature = +calt
 
 font-size = 13.0
-# font-thicken = true
+
+#font-thicken = true
+
 grapheme-width-method = "unicode"
 
 mouse-hide-while-typing = true
@@ -29,20 +30,21 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-background-opacity = 0.8
-# background-opacity = 1
+# background-opacity = 0.8
+ background-opacity = 1
 background-blur = 32
 
-# theme = MasterJ
-theme = osaka
- # theme = Dracula
+#theme = MasterJ
+#theme = osaka
+#theme =  Solarized Osaka Night
+theme = TokyoNight Night
 
 macos-option-as-alt = true
 
 scrollback-limit = 100000
 
-window-height=510
-window-width=1640
+window-width = 120
+window-height = 30
 
 # keymaps 
-keybind =cmd+a=ignore
+keybind = cmd+a=ignore

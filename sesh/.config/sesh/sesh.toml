@@ -49,3 +49,24 @@ startup_command = "ide && conda activate AI"
 name = "blog"
 path = "~/.local/src/masterj122517.github.io/"
 startup_command = "ide"
+
+[[session]]
+name = "orb"
+path = "~"
+startup_command = "orb"
+
+[[session]]
+name = "agents"
+path = "~"
+startup_coammand = "opencode"
+
+[[session]]
+name = "fun"
+path = "~/fun"
+startup_command = "ls -la"
+
+
+[[session]]
+name = "Flow"
+path = "~/Flow"
+startup_command = "ls -la"

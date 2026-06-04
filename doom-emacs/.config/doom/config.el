@@ -21,10 +21,10 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-(setq doom-font (font-spec :family "Comic Code" :size 15)
-      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font Mono" :size 15)
-      doom-big-font (font-spec :family "Comic Code" :size 24))
-doom-symbol-font (font-spec :family "FiraCode Nerd Font Mono" :size 15)
+(setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 15)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font Mono" :size 15)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
+doom-symbol-font (font-spec :family "Iosevka Nerd Font " :size 15)
 
 ;; (setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 15)
 ;;       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font Mono" :size 15)

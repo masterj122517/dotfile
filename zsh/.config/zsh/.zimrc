@@ -7,7 +7,6 @@ zmodule completion
 zmodule git-info
 zmodule duration-info
 zmodule prompt-pwd
-zmodule zsh-users/zsh-completions
 zmodule zsh-users/zsh-autosuggestions
 zmodule zsh-users/zsh-history-substring-search
 zmodule zdharma-continuum/fast-syntax-highlighting
@@ -21,3 +20,4 @@ zmodule Aloxaf/fzf-tab
 # zmodule  sorin
 # zmodule zimfw/direnv
 zmodule gitster
+zmodule zsh-users/zsh-completions

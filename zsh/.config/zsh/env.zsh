@@ -1,86 +1,75 @@
-# Homebrew 必须最先定义
-export HOMEBREW_PREFIX="/opt/homebrew"
-export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
-export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX"
-
-# 将常用的路径拼接到 PATH 前面
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/scripts:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="$HOME/.config/emacs/bin:$PATH"
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-
-# GNU 工具 (替换 macOS 自带的旧工具)
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
-export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/coreutils/bin:$PATH"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-
-# ------------------------------------------------------------------------------
-# 2. 全局变量 (常用工具配置)
-# ------------------------------------------------------------------------------
-
+# =============================================================================
+# 1. Environment & Globals
+# =============================================================================
+export LANG="en_US.UTF-8"
 export EDITOR="nvim"
 export TERMINAL="ghostty"
-export BROWSER="zen"
-export LANG="en_US.UTF-8"
-
-# FZF 配置 
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-
-# Yazi 文件管理器
+export BROWSER="google-chrome"
 export FILE_MANAGER="yazi"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
 
-# ------------------------------------------------------------------------------
-# 3. 快速启动工具
-# ------------------------------------------------------------------------------
+# Homebrew core
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
+export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
 
-eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
+# =============================================================================
+# 2. PATH & FPATH Management (Deduplicated)
+# =============================================================================
+# Prepend Homebrew site-functions to fpath
+[[ -d "${HOMEBREW_PREFIX}/share/zsh/site-functions" ]] && fpath=("${HOMEBREW_PREFIX}/share/zsh/site-functions" $fpath)
 
-# ------------------------------------------------------------------------------
-# 4. 重型工具懒加载 (Lazy Load)
-# ------------------------------------------------------------------------------
+# Use Zsh typed arrays for PATH to prevent string parsing and duplication
+typeset -U path
+path=(
+    ~/{.local,go,.ghcup,.config/emacs}/bin
+    ~/scripts
+    ${HOMEBREW_PREFIX}/opt/{gnu-sed/libexec/gnubin,gnu-getopt/bin,grep/libexec/gnubin,coreutils/bin,llvm/bin,curl/bin}
+    ${HOMEBREW_PREFIX}/{bin,sbin}
+    $path
+)
+export PATH
 
-# --- NVM (Node) ---
-# 只有输入 node/npm 等命令时才加载
-zsh_nvm_lazy() {
-    unset -f node npm nvm npx pnpm yarn # 移除伪装
-    echo "⚡ Loading NVM..."             # 提示一下，让您知道为什么会卡顿一下
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
-    "$@"                                # 执行您刚才输入的命令
+# =============================================================================
+# 3. Fast Initialization (Zero-cost Eval Cache)
+# =============================================================================
+# Replaces blocking `eval "$(cmd init zsh)"` with static file sourcing
+_load_cache() {
+    local cache_file="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/$1.zsh"
+    [[ -f "$cache_file" ]] || { mkdir -p "${cache_file:h}"; "$1" "$2" "$3" > "$cache_file"; }
+    source "$cache_file"
 }
 
-# 伪装函数
-node() { zsh_nvm_lazy node "$@"; }
-npm()  { zsh_nvm_lazy npm "$@"; }
-nvm()  { zsh_nvm_lazy nvm "$@"; }
-pnpm() { zsh_nvm_lazy pnpm "$@"; }
-yarn() { zsh_nvm_lazy yarn "$@"; }
+_load_cache zoxide init zsh
+_load_cache direnv hook zsh
+unset -f _load_cache # Clean up namespace
 
-# --- Pyenv (Python) ---
-zsh_pyenv_lazy() {
-    unset -f python pip pyenv
-    echo "🐍 Loading Pyenv..."
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-    "$@"
-}
+# =============================================================================
+# 4. Lazy Load Closures (Meta-programming)
+# =============================================================================
+# Node / NVM
+for cmd in node npm nvm npx pnpm yarn; do
+    eval "$cmd() { 
+        unset -f node npm nvm npx pnpm yarn
+        source ${HOMEBREW_PREFIX}/opt/nvm/nvm.sh
+        $cmd \"\$@\"
+    }"
+done
 
-python() { zsh_pyenv_lazy python "$@"; }
-pip()    { zsh_pyenv_lazy pip "$@"; }
-pyenv()  { zsh_pyenv_lazy pyenv "$@"; }
+# Python / Pyenv
+for cmd in python pip pyenv; do
+    eval "$cmd() { 
+        unset -f python pip pyenv
+        export PATH=\"$HOME/.pyenv/bin:\$PATH\"
+        eval \"\$(pyenv init -)\"
+        $cmd \"\$@\"
+    }"
+done
 
-# --- Conda / Miniconda ---
-zsh_conda_lazy() {
+# Conda
+conda() { 
     unset -f conda
-    echo "🐍 Loading Conda..."
-    # 只要 source 它的启动脚本即可
-    [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ] && \
-        source "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    source ${HOMEBREW_PREFIX}/Caskroom/miniconda/base/etc/profile.d/conda.sh
     conda "$@"
 }
-
-conda() { zsh_conda_lazy "$@"; }
