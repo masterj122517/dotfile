@@ -101,12 +101,6 @@ fif() {
   rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 
-find-in-file() {
-	grep --line-buffered --color=never -r "" * | fzf
-}
-zle -N find-in-file
-bindkey '^z' find-in-file
-
 function fzf-cd-to-parent() {
   local declare dirs=()
   get_parent_dirs() {
@@ -175,3 +169,37 @@ fzf-file-widget() {
 }
 zle -N fzf-file-widget
 bindkey '^f' fzf-file-widget
+
+
+fgp() {
+  local query="${1:-}"
+  local result
+  result=$(rg --line-number --no-heading --color=always "${query:-.}" . | fzf --ansi \
+    --delimiter : \
+    --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+    --preview-window 'up,60%,border-bottom,+{2}+3/3')
+  if [[ -n "$result" ]]; then
+    local file=$(echo "$result" | cut -d: -f1)
+    local line=$(echo "$result" | cut -d: -f2)
+    nvim +"$line" "$file"
+  fi
+}
+
+fzf-grep-widget() {
+  local RG_PREFIX="rg --line-number --no-heading --color=always --smart-case"
+  local result
+  result=$(fzf --ansi --disabled \
+    --bind "start:reload:$RG_PREFIX . || true" \
+    --bind "change:reload:sleep 0.1; $RG_PREFIX {q} . || true" \
+    --delimiter : \
+    --preview 'bat --style=numbers --color=always --highlight-line {2} {1}' \
+    --preview-window 'up,60%,border-bottom,+{2}+3/3')
+  if [[ -n "$result" ]]; then
+    local file=$(echo "$result" | cut -d: -f1)
+    local line=$(echo "$result" | cut -d: -f2)
+    nvim +"$line" "$file"
+  fi
+  zle reset-prompt
+}
+zle -N fzf-grep-widget
+bindkey '^_' fzf-grep-widget
