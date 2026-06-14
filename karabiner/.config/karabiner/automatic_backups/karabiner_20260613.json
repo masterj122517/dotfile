@@ -184,16 +184,6 @@
                         "vendor_id": 3141
                     },
                     "ignore": false,
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "right_command" },
-                            "to": [{ "key_code": "right_option" }]
-                        },
-                        {
-                            "from": { "key_code": "right_option" },
-                            "to": [{ "key_code": "right_command" }]
-                        }
-                    ],
                     "treat_as_built_in_keyboard": true
                 },
                 {
@@ -229,28 +219,18 @@
                     },
                     "simple_modifications": [
                         {
-                            "from": { "key_code": "right_command" },
-                            "to": [{ "key_code": "right_option" }]
-                        },
-                        {
                             "from": { "key_code": "right_option" },
                             "to": [{ "key_code": "right_command" }]
+                        },
+                        {
+                            "from": { "key_code": "right_command" },
+                            "to": [{ "key_code": "right_option" }]
                         }
                     ]
                 }
             ],
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "right_command" },
-                    "to": [{ "key_code": "right_option" }]
-                },
-                {
-                    "from": { "key_code": "right_option" },
-                    "to": [{ "key_code": "right_command" }]
-                }
-            ],
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]

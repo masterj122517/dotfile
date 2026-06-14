@@ -30,14 +30,18 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-# background-opacity = 0.8
- background-opacity = 1
+ background-opacity = 0.8
+# background-opacity = 1
 background-blur = 32
 
 #theme = MasterJ
 #theme = osaka
 #theme =  Solarized Osaka Night
-theme = TokyoNight Night
+#theme = TokyoNight Night
+# theme = Banana Blueberry
+#theme = Zenbones Dark
+#theme = Solarized Dark Higher Contrast
+theme = Catppuccin Mocha
 
 macos-option-as-alt = true
 

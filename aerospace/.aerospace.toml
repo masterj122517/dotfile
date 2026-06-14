@@ -1,13 +1,19 @@
 
-after-login-command = []
-after-startup-command = []
-start-at-login = true
-# Reference: https://github.com/i3/i3/blob/next/etc/config
+# AeroSpace Configuration
+# Catppuccin Mocha + JankyBorders
+# macOS Tahoe
 
-# i3 doesn't have "normalizations" feature that why we disable them here.
-# But the feature is very helpful.
-# Normalizations eliminate all sorts of weird tree configurations that don't make sense.
-# Give normalizations a chance and enable them back.
+after-login-command = []
+after-startup-command = [
+    'exec-and-forget sketchybar',
+    'exec-and-forget borders active_color=0xff74c7ec inactive_color=0xffcba6f7 width=6.0 hidpi=on',
+]
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+start-at-login = true
+
+# Normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 0
@@ -17,62 +23,47 @@ default-root-container-orientation = 'auto'
 automatically-unhide-macos-hidden-apps = true
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+# ─── Gaps (matching yabai reference: 8px all around) ───
 [gaps]
-inner.horizontal = 0
-inner.vertical = 0
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
 
-# Mouse follows focus when focused monitor changes
-
-# [mode.main.binding]
-# See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
-# alt-enter = '''exec-and-forget osascript -e '
-#     tell application "Terminal"
-#         do scriptnormalizations"
-#         activate
-#     end tell'
-#     '''
+# ═══════════════════════════════════════════════════════════
+# KEYBINDINGS — DO NOT CHANGE
+# ═══════════════════════════════════════════════════════════
 
 [mode.main.binding]
 alt-ctrl-enter = '''exec-and-forget open -na Ghostty'''
 
-
-# i3 wraps focus by default
+# Focus navigation (i3-style wrap-around)
 alt-ctrl-h = 'focus --boundaries-action wrap-around-the-workspace left'
 alt-ctrl-j = 'focus --boundaries-action wrap-around-the-workspace down'
 alt-ctrl-k = 'focus --boundaries-action wrap-around-the-workspace up'
 alt-ctrl-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
+# Move windows
 alt-ctrl-shift-h = 'move left'
 alt-ctrl-shift-j = 'move down'
 alt-ctrl-shift-k = 'move up'
 alt-ctrl-shift-l = 'move right'
 
-# Consider using 'join-with' command as a 'split' replacement if you want to enable
-# normalizations
-# alt-h = 'split horizontal'
-# alt-v = 'split vertical'
-
+# Fullscreen
 alt-ctrl-f = 'fullscreen'
 alt-ctrl-shift-f = 'macos-native-fullscreen'
 
-alt-ctrl-s = 'layout v_accordion'               # 'layout stacking' in i3
-alt-ctrl-w = 'layout h_accordion'               # 'layout tabbed' in i3
-alt-ctrl-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+# Layouts
+alt-ctrl-s = 'layout v_accordion'
+alt-ctrl-w = 'layout h_accordion'
+alt-ctrl-e = 'layout tiles horizontal vertical'
 
-alt-ctrl-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+# Float toggle
+alt-ctrl-shift-space = 'layout floating tiling'
 
-# Not supported, because this command is redundant in AeroSpace mental model.
-# See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
-#alt-space = 'focus toggle_tiling_floating'
-
-# `focus parent`/`focus child` are not yet supported, and it's not clear whether they
-# should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
-# alt-a = 'focus parent'
-
+# Workspaces
 alt-ctrl-1 = 'workspace 1'
 alt-ctrl-2 = 'workspace 2'
 alt-ctrl-3 = 'workspace 3'
@@ -87,6 +78,7 @@ alt-ctrl-tab = 'workspace-back-and-forth'
 alt-ctrl-u = "workspace prev"
 alt-ctrl-i = "workspace next"
 
+# Move windows to workspace
 alt-ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
 alt-ctrl-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
 alt-ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
@@ -99,6 +91,7 @@ alt-ctrl-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
 alt-ctrl-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
 alt-ctrl-shift-c = 'reload-config'
 
+# Resize mode
 alt-ctrl-r = 'mode resize'
 
 [mode.resize.binding]
@@ -109,19 +102,31 @@ l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
 
-
-[[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = "move-node-to-workspace 2"
+# ═══════════════════════════════════════════════════════════
+# WINDOW ROUTING
+# ═══════════════════════════════════════════════════════════
 
 [[on-window-detected]]
 if.app-id = "com.google.Chrome"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = ["layout tiling"]
-
-[[on-window-detected]]
 if.app-id = "app.zen-browser.zen"
 run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["move-node-to-workspace 2", "layout tiling"]
+
+# ─── Float these apps (don't tile) ───
+[[on-window-detected]]
+if.app-id = "com.apple.systempreferences"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.calculator"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.raycast.macos"
+run = "layout floating"

@@ -1,3 +1,6 @@
+
+# PS1='%F{blue}%~ %(?.%F{green}.%F{red})›%f '
+
 setopt nopromptbang prompt{cr,percent,sp,subst}
 
 zstyle ':zim:duration-info' threshold 0.5

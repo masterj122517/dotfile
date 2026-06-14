@@ -14,6 +14,10 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
 export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
 
+
+export PATH="$HOME/.local/share/cargo/bin/:$PATH"
+
+
 # =============================================================================
 # 2. PATH & FPATH Management (Deduplicated)
 # =============================================================================
@@ -73,3 +77,4 @@ conda() {
     source ${HOMEBREW_PREFIX}/Caskroom/miniconda/base/etc/profile.d/conda.sh
     conda "$@"
 }
+

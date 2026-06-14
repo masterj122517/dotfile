@@ -57,7 +57,7 @@ function r() {
 }
 
 
-zkd="zk new daily --no-input"
+alias zkd="cd ~/TheBrain/ && zk new daily --no-input && cd -"
 
-zkn='zk new --title "$*"'
+alias zkn='zk new --title "$*"'
 

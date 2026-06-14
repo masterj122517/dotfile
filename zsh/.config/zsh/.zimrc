@@ -15,9 +15,5 @@ zmodule hlissner/zsh-autopair
 zmodule pabloariasal/zfm
 zmodule agkozak/zsh-z
 zmodule Aloxaf/fzf-tab
-# Prompt
-# zmodule magicmace
-# zmodule  sorin
-# zmodule zimfw/direnv
-zmodule gitster
 zmodule zsh-users/zsh-completions
+zmodule gitster

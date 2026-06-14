@@ -167,3 +167,11 @@ function fzf-env-vars() {
 }
 
 alias lse='fzf-env-vars'
+
+fzf-file-widget() {
+  local file=$(rg --files --hidden --glob '!.git' | fzf --preview 'bat --color=always {}')
+  [[ -n "$file" ]] && nvim "$file"
+  zle reset-prompt
+}
+zle -N fzf-file-widget
+bindkey '^f' fzf-file-widget
