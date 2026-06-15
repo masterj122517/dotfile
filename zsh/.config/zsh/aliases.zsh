@@ -59,6 +59,9 @@ function r() {
 	rm -f -- "$tmp"
 }
 
+zle -N r
+bindkey '^o' r
+
 
 alias zkd="cd ~/TheBrain/ && zk new daily --no-input && cd -"
 
