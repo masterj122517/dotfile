@@ -38,3 +38,25 @@ precmd_functions+=(_fix_cursor)
 
 # 设置 vim 模式下的超时时间
 KEYTIMEOUT=1
+
+_magic_move() {
+  local line="$BUFFER"
+  local cur=$CURSOR
+  
+  # 找到第一个非空字符的位置
+  local head=$(echo "$line" | sed 's/^\s*//' | wc -c)
+  head=$(( ${#line} - head + 1 ))
+  
+  if [[ $cur -lt $head ]]; then
+    # 在缩进里 → 跳到第一个非空字符
+    CURSOR=$head
+  elif [[ $cur -eq $head ]]; then
+    # 已在 ^ → 跳到行尾
+    CURSOR=${#BUFFER}
+  else
+    # 已在行尾或其他 → 跳到行首
+    CURSOR=0
+  fi
+}
+zle -N _magic_move
+bindkey -M vicmd '0' _magic_move
