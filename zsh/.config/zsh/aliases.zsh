@@ -36,6 +36,9 @@ function sesh-sessions() {
 # bindkey -M viins '\es' sesh-sessions
 alias st='sesh-sessions'
 
+
+bindkey -s '^w' "~/.config/tmux/tmux-sessionizer\n"
+
 function zle_eval {
     echo -en "\e[2K\r"
     eval "$@"
