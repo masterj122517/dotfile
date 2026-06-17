@@ -10,6 +10,7 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
 export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 
