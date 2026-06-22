@@ -10,6 +10,7 @@ source ~/.config/zsh/fzf.zsh
 source ~/.config/zsh/functions/cd_git_root.zsh
 
 source ~/.config/zsh/keys.zsh
+source ~/.config/zsh/temp.zsh
 # zprof
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 

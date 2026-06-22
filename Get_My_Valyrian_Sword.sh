@@ -12,7 +12,7 @@ echo "BlackSmith is starting to forge your Valyrian Sword (Neovim setup)..."
 # ----------------------------------------------------------------------
 # 1. Install Dependencies
 # ----------------------------------------------------------------------
-install_dependencies() {
+install_dependencies_mac() {
     echo "Checking for Homebrew (required for dependencies)..."
     if ! command -v brew >/dev/null 2>&1; then
         echo "Error: Homebrew is not installed. Please install it first:"
@@ -28,6 +28,28 @@ install_dependencies() {
         echo "Error: git is not installed. Please install git."
         exit 1
     fi
+}
+
+install_dependencies_linux() {
+
+  # i guess we just support these right
+  if command -v pacman > /dev/null 2>&1; then 
+    echo "Guess we are in Arch right"
+    echo "Installing Neovim build dependencies (cmake, ninja, gettext, libtool, automake, pkg-config)..."
+    sudo pacman -S --needed cmake ninja gettext libtool automake pkgconf
+  fi
+
+  if command -v apt > /dev/null 2>&1; then
+    echo "Guess we are in Ubuntu/Debian right"
+    echo "Installing Neovim build dependencies (cmake, ninja, gettext, libtool, automake, pkg-config)..."
+    sudo apt update && sudo apt install cmake ninja-build gettext libtool automake pkgconf
+  fi
+
+}
+
+
+install_dependencies_windows() {
+
 }
 
 # ----------------------------------------------------------------------
@@ -50,9 +72,9 @@ install_nvim() {
         echo "Installing Neovim..."
         # Note: 'sudo make install' is used for a system-wide installation, which requires elevated privileges.
         # If you prefer a local install without sudo, change the build flags (e.g., set CMAKE_INSTALL_PREFIX).
-        sudo make install || { echo "Installation failed. You might need to check permissions or set a custom prefix."; exit 1; }
-        
+
         echo "Neovim installation complete (installed to standard system location, e.g., /usr/local/bin)."
+        sudo make install || { echo "Installation failed. You might need to check permissions or set a custom prefix."; exit 1; }
     )
 }
 
@@ -85,10 +107,17 @@ install_config() {
     exit 1
 }
 
+# check where we are 
+
+
+
+
 # ----------------------------------------------------------------------
 # 4. Main Execution
 # ----------------------------------------------------------------------
-install_dependencies
+
+install_dependencies_mac
+
 install_nvim
 install_config
 

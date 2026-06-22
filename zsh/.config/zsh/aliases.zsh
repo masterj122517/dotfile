@@ -67,3 +67,5 @@ alias zkd="cd ~/TheBrain/ && zk new daily --no-input && cd -"
 
 alias zkn='zk new --title "$*"'
 
+alias za="open -a Sioyek"
+

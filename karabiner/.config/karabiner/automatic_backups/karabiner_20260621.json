@@ -6,6 +6,7 @@
                 "rules": [
                     {
                         "description": "` alone → `, with other keys → ⌘ + ⌃ + ⌥ (tap-delay enabled)",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -59,6 +60,7 @@
                     },
                     {
                         "description": "Swap Right Command and Right Option for all keyboards.",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": { "key_code": "right_command" },
