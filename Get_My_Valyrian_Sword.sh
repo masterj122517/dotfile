@@ -7,49 +7,80 @@ NVIM_CONFIG_REPO_SSH="git@github.com:masterj122517/nvim.git"
 INSTALL_DIR="${HOME}/.local/src/nvim_build"
 NVIM_CONFIG_DIR="${HOME}/.config/nvim"
 
+WITH_CONFIG=0
+
+# Parse arguments
+for arg in "$@"; do
+    case $arg in
+        --with-config|-c)
+        WITH_CONFIG=1
+        shift
+        ;;
+    esac
+done
+
 echo "BlackSmith is starting to forge your Valyrian Sword (Neovim setup)..."
 
 # ----------------------------------------------------------------------
 # 1. Install Dependencies
 # ----------------------------------------------------------------------
 install_dependencies_mac() {
-    echo "Checking for Homebrew (required for dependencies)..."
+    echo "Detected macOS. Checking for Homebrew..."
     if ! command -v brew >/dev/null 2>&1; then
-        echo "Error: Homebrew is not installed. Please install it first:"
-        echo "/bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+        echo "Error: Homebrew is not installed."
         exit 1
     fi
+    echo "Installing Neovim build dependencies via Homebrew..."
+    brew install cmake ninja gettext libtool automake pkg-config unzip curl
+}
 
-    echo "Installing Neovim build dependencies (cmake, ninja, gettext, libtool, automake, pkg-config)..."
-    brew install cmake ninja gettext libtool automake pkg-config
-    
-    # Check for 'git' which is also a dependency
+install_dependencies_arch() {
+    echo "Detected Arch Linux."
+    echo "Installing Neovim build dependencies via pacman..."
+    sudo pacman -S --needed base-devel cmake ninja gettext libtool automake pkgconf unzip curl
+}
+
+install_dependencies_debian() {
+    echo "Detected Debian-like system."
+    echo "Installing Neovim build dependencies via apt..."
+    sudo apt-get update
+    sudo apt-get install -y build-essential cmake ninja-build gettext libtool automake pkg-config unzip curl
+}
+
+install_dependencies_gentoo() {
+    echo "Detected Gentoo."
+    echo "Installing Neovim build dependencies via emerge..."
+    sudo emerge -av --noreplace dev-util/cmake dev-util/ninja sys-devel/gettext sys-devel/libtool sys-devel/automake dev-util/pkgconf app-arch/unzip net-misc/curl
+}
+
+install_dependencies() {
+    OS="$(uname -s)"
+    case "${OS}" in
+        Linux*)
+            if command -v pacman >/dev/null 2>&1; then
+                install_dependencies_arch
+            elif command -v apt-get >/dev/null 2>&1; then
+                install_dependencies_debian
+            elif command -v emerge >/dev/null 2>&1; then
+                install_dependencies_gentoo
+            else
+                echo "Error: Unsupported Linux distribution. Could not find pacman, apt-get, or emerge."
+                exit 1
+            fi
+            ;;
+        Darwin*)
+            install_dependencies_mac
+            ;;
+        *)
+            echo "Error: Unsupported OS: ${OS}"
+            exit 1
+            ;;
+    esac
+
     if ! command -v git >/dev/null 2>&1; then
-        echo "Error: git is not installed. Please install git."
+        echo "Error: git is not installed."
         exit 1
     fi
-}
-
-install_dependencies_linux() {
-
-  # i guess we just support these right
-  if command -v pacman > /dev/null 2>&1; then 
-    echo "Guess we are in Arch right"
-    echo "Installing Neovim build dependencies (cmake, ninja, gettext, libtool, automake, pkg-config)..."
-    sudo pacman -S --needed cmake ninja gettext libtool automake pkgconf
-  fi
-
-  if command -v apt > /dev/null 2>&1; then
-    echo "Guess we are in Ubuntu/Debian right"
-    echo "Installing Neovim build dependencies (cmake, ninja, gettext, libtool, automake, pkg-config)..."
-    sudo apt update && sudo apt install cmake ninja-build gettext libtool automake pkgconf
-  fi
-
-}
-
-
-install_dependencies_windows() {
-
 }
 
 # ----------------------------------------------------------------------
@@ -58,23 +89,22 @@ install_dependencies_windows() {
 install_nvim() {
     (
         mkdir -p "${HOME}/.local/src"
-        echo "Cloning Neovim source code into ${INSTALL_DIR}..."
+        echo "Cloning/Updating Neovim source code in ${INSTALL_DIR}..."
+        
         if [ -d "$INSTALL_DIR" ]; then
-            echo "Removing existing build directory: ${INSTALL_DIR}"
-            rm -rf "$INSTALL_DIR"
+            cd "$INSTALL_DIR" || exit 1
+            echo "Pulling latest changes..."
+            git pull origin master || { echo "Failed to update source."; exit 1; }
+        else
+            git clone --depth 1 $NVIM_SRC_REPO "$INSTALL_DIR" || { echo "Failed to clone Neovim source."; exit 1; }
+            cd "$INSTALL_DIR" || exit 1
         fi
-        git clone --depth 1 $NVIM_SRC_REPO "$INSTALL_DIR" || { echo "Failed to clone Neovim source."; exit 1; }
 
-        cd "$INSTALL_DIR" || exit 1
         echo "Building Neovim..."
         make CMAKE_BUILD_TYPE=Release
         
         echo "Installing Neovim..."
-        # Note: 'sudo make install' is used for a system-wide installation, which requires elevated privileges.
-        # If you prefer a local install without sudo, change the build flags (e.g., set CMAKE_INSTALL_PREFIX).
-
-        echo "Neovim installation complete (installed to standard system location, e.g., /usr/local/bin)."
-        sudo make install || { echo "Installation failed. You might need to check permissions or set a custom prefix."; exit 1; }
+        sudo make install || { echo "Installation failed."; exit 1; }
     )
 }
 
@@ -89,14 +119,12 @@ install_config() {
         return 0
     fi
 
-    # Try SSH first
     echo "Attempting to clone config via SSH: ${NVIM_CONFIG_REPO_SSH}"
     if git clone --depth 1 "$NVIM_CONFIG_REPO_SSH" "$NVIM_CONFIG_DIR"; then
         echo "Successfully cloned config via SSH."
         return 0
     fi
     
-    # If SSH fails, try HTTPS
     echo "SSH clone failed. Attempting to clone config via HTTPS: ${NVIM_CONFIG_REPO_HTTPS}"
     if git clone --depth 1 "$NVIM_CONFIG_REPO_HTTPS" "$NVIM_CONFIG_DIR"; then
         echo "Successfully cloned config via HTTPS."
@@ -107,19 +135,17 @@ install_config() {
     exit 1
 }
 
-# check where we are 
-
-
-
-
 # ----------------------------------------------------------------------
 # 4. Main Execution
 # ----------------------------------------------------------------------
 
-install_dependencies_mac
-
+install_dependencies
 install_nvim
-install_config
 
-echo "Installation complete. Your Valyrian Sword is forged and ready!"
-echo "You can now run 'nvim' (you may need to source your shell profile if /usr/local/bin is not in PATH)."
+if [ "$WITH_CONFIG" -eq 1 ]; then
+    install_config
+else
+    echo "Skipping config installation. Use '--with-config' or '-c' to install config."
+fi
+
+echo "Installation/Update complete."
