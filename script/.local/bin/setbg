@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# 壁纸软连接保存位置
+bgloc="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
+
+choose_with_fzf() {
+    find "$1" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) |
+        fzf --preview 'kitty +kitten icat --transfer-mode=file --stdin=no --align=left --scale-up {}' --preview-window=right:60%
+}
+
+if [ $# -eq 0 ]; then
+    img="$bgloc"
+else
+    if [ -f "$1" ]; then
+        img="$1"
+    elif [ -d "$1" ]; then
+        img=$(choose_with_fzf "$1")
+        [ -z "$img" ] && echo "No image selected." && exit 1
+    else
+        echo "Not a valid file or directory." && exit 1
+    fi
+    ln -sf "$(realpath "$img")" "$bgloc"
+fi
+
+# 设置壁纸
+osascript -e "tell application \"System Events\" to set picture of every desktop to POSIX file \"$(realpath "$img")\""

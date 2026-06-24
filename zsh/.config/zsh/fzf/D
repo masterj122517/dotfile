@@ -1,0 +1,45 @@
+# 文件名：D
+
+function da() {
+  local cid
+  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+  [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+}
+
+function ds() {
+  local cid
+  cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
+  [ -n "$cid" ] && docker stop "$cid"
+}
+
+function drm_one() {
+  local cid
+  cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
+  [ -n "$cid" ] && docker rm "$cid"
+}
+
+function drm_multi() {
+  docker ps -a | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $1 }' | xargs -r docker rm
+}
+function drmi() {
+  docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
+}
+
+function D() {
+  local choice
+  choice=$(printf "%s\n" \
+    "da: Start + attach a stopped container" \
+    "ds: Stop a running container" \
+    "drm_one: Remove a container (single)" \
+    "drm_multi: Remove containers (multi-select)" \
+    "drmi: Remove docker images" \
+    | fzf --prompt="Choose docker action: ")
+
+  case "$choice" in
+    da:*) da ;;
+    ds:*) ds ;;
+    drm_one:*) drm_one ;;
+    drm_multi:*) drm_multi ;;
+    drmi:*) drmi ;;
+  esac
+}

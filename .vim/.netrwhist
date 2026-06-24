@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/masterj/ctf/learn_pwn'
+let g:netrw_dirhist_7='/home/masterj'
+let g:netrw_dirhist_6='/home'
+let g:netrw_dirhist_5='/home/masterj'
+let g:netrw_dirhist_4='/home/masterj/ctf'
+let g:netrw_dirhist_3='/home/masterj/ctf/learn_pwn'
+let g:netrw_dirhist_2='/home/masterj'
+let g:netrw_dirhist_1='/home/masterj/ctf'
+let g:netrw_dirhist_0='/home/masterj/ctf/learn_pwn'
+let g:netrw_dirhist_9='/home/masterj/ctf/hackthebox/Low_Logic/hw_lowlogic'

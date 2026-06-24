@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# 拼接所有参数为 nvim 命令
+NVIM_COMMAND="/opt/homebrew/bin/nvim $*"
+
+# 使用 Ghostty 启动新窗口并运行命令
+open -na Ghostty --args --command "$NVIM_COMMAND"

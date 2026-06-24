@@ -1,0 +1,132 @@
+
+# AeroSpace Configuration
+# Catppuccin Mocha + JankyBorders
+# macOS Tahoe
+
+after-login-command = []
+after-startup-command = [
+    'exec-and-forget sketchybar',
+    'exec-and-forget borders active_color=0xff74c7ec inactive_color=0xffcba6f7 width=6.0 hidpi=on',
+]
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+start-at-login = true
+
+# Normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 0
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+automatically-unhide-macos-hidden-apps = true
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# ─── Gaps (matching yabai reference: 8px all around) ───
+[gaps]
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
+
+# ═══════════════════════════════════════════════════════════
+# KEYBINDINGS — DO NOT CHANGE
+# ═══════════════════════════════════════════════════════════
+
+[mode.main.binding]
+alt-ctrl-enter = '''exec-and-forget open -na Ghostty'''
+
+# Focus navigation (i3-style wrap-around)
+alt-ctrl-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-ctrl-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-ctrl-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-ctrl-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+# Move windows
+alt-ctrl-shift-h = 'move left'
+alt-ctrl-shift-j = 'move down'
+alt-ctrl-shift-k = 'move up'
+alt-ctrl-shift-l = 'move right'
+
+# Fullscreen
+alt-ctrl-f = 'fullscreen'
+alt-ctrl-shift-f = 'macos-native-fullscreen'
+
+# Layouts
+alt-ctrl-s = 'layout v_accordion'
+alt-ctrl-w = 'layout h_accordion'
+alt-ctrl-e = 'layout tiles horizontal vertical'
+
+# Float toggle
+alt-ctrl-shift-space = 'layout floating tiling'
+
+# Workspaces
+alt-ctrl-1 = 'workspace 1'
+alt-ctrl-2 = 'workspace 2'
+alt-ctrl-3 = 'workspace 3'
+alt-ctrl-4 = 'workspace 4'
+alt-ctrl-5 = 'workspace 5'
+alt-ctrl-6 = 'workspace 6'
+alt-ctrl-7 = 'workspace 7'
+alt-ctrl-8 = 'workspace 8'
+alt-ctrl-9 = 'workspace 9'
+alt-ctrl-0 = 'workspace 10'
+alt-ctrl-tab = 'workspace-back-and-forth'
+alt-ctrl-u = "workspace prev"
+alt-ctrl-i = "workspace next"
+
+# Move windows to workspace
+alt-ctrl-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
+alt-ctrl-shift-2 = 'move-node-to-workspace 2 --focus-follows-window'
+alt-ctrl-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
+alt-ctrl-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
+alt-ctrl-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
+alt-ctrl-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+alt-ctrl-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+alt-ctrl-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
+alt-ctrl-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
+alt-ctrl-shift-0 = 'move-node-to-workspace 10 --focus-follows-window'
+alt-ctrl-shift-c = 'reload-config'
+
+# Resize mode
+alt-ctrl-r = 'mode resize'
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+# ═══════════════════════════════════════════════════════════
+# WINDOW ROUTING
+# ═══════════════════════════════════════════════════════════
+
+[[on-window-detected]]
+if.app-id = "com.google.Chrome"
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = "app.zen-browser.zen"
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["move-node-to-workspace 2", "layout tiling"]
+
+# ─── Float these apps (don't tile) ───
+[[on-window-detected]]
+if.app-id = "com.apple.systempreferences"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.calculator"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.raycast.macos"
+run = "layout floating"

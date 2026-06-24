@@ -1,0 +1,16 @@
+#format 
+--merge-output-format mp4
+# Use this proxy
+--proxy 127.0.0.1:7890
+# output
+--output "~/videos/%(uploader)s/%(title)s-%(resolution)s.%(ext)s"
+#sub langs
+--sub-langs all,-live_chat
+#ffmpeg location
+--ffmpeg-location /sbin/ffmpeg
+
+
+--embed-subs 
+--embed-thumbnail 
+--embed-metadata
+ --convert-subs srt

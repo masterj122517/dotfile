@@ -1,0 +1,72 @@
+
+[[session]]
+name = "home (~)"
+path = "~"
+startup_command = "eza --all --git --icons --color=always"
+
+[[session]]
+name = "Dotfile Config"
+path = "~/dotfile"
+
+[[session]]
+name = "Programming"
+path = "~/programming"
+
+[[session]]
+name = "Neovim Config "
+path = "~/.config/nvim"
+startup_command = "nvim"
+
+[[session]]
+name = "tmux config"
+path = "~/.config/tmux"
+startup_command = "ide && nvim ~/.tmux.conf"
+preview_command = "bat --color=always ~/.tmux.conf"
+
+
+[[session]]
+name = "Note"
+path = "~/Note"
+startup_command = "nvim ."
+
+[[session]]
+name = "Ghostty Config"
+path = "~/.config/ghostty"
+startup_command = "nvim config"
+
+[[session]]
+name = "VM"
+path = "~/"
+startup_command = "orb"
+
+[[session]]
+name = "AI"
+path = "~/programming/AI/"
+startup_command = "ide && conda activate AI"
+
+
+[[session]]
+name = "blog"
+path = "~/.local/src/masterj122517.github.io/"
+startup_command = "ide"
+
+[[session]]
+name = "orb"
+path = "~"
+startup_command = "orb"
+
+[[session]]
+name = "agents"
+path = "~"
+startup_coammand = "opencode"
+
+[[session]]
+name = "fun"
+path = "~/fun"
+startup_command = "ls -la"
+
+
+[[session]]
+name = "Flow"
+path = "~/Flow"
+startup_command = "ls -la"

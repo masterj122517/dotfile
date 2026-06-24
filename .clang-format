@@ -1,0 +1,44 @@
+BasedOnStyle: LLVM  # 基于LLVM风格，作为Visual Studio风格的基础
+
+IndentWidth: 2  # 缩进宽度
+TabWidth: 2  # 制表符宽度（若使用制表符）
+UseTab: Never  # 使用空格而不是制表符
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true  # 类之后的左大括号换行
+  AfterControlStatement: false  # 控制语句（如if、for等）之后的左大括号不换行
+  AfterEnum: true  # 枚举之后的左大括号换行
+  AfterFunction: true  # 函数之后的左大括号换行
+  AfterNamespace: true  # 命名空间之后的左大括号换行
+  AfterStruct: true  # 结构体之后的左大括号换行
+  AfterUnion: true  # 联合体之后的左大括号换行
+  BeforeCatch: true  # catch之前的左大括号换行
+  BeforeElse: true  # else之前的左大括号换行
+  IndentBraces: false  # 不对大括号进行缩进
+  SplitEmptyFunction: true  # 空函数换行
+  SplitEmptyRecord: true  # 空记录（类/结构体/枚举）换行
+  SplitEmptyNamespace: true  # 空命名空间换行
+
+DerivePointerAlignment: false
+PointerAlignment: Left  # 指针对齐到变量名右侧
+
+AlignAfterOpenBracket: Align  # 在括号之后对齐
+AlignConsecutiveAssignments: false  # 对齐连续的赋值
+AlignConsecutiveDeclarations: false  # 对齐连续的声明
+AlignEscapedNewlines: Left  # 转义换行符对齐
+AlignOperands: false  # 对齐操作数
+AlignTrailingComments: false  # 对齐尾部注释
+
+CommentPragmas: '^ IWYU pragma:'  # 注释样式匹配规则
+
+AccessModifierOffset: -4  # 访问修饰符顶格
+NamespaceIndentation: All  # 命名空间中的所有内容都进行缩进
+IndentCaseLabels: true  # 缩进case标签
+SortIncludes: true  # 自动排序include头文件
+
+AllowAllArgumentsOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: false
+BinPackArguments: true
+BinPackParameters: true
+ColumnLimit: 0

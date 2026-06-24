@@ -1,0 +1,11 @@
+zsh/.config/zsh/.zcompdump*
+zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/.zsh_sessions/
+zsh/.config/zsh/.zcompcache/
+zsh/.config/zsh/keys.zsh
+zsh/.config/zsh/.zim/
+zsh/.config/zsh/.zim/modules/
+zsh/.config/zsh/temp.zsh
+.aider*
+
+.DS_Store

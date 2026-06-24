@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Sir, 这是为您优化后的 macOS 版本 linkhandler
+# 处理剪贴板、媒体播放及文件下载
+
+if [ -z "$1" ]; then
+    # 使用 pbpaste 替代 xclip -o
+    url="$(pbpaste)"
+else
+    url="$1"
+fi
+
+# 提取文件名，处理百分比转义，用于存放在 /tmp
+filename=$(echo "$url" | sed "s/.*\///;s/%20/ /g")
+
+case "$url" in
+    # 视频类：使用 mpv 播放
+    *mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtube.com/shorts*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*|*odysee.com*)
+        # macOS 中使用 nohup 和 & 替代 setsid -f
+        nohup mpv -quiet "$url" >/dev/null 2>&1 & ;;
+
+    # 图片类：macOS 默认使用 Preview (open) 或者您安装的 nsxiv
+    *png|*jpg|*jpe|*jpeg|*gif|*webp)
+        curl -sL "$url" > "/tmp/$filename" && open -a Preview "/tmp/$filename" ;;
+
+    # 文档类：macOS 建议直接用 open (Preview)
+    *pdf|*cbz|*cbr)
+        curl -sL "$url" > "/tmp/$filename" && open "/tmp/$filename" ;;
+
+    # 音频类：保持您的 qndl 逻辑
+    *mp3|*flac|*opus|*mp3?source*)
+        qndl "$url" 'curl -LO' >/dev/null 2>&1 ;;
+
+    # 兜底处理
+    *)
+        if [ -f "$url" ]; then
+            # 如果是本地文件，尝试用文本编辑器打开 (假设您定义了 $EDITOR)
+            # 或者直接 open -t 使用默认文本编辑器
+            open -t "$url"
+        else
+            # 如果是网页链接，使用系统默认浏览器打开
+            open "$url"
+        fi
+        ;;
+esac

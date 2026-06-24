@@ -1,0 +1,22 @@
+# Always use smart-case (case-insensitive unless pattern has uppercase)
+--smart-case
+
+# Always search hidden files
+--hidden
+
+# Always show line numbers (rg already does this in terminals, but useful for pipes)
+--line-number
+
+# Set a custom colors
+--colors=match:fg:235,168,238
+--colors=match:style:bold
+--colors=path:fg:166,227,161
+--colors=path:style:bold
+--colors=line:fg:249,226,175
+--colors=line:style:bold
+--colors=column:fg:249,226,175
+
+# Ignore some directories globally
+--glob=!.git/
+--glob=!node_modules/
+--glob=!.venv/

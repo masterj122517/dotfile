@@ -1,0 +1,21 @@
+
+;; ----- smex-history -----
+(
+ lsp-bridge-mode
+ compile
+ mkdir
+ term
+ rust-ts-mode
+ make-directory
+ cd
+)
+
+;; ----- smex-data -----
+(
+ (rust-ts-mode . 2)
+ (make-directory . 1)
+ (compile . 21)
+ (term . 3)
+ (mkdir . 2)
+ (lsp-bridge-mode . 1)
+)
