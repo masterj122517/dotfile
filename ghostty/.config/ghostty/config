@@ -1,3 +1,5 @@
+
+# font-family = GeistMono Nerd Font Mono
 font-family = "Comic Code Ligatures"
 font-style = "Medium"
 font-family = "LXGW WenKai Mono"
@@ -14,9 +16,9 @@ font-style-bold-italic = "Semibold Italic"
 font-feature = +liga
 font-feature = +calt
 
-font-size = 13.0
+font-size = 15.0
 
-#font-thicken = true
+# font-thicken = true
 
 grapheme-width-method = "unicode"
 
@@ -30,7 +32,7 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
- background-opacity = 0.7
+background-opacity = 0.7
 # background-opacity = 1
 background-blur = 32
 

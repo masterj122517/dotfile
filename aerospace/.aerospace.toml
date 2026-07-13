@@ -1,16 +1,8 @@
-
 # AeroSpace Configuration
-# Catppuccin Mocha + JankyBorders
 # macOS Tahoe
 
 after-login-command = []
-after-startup-command = [
-    'exec-and-forget sketchybar',
-    'exec-and-forget borders active_color=0xff74c7ec inactive_color=0xffcba6f7 width=6.0 hidpi=on',
-]
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-]
+after-startup-command = []
 start-at-login = true
 
 # Normalization
@@ -22,15 +14,6 @@ default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 automatically-unhide-macos-hidden-apps = true
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-
-# ─── Gaps (matching yabai reference: 8px all around) ───
-[gaps]
-inner.horizontal = 8
-inner.vertical = 8
-outer.left = 8
-outer.bottom = 8
-outer.top = 8
-outer.right = 8
 
 # ═══════════════════════════════════════════════════════════
 # KEYBINDINGS — DO NOT CHANGE

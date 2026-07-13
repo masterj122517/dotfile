@@ -65,8 +65,7 @@ name = "fun"
 path = "~/fun"
 startup_command = "ls -la"
 
-
 [[session]]
-name = "Flow"
-path = "~/Flow"
-startup_command = "ls -la"
+name = "Music"
+path = "~/Music"
+startup_command = "kew"

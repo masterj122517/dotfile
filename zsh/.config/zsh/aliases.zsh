@@ -69,3 +69,7 @@ alias zkn='zk new --title "$*"'
 
 alias za="open -a Sioyek"
 
+alias pip="uv pip"
+alias pip3="uv pip"
+
+alias ctags="/opt/homebrew/bin/ctags"

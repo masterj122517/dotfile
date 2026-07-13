@@ -1,19 +1,3 @@
-# env config
-export LANG="en_US.UTF-8"
-export EDITOR="nvim"
-export TERMINAL="ghostty"
-export BROWSER="google-chrome"
-export FILE_MANAGER="yazi"
-export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
-
-export HOMEBREW_PREFIX="/opt/homebrew"
-export HOMEBREW_CELLAR="${HOMEBREW_PREFIX}/Cellar"
-export HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
-export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
-
-export PATH="$HOME/.local/share/cargo/bin:$PATH"
-
 # path
 if [[ -d "${HOMEBREW_PREFIX}/share/zsh/site-functions" ]]; then
     fpath=("${HOMEBREW_PREFIX}/share/zsh/site-functions" $fpath)
@@ -71,31 +55,5 @@ npx() {
     npx "$@"
 }
 
-# --- Python / Pyenv ---
-python() {
-    unset -f python pip pyenv
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    python "$@"
-}
+source "$HOME/.virtualenvs/global/bin/activate"
 
-pip() {
-    unset -f python pip pyenv
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    pip "$@"
-}
-
-pyenv() {
-    unset -f python pip pyenv
-    export PATH="$HOME/.pyenv/bin:$PATH"
-    eval "$(pyenv init -)"
-    pyenv "$@"
-}
-
-# --- Conda ---
-conda() {
-    unset -f conda
-    source "${HOMEBREW_PREFIX}/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    conda "$@"
-}
