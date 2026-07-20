@@ -4,13 +4,6 @@ source ~/.config/zsh/plugins.zsh
 source ~/.config/zsh/aliases.zsh 
 source ~/.config/zsh/prompt.zsh
 source ~/.config/zsh/plugins/extract/extract.plugin.zsh
-source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/vi.zsh
 source ~/.config/zsh/fzf.zsh
 source ~/.config/zsh/functions/cd_git_root.zsh
-
-# source ~/.config/zsh/keys.zsh
-# source ~/.config/zsh/temp.zsh
-# zprof
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-

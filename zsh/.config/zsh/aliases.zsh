@@ -1,6 +1,6 @@
-alias ll='eza --all --git --icons --color=always '
-alias l='eza -al'
-alias ls='eza'
+alias l="eza"
+alias ll="eza -la"
+
 alias gita='git add'
 alias gitc='git commit'
  # alias r='yazi'
@@ -12,11 +12,9 @@ alias lg='lazygit'
 alias cbg='cd /Users/masterj/.local/src/masterj122517.github.io/src/content/blog/'
 alias zad='ls -d */ | xargs -I {} zoxide add {}'
 alias s='fastfetch'
-alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 alias nb='newsboat'
-alias tnb='cd ~/.config/newsboat && nvim .'
- alias scp=~/.ssh/scp.sh
- alias ssh=~/.ssh/ssh.sh
+#alias scp=~/.ssh/scp.sh
+#alias ssh=~/.ssh/ssh.sh
 
 function sesh-sessions() {
   {
