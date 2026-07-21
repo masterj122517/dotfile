@@ -21,6 +21,7 @@ mouse-hide-while-typing = true
 window-padding-balance = true
 
 shell-integration = zsh
+shell-integration-features = no-cursor,no-sudo,no-title
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
@@ -40,6 +41,7 @@ gtk-tabs-location = hidden
 mouse-hide-while-typing = true
 confirm-close-surface = false
 copy-on-select = clipboard
+gtk-titlebar = false
 
 keybind = alt+one=unbind
 keybind = alt+two=unbind
@@ -50,3 +52,6 @@ keybind = alt+six=unbind
 keybind = alt+seven=unbind
 keybind = alt+eight=unbind
 keybind = alt+nine=unbind
+
+desktop-notifications = false
+app-notifications = false
