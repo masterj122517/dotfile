@@ -57,3 +57,5 @@ npx() {
 
 source "$HOME/.virtualenvs/global/bin/activate"
 
+
+export PATH="/Users/masterj/.cache/.bun/bin:$PATH"

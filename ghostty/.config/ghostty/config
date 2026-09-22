@@ -32,18 +32,11 @@ shell-integration = zsh
 term = xterm-256color
 clipboard-read = allow
 clipboard-write = allow
-background-opacity = 0.7
-# background-opacity = 1
-background-blur = 32
+# Kataware owns its dark canvas; transparency shifts every contrast relationship.
+background-opacity = 1
+background-blur = 0
 
-#theme = MasterJ
-#theme = osaka
-#theme =  Solarized Osaka Night
-#theme = TokyoNight Night
-# theme = Banana Blueberry
-#theme = Zenbones Dark
-#theme = Solarized Dark Higher Contrast
-theme = Catppuccin Mocha
+theme = Kataware
 
 macos-option-as-alt = true
 

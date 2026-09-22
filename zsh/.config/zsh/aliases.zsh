@@ -73,3 +73,5 @@ alias pip="uv pip"
 alias pip3="uv pip"
 
 alias ctags="/opt/homebrew/bin/ctags"
+
+alias pi="omp"
