@@ -1,22 +1,27 @@
-
-# font-family = GeistMono Nerd Font Mono
-font-family = "Comic Code Ligatures"
-font-style = "Medium"
+font-family = "Iosevka Custom"
+font-family = "Symbols Nerd Font Mono"
 font-family = "LXGW WenKai Mono"
+font-style = "Regular"
 
-font-family-bold = "Comic Code Ligatures"
+font-family-bold = "Iosevka Custom"
+font-family-bold = "Symbols Nerd Font Mono"
+font-family-bold = "LXGW WenKai Mono"
 font-style-bold = "Semibold"
 
-font-family-italic = "Comic Code Ligatures"
-font-style-italic = "Medium Italic"
+font-family-italic = "Iosevka Custom"
+font-family-italic = "Symbols Nerd Font Mono"
+font-family-italic = "LXGW WenKai Mono"
+font-style-italic = "Italic"
 
-font-family-bold-italic = "Comic Code Ligatures"
+font-family-bold-italic = "Iosevka Custom"
+font-family-bold-italic = "Symbols Nerd Font Mono"
+font-family-bold-italic = "LXGW WenKai Mono"
 font-style-bold-italic = "Semibold Italic"
 
 font-feature = +liga
 font-feature = +calt
 
-font-size = 15.0
+font-size = 20.0
 
 # font-thicken = true
 
