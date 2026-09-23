@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
+# ==========================================
+# LazyGit Configuration for MasterJ
+# Focus: Efficiency, Clarity, and Kataware Theme
+# ==========================================
+
+gui:
+  sidePanelWidth: 0.3
+  mainPanelSplitMode: 'vertical'
+  nerdFontsVersion: '3'
+  scrollOffMargin: 4
+  filterMode: 'fuzzy'
+  showCommandLog: false
+  showNumstatInFilesView: true
+  branchColorPatterns:
+    '^(feat|feature)/': '#60D7E8'
+    '^(fix|hotfix)/': '#F2778B'
+    '^refactor/': '#9B8CFF'
+  theme:
+    activeBorderColor:
+      - '#60D7E8'
+      - 'bold'
+    inactiveBorderColor:
+      - '#6B7FA2'
+    searchingActiveBorderColor:
+      - '#F2C38B'
+      - 'bold'
+    optionsTextColor:
+      - '#9B8CFF'
+    selectedLineBgColor:
+      - '#1D2A49'
+    inactiveViewSelectedLineBgColor:
+      - '#151F38'
+    cherryPickedCommitFgColor:
+      - '#F08BC3'
+    cherryPickedCommitBgColor:
+      - '#1D2A49'
+    markedBaseCommitFgColor:
+      - '#F2C38B'
+    markedBaseCommitBgColor:
+      - '#1D2A49'
+    unstagedChangesColor:
+      - '#F2778B'
+    defaultFgColor:
+      - '#D9E2F2'
+
+git:
+  autoFetch: true
+
+os:
+  editPreset: 'nvim'
+
+disableStartupPopups: true
+promptToReturnFromSubprocess: false
+
+customCommands:
+  # ==========================================
+  # 规范化分支创建 (Control + N)
+  # ==========================================
+  - key: '<c-n>'
+    command: "git checkout -b {{index .PromptResponses 0}}/{{index .PromptResponses 1}}"
+    context: 'localBranches'
+    description: '创建规范化分支 (feat/fix...)'
+    prompts:
+      - type: 'menu'
+        title: '选择分支前缀'
+        options:
+          - name: 'feature'
+            value: 'feat'
+          - name: 'bugfix'
+            value: 'fix'
+          - name: 'refactor'
+            value: 'refactor'
+      - type: 'input'
+        title: '输入分支名称 (建议用-连接)'
+
+  # ==========================================
+  # 规范化提交 (Shift + C)
+  # ==========================================
+  - key: 'C'
+    command: "git commit -m '{{index .PromptResponses 0}}: {{index .PromptResponses 1}}'"
+    context: 'files'
+    description: '规范化提交 (feat/fix...)'
+    prompts:
+      - type: 'menu'
+        title: '选择提交类型'
+        options:
+          - name: 'feat'
+            description: '引入新功能 (New Feature)'
+            value: 'feat'
+          - name: 'fix'
+            description: '修复 Bug (Bug Fix)'
+            value: 'fix'
+          - name: 'refactor'
+            description: '代码重构 (Neither fix nor feature)'
+            value: 'refactor'
+          - name: 'docs'
+            description: '文档更新 (Documentation)'
+            value: 'docs'
+          - name: 'perf'
+            description: '性能优化 (Performance Improvement)'
+            value: 'perf'
+          - name: 'style'
+            description: '代码格式调整 (Formatting, etc)'
+            value: 'style'
+      - type: 'input'
+        title: '输入简短描述'
+
+  # ==========================================
+  # Git Blame 查看作者 (b)
+  # ==========================================
+  - key: 'b'
+    command: "git blame {{.SelectedFile.Name}}"
+    context: 'files'
+    description: '查看当前文件每一行的作者'
+    output: terminal
