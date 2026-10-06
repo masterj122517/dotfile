@@ -48,5 +48,8 @@ vnoremap <BS> "_d
 
 set timeoutlen=300
 
-colorscheme handmade-hero
+let g:kataware_transparent = 1
+colorscheme kataware
+
+
 

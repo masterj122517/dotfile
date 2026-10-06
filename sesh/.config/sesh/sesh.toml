@@ -47,7 +47,7 @@ startup_command = "ide && conda activate AI"
 
 [[session]]
 name = "blog"
-path = "~/.local/src/masterj122517.github.io/"
+path = "~/programming/masterj122517.github.io/"
 startup_command = "ide"
 
 [[session]]
@@ -69,3 +69,8 @@ startup_command = "ls -la"
 name = "Music"
 path = "~/Music"
 startup_command = "kew"
+
+[[session]]
+name = "nvim_oss"
+path = "~/programming/neovim_oss"
+startup_command = "ide && tly"

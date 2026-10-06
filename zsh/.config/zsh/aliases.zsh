@@ -59,8 +59,12 @@ function r() {
 	rm -f -- "$tmp"
 }
 
-zle -N r
-bindkey '^o' r
+function openvi() {
+    zle_eval nvim .
+}
+
+zle -N openvi;
+bindkey '^o' openvi
 
 
 alias zkd="cd ~/TheBrain/ && zk new daily --no-input && cd -"
