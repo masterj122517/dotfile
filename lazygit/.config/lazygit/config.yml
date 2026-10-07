@@ -13,10 +13,6 @@ gui:
   filterMode: 'fuzzy'
   showCommandLog: false
   showNumstatInFilesView: true
-  branchColorPatterns:
-    '^(feat|feature)/': '#60D7E8'
-    '^(fix|hotfix)/': '#F2778B'
-    '^refactor/': '#9B8CFF'
   theme:
     activeBorderColor:
       - '#60D7E8'
@@ -44,16 +40,16 @@ gui:
       - '#F2778B'
     defaultFgColor:
       - '#D9E2F2'
-
+    branchColorPatterns:
+      '^(feat|feature)/': '#60D7E8'
+      '^(fix|hotfix)/': '#F2778B'
+      '^refactor/': '#9B8CFF'
 git:
   autoFetch: true
-
 os:
   editPreset: 'nvim'
-
 disableStartupPopups: true
 promptToReturnFromSubprocess: false
-
 customCommands:
   # ==========================================
   # 规范化分支创建 (Control + N)
@@ -74,7 +70,6 @@ customCommands:
             value: 'refactor'
       - type: 'input'
         title: '输入分支名称 (建议用-连接)'
-
   # ==========================================
   # 规范化提交 (Shift + C)
   # ==========================================
@@ -106,7 +101,6 @@ customCommands:
             value: 'style'
       - type: 'input'
         title: '输入简短描述'
-
   # ==========================================
   # Git Blame 查看作者 (b)
   # ==========================================
