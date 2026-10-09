@@ -47,3 +47,19 @@ i use lxgw-wenkai as my chinese font
 ```
 brew install font-lxgw-wenkai
 ```
+
+## Tmux links
+
+Press `Ctrl+s`, release it, then press `Shift+u` to select a link in an fzf popup.
+Lowercase `prefix + u` remains the sesh picker.
+
+- `Enter`: open with the macOS default application.
+- `Ctrl+y`: copy the selected URL to the clipboard and close the popup.
+- `Esc`: cancel.
+- `Ctrl+j` / `Ctrl+k`: navigate using the existing fzf bindings.
+
+The picker scans the current pane and its last 2000 history lines, joins soft
+wraps, deduplicates URLs, and includes hidden OSC 8 targets. It requires macOS,
+Python 3, fzf, and tmux 3.7+ (`capture-pane -H`). The binding lives in
+`tmux/.tmux.conf`; the script is `tmux/.config/tmux/tmux-url-picker.py`.
+After configuration changes, reload with `prefix + r`.
