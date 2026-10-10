@@ -18,7 +18,7 @@ export fzf_preview_cmd='bat --color=always --style=plain -- {} 2>/dev/null || ez
 
 _fzf_fpath=${0:h}/fzf
 fpath+=("$_fzf_fpath")
-autoload -U "$_fzf_fpath"/*(.:t)
+autoload -U "$_fzf_fpath"/*(-.:t)
 unset _fzf_fpath
 
 fzf-redraw-prompt() {

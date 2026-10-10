@@ -1,5 +1,41 @@
-# This is the branch that sets up my macos
+# Dotfiles
 
+## Install (Linux / macOS)
+
+Clone this repository, then run as your normal user:
+
+```sh
+cd /path/to/dotfile
+bash install.sh
+```
+
+The script resolves paths relative to itself, so it can also be invoked from
+another directory. Network access is required for package and plugin downloads.
+
+- **macOS:** installs Homebrew when missing, then runs `brew bundle` against this
+  repository's `Brewfile`, including its desktop applications and fonts.
+- **Linux:** uses `sudo` with `apt-get`, `dnf`, or `pacman` to install Git, curl,
+  CA certificates, GNU Stow, Zsh, Tmux, Python/venv, fzf, direnv, zoxide, Neovim,
+  and ripgrep. The other configured applications (such as Ghostty, Yazi, sesh,
+  and lazygit) must be installed separately; the macOS Brewfile is not used.
+  On Arch, `pacman -Syu` also upgrades the system to avoid unsupported partial upgrades.
+- **Links:** Stows `git`, `ghostty`, `lazygit`, `ripgrep`, `script`, `sesh`, `tmux`,
+  `vim`, `yazi`, `yt-dlp`, and `zsh` into `$HOME`. macOS also links `aerospace`,
+  `karabiner`, and `sioyek`. Rime's separate installer and font source directories
+  are not Stow packages.
+- **Bootstrap:** installs the declared Zim modules, the global Python virtualenv,
+  NVM/default Node, and `caniuse`; clones TPM and installs the plugins declared
+  in the Tmux configuration using a private temporary Tmux server. Existing
+  sessions are not reloaded or killed.
+
+The complete Stow package set is checked for conflicts before linking. Existing
+conflicting files are not overwritten or adopted: move them aside yourself and
+rerun. Package installation happens before this check. Reruns preserve existing
+NVM, Node versions, virtualenvs, and downloaded Tmux plugins.
+
+After installation, open Zsh with `zsh`. The installer does not change your login
+shell; if desired, run `chsh -s "$(command -v zsh)"` yourself (the shell must be
+listed in `/etc/shells`). Use `bash install.sh --help` for a brief usage reminder.
 
 **pacakges install**
 ```
@@ -50,7 +86,8 @@ application runtime state, and Rime installer downloads/deployment output.
 These rules work independently of the global ignore file in `git/.gitignore`.
 Environment templates (`.env.example`, `.env.*.example`, `.env.sample`),
 configuration files, fonts, and Yazi plugins/themes remain versioned.
-Reinstall ignored Zim dependencies with the Zsh installer below.
+Reinstall ignored Zim and TPM dependencies with `bash install.sh`, or reinstall
+only Zim/shell dependencies with the Zsh installer below.
 Previously tracked generated files are removed from Git's index only; existing
 local copies are preserved.
 
@@ -77,9 +114,12 @@ Install shell dependencies separately from the rest of the desktop:
 bash ~/.config/zsh/install.sh
 ```
 
-The installer adds missing Homebrew tools, installs the declared Zim modules,
-and sets up NVM's default Node and the `caniuse` CLI. Existing Node versions and
-the global Python environment are preserved. It never runs during shell startup.
+On macOS, the shell installer adds missing Homebrew tools. On Linux, install the
+core dependencies with the root installer first; the shell installer does not
+use Homebrew and bootstraps NVM v0.40.3 only when NVM is absent. Both platforms
+install the declared Zim modules and set up NVM's default Node and the `caniuse`
+CLI. Existing Node versions and the global Python environment are preserved.
+The installer never runs during shell startup.
 
 - `env.zsh`: edit `environment` for exports and `search_path` for PATH order.
   Every open shell picks up changes at its next prompt, including removed settings.
@@ -94,10 +134,10 @@ the global Python environment are preserved. It never runs during shell startup.
   Open a new shell after changing `runtime.zsh` or `environment.zsh`.
   After changing `.zimrc`, rerun the installer and open a new shell.
 - `z` remains zsh-z; `zi` and Ctrl-B remain zoxide.
-- Command completions come from Homebrew and `zsh-completions`, loaded before Zim
-  initializes completion. `fzf-tab` displays those candidates; it does not supply
-  command definitions.
-- If Docker is already installed, the installer generates its official completion
+- Command completions come from `zsh-completions` and, on macOS, Homebrew, loaded
+  before Zim initializes completion. `fzf-tab` displays those candidates; it does
+  not supply command definitions.
+- On macOS, if Docker is already installed, the installer generates its completion
   in Homebrew's `share/zsh/site-functions/_docker`. After a Docker upgrade, refresh
   it with `docker completion zsh > "$(brew --prefix)/share/zsh/site-functions/_docker"`
   and open a new shell.

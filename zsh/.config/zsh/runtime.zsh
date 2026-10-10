@@ -28,7 +28,11 @@ _zsh_cached_init() {
 
 _zsh_load_nvm() {
   unfunction node npm npx
-  source "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
+  if [[ $OSTYPE == darwin* ]]; then
+    source "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
+  else
+    source "$NVM_DIR/nvm.sh"
+  fi
 }
 
 _zsh_init_tools() {

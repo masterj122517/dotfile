@@ -11,7 +11,7 @@ if (( ${+_zsh_initialized} )); then
 fi
 
 bindkey -v
-fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+[[ -n $HOMEBREW_PREFIX ]] && fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 source "$ZDOTDIR/runtime.zsh"
