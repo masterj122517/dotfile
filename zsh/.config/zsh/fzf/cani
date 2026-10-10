@@ -1,10 +1,38 @@
-### Caniuse + FZF
-# caniuse for quick access to global support list
-# also runs the `caniuse` command if installed
+local npm_root data_file selected feature
 
-local feat=$(ciu | sort -rn | fzf  --ansi --header='[caniuse:features]' | sed -e 's/^.*%\ *//g' | sed -e 's/   .*//g')
+(( $+commands[npm] || $+functions[npm] )) || {
+  print -u2 'cani: npm is required'
+  return 1
+}
+(( $+commands[jq] && $+commands[fzf] )) || {
+  print -u2 'cani: jq and fzf are required'
+  return 1
+}
 
-if which caniuse &> /dev/null; then
-  if [[ $feat ]] then; caniuse $feat; fi
+# NVM must update this shell before npm runs in a command substitution.
+if (( ${+functions[npm]} )); then
+  _zsh_load_nvm || return
 fi
 
+npm_root=$(npm root -g) || return
+(( $+commands[caniuse] )) || {
+  print -u2 'cani: caniuse is required'
+  return 1
+}
+
+data_file="$npm_root/@bramus/caniuse-cli/node_modules/caniuse-db/fulldata-json/data-2.0.json"
+[[ -r $data_file ]] || {
+  print -u2 "cani: feature data not found: $data_file"
+  return 1
+}
+
+selected=$(command jq -r '
+  .data | to_entries |
+  map([(.value.usage_perc_y + .value.usage_perc_a), .key, .value.title]) |
+  sort_by(-.[0])[] | @tsv
+' "$data_file" | fzf --delimiter=$'\t' --with-nth=1,2,3 --header='[caniuse:features]')
+[[ -n $selected ]] || return
+
+feature=${selected#*$'\t'}
+feature=${feature%%$'\t'*}
+command caniuse "$feature"

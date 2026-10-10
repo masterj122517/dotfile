@@ -1,80 +1,47 @@
-#!/usr/bin/env zsh
+setopt localoptions no_pipefail
 
-setopt localoptions
-
-local s_path level
-local only_dir
+local s_path level only_dir opt item separator='' ret
+local -a find_args fzf_opts extra_opts selected
 while getopts ':dl:s:' opt; do
-    case $opt in
-    d)
-        only_dir=1
-        ;;
-    l)
-        level=$OPTARG
-        ;;
-    s)
-        s_path=$OPTARG
-        ;;
-    \?)
-        echo "Invalid option -$OPTARG." >&2
-        ;;
-    esac
+  case $opt in
+    (d) only_dir=1 ;;
+    (l) level=$OPTARG ;;
+    (s) s_path=$OPTARG ;;
+    (\?) print -u2 "Invalid option -$OPTARG."; return 1 ;;
+  esac
 done
 
-local cmd="command find -L ${s_path:-.} -mindepth 1 ${level:+-maxdepth $level} \
-\\( -path '*/\\.git' \
--o -path '*/venv' \
--o -fstype 'sysfs' \
--o -fstype 'devfs' \
--o -fstype 'devtmpfs' \
--o -fstype 'proc' \\) -prune \
--o -type d -print"
+find_args=(-L "${s_path:-.}" -mindepth 1)
+[[ -n $level ]] && find_args+=(-maxdepth "$level")
+find_args+=(
+  \( -path '*/.git' -o -path '*/venv' -o -fstype sysfs -o -fstype devfs -o -fstype devtmpfs -o -fstype proc \) -prune
+  -o -type d -print
+)
+[[ -n $only_dir ]] || find_args+=(-o -type f -print -o -type l -print)
 
-if [[ -z $only_dir ]]; then
-    cmd="$cmd -o -type f -print -o -type l -print"
-fi
+fzf_opts=(
+  --height=50% --reverse -m --tiebreak=end
+  --preview-window=right:60%:wrap
+  --bind=ctrl-alt-u:preview-up,ctrl-alt-e:preview-down
+)
+extra_opts=(${(z)${EXTRA_OPTS:-}})
 
-cmd="$cmd 2>/dev/null"
+selected=("${(@f)$(command find "${find_args[@]}" 2>/dev/null |
+  while IFS= read -r item; do
+    [[ -n $s_path && $s_path != . ]] || item=${item#./}
+    print -r -- "$item"
+  done |
+  fzf "${fzf_opts[@]}" --preview "${fzf_preview_cmd:-bat --color=always --style=plain -- {} 2>/dev/null || eza --tree --level=1 --color=always -- {}}" "${extra_opts[@]}")}")
+ret=$?
+(( ret == 0 )) || return $ret
+[[ -n $selected[1] ]] || return 1
 
-if [[ -z $s_path || $s_path == '.' ]]; then
-    cmd="$cmd | cut -b3-"
-fi
-
-local fzf_opts="--height=50% --reverse -m --tiebreak=end \
---preview-window=right:60%:wrap \
---bind=ctrl-alt-u:preview-up,ctrl-alt-e:preview-down"
-
-local fzf_preview_cmd='
-    t=${$(readlink {}):-{}}
-    if [[ $(file -i $t) =~ directory ]]; then
-        (exa --color=always -T -L 1 {} ||
-            tree -C -L 1 {} ||
-            echo {} is a directory.) 2>/dev/null
-    elif [[ $(file -i $t) =~ binary ]]; then
-        echo {} is a binary file.
-    else
-        ccat --color=always {} 2>/dev/null
-    fi
-'
-
-local -a ret_array
-local ret=0
-
-eval $cmd | fzf ${(z)fzf_opts} --preview $fzf_preview_cmd ${(z)EXTRA_OPTS} | {
-    while read item; do
-        printf "${(q)item} "
-    done
-} | sed -E '$s/ $//'
-
-ret_array=($pipestatus)
-# ignore find command error code 1 such as loop detect or permission
-if (( $ret_array[1] == 1 )); then
-    ret=0
-fi
-local p_ret
-for p_ret in $ret_array[2,-1]; do
-    if (( p_ret )); then
-        ret=$p_ret
-    fi
+for item in "${selected[@]}"; do
+  if [[ -n ${FFIND_TILDE_HOME:-} && $item == "$FFIND_TILDE_HOME"(|/*) ]]; then
+    item="~${item#$FFIND_TILDE_HOME}"
+  fi
+  print -rn -- "$separator${(q)item}"
+  separator=' '
 done
+(( $#selected )) && print
 return $ret

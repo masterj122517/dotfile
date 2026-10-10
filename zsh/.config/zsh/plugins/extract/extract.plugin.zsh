@@ -1,82 +1,76 @@
+extract() {
+  setopt localoptions pipefail
+  local archive archive_path extract_dir exit_code result=0 remove_archive=0
+
+  if [[ $1 == -r || $1 == --remove ]]; then
+    remove_archive=1
+    shift
+  fi
+  (( $# )) || { print -u2 'Usage: extract [-r|--remove] file [...]'; return 1; }
+
+  for archive in "$@"; do
+    if [[ ! -f $archive ]]; then
+      print -u2 "extract: '$archive' is not a valid file"
+      result=1
+      continue
+    fi
+    archive_path=${archive:A}
+    extract_dir=${archive:t:r}
+    case ${archive:l} in
+      (*.tar|*.tar.gz|*.tgz|*.tar.bz2|*.tbz|*.tbz2|*.tar.xz|*.txz|*.tar.zma|*.tar.lzma|*.tlz|*.tar.zst|*.tzst|*.tar.lz)
+        command tar -xvf "$archive"
+        ;;
+      (*.tar.lz4) command lz4 -c -d -- "$archive" | command tar -xvf - ;;
+      (*.tar.lrz) command lrzuntar "$archive" ;;
+      (*.gz) command gunzip -k -- "$archive" ;;
+      (*.bz2) command bunzip2 -- "$archive" ;;
+      (*.xz) command unxz -- "$archive" ;;
+      (*.lrz) command lrunzip "$archive" ;;
+      (*.lz4) command lz4 -d -- "$archive" ;;
+      (*.lzma) command unlzma -- "$archive" ;;
+      (*.z) command uncompress -- "$archive" ;;
+      (*.zip|*.war|*.jar|*.sublime-package|*.ipsw|*.xpi|*.apk|*.aar|*.whl)
+        command unzip -- "$archive" -d "$extract_dir"
+        ;;
+      (*.rar) command 7zz x "-o$extract_dir" -- "$archive" ;;
+      (*.rpm)
+        (
+          command mkdir -p -- "$extract_dir" &&
+            builtin cd -- "$extract_dir" &&
+            command rpm2cpio "$archive_path" | command cpio --quiet -id
+        )
+        ;;
+      (*.7z) command 7zz x -- "$archive" ;;
+      (*.deb)
+        # macOS ar rejects GNU archive member names.
+        (
+          setopt nullglob
+          command mkdir -p -- "$extract_dir/control" "$extract_dir/data" &&
+            builtin cd -- "$extract_dir" &&
+            command llvm-ar x "$archive_path" || exit
+          local -a control_archives=(control.tar.*) data_archives=(data.tar.*)
+          (( $#control_archives == 1 && $#data_archives == 1 )) || exit 1
+          (builtin cd control && command tar -xvf "../$control_archives[1]") &&
+            (builtin cd data && command tar -xvf "../$data_archives[1]") &&
+            command rm -f -- "${control_archives[@]}" "${data_archives[@]}" debian-binary
+        )
+        ;;
+      (*.zst) command unzstd -- "$archive" ;;
+      (*)
+        print -u2 "extract: '$archive' cannot be extracted"
+        result=1
+        continue
+        ;;
+    esac
+    exit_code=$?
+    if (( exit_code == 0 && remove_archive )); then
+      command rm -f -- "$archive" || exit_code=$?
+    fi
+    (( exit_code )) && result=$exit_code
+  done
+  return $result
+}
+
 alias x=extract
 
-extract() {
-	local remove_archive
-	local success
-	local extract_dir
-
-	if (( $# == 0 )); then
-		cat <<-'EOF' >&2
-			Usage: extract [-option] [file ...]
-
-			Options:
-			    -r, --remove    Remove archive after unpacking.
-		EOF
-	fi
-
-	remove_archive=1
-	if [[ "$1" == "-r" ]] || [[ "$1" == "--remove" ]]; then
-		remove_archive=0
-		shift
-	fi
-
-	while (( $# > 0 )); do
-		if [[ ! -f "$1" ]]; then
-			echo "extract: '$1' is not a valid file" >&2
-			shift
-			continue
-		fi
-
-		success=0
-		extract_dir="${1:t:r}"
-		case "${1:l}" in
-			(*.tar.gz|*.tgz) (( $+commands[pigz] )) && { pigz -dc "$1" | tar xv } || tar zxvf "$1" ;;
-			(*.tar.bz2|*.tbz|*.tbz2) tar xvjf "$1" ;;
-			(*.tar.xz|*.txz)
-				tar --xz --help &> /dev/null \
-				&& tar --xz -xvf "$1" \
-				|| xzcat "$1" | tar xvf - ;;
-			(*.tar.zma|*.tlz)
-				tar --lzma --help &> /dev/null \
-				&& tar --lzma -xvf "$1" \
-				|| lzcat "$1" | tar xvf - ;;
-			(*.tar.zst|*.tzst)
-				tar --zstd --help &> /dev/null \
-				&& tar --zstd -xvf "$1" \
-				|| zstdcat "$1" | tar xvf - ;;
-			(*.tar) tar xvf "$1" ;;
-			(*.tar.lz) (( $+commands[lzip] )) && tar xvf "$1" ;;
-			(*.tar.lz4) lz4 -c -d "$1" | tar xvf - ;;
-			(*.tar.lrz) (( $+commands[lrzuntar] )) && lrzuntar "$1" ;;
-			(*.gz) (( $+commands[pigz] )) && pigz -dk "$1" || gunzip -k "$1" ;;
-			(*.bz2) bunzip2 "$1" ;;
-			(*.xz) unxz "$1" ;;
-			(*.lrz) (( $+commands[lrunzip] )) && lrunzip "$1" ;;
-			(*.lz4) lz4 -d "$1" ;;
-			(*.lzma) unlzma "$1" ;;
-			(*.z) uncompress "$1" ;;
-			(*.zip|*.war|*.jar|*.sublime-package|*.ipsw|*.xpi|*.apk|*.aar|*.whl) unzip "$1" -d $extract_dir ;;
-			(*.rar) unrar x -ad "$1" ;;
-			(*.rpm) mkdir "$extract_dir" && cd "$extract_dir" && rpm2cpio "../$1" | cpio --quiet -id && cd .. ;;
-			(*.7z) 7za x "$1" ;;
-			(*.deb)
-				mkdir -p "$extract_dir/control"
-				mkdir -p "$extract_dir/data"
-				cd "$extract_dir"; ar vx "../${1}" > /dev/null
-				cd control; tar xzvf ../control.tar.gz
-				cd ../data; extract ../data.tar.*
-				cd ..; rm *.tar.* debian-binary
-				cd ..
-			;;
-			(*.zst) unzstd "$1" ;;
-			(*)
-				echo "extract: '$1' cannot be extracted" >&2
-				success=1
-			;;
-		esac
-
-		(( success = $success > 0 ? $success : $? ))
-		(( $success == 0 )) && (( $remove_archive == 0 )) && rm "$1"
-		shift
-	done
-}
+return 0

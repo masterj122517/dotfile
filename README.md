@@ -7,7 +7,7 @@
 brew install automake gcc gdb cmake gnu-getopt gnu-sed node go
 
 # Utils
-brew install git rainbarf bat ccat wget tree fzf the_silver_searcher ripgrep fd eza sesh
+brew install git rainbarf bat wget tree fzf the_silver_searcher ripgrep fd eza sesh
 
 # Apps
 brew install tmux neovim jesseduffield/lazygit/lazygit yazi gh  
@@ -46,6 +46,45 @@ i use lxgw-wenkai as my chinese font
 
 ```
 brew install font-lxgw-wenkai
+```
+
+## Zsh
+
+Install shell dependencies separately from the rest of the desktop:
+
+```sh
+bash ~/.config/zsh/install.sh
+```
+
+The installer adds missing Homebrew tools, installs the declared Zim modules,
+and sets up NVM's default Node and the `caniuse` CLI. Existing Node versions and
+the global Python environment are preserved. It never runs during shell startup.
+
+- `env.zsh`: edit `environment` for exports and `search_path` for PATH order.
+  Every open shell picks up changes at its next prompt, including removed settings.
+  Invalid syntax keeps the previous environment.
+- `runtime.zsh`: cached direnv/zoxide hooks, lazy NVM, and one-time Python activation.
+  Project environments take precedence over base settings.
+- `.zshenv` and `environment.zsh`: bootstrap the base environment, including child
+  shells that inherit `ZDOTDIR`. `.zprofile` and `.zshrc` can also be sourced directly.
+- `aliases.zsh`, `vi.zsh`, `fzf.zsh`, `completion.zsh`, `prompt.zsh`: interactive behavior.
+  Run `reload` after editing these files; sourcing `.zshrc` does the same without
+  reinitializing plugins. Autosuggestion widgets bind once at the next prompt.
+  Open a new shell after changing `runtime.zsh` or `environment.zsh`.
+  After changing `.zimrc`, rerun the installer and open a new shell.
+- `z` remains zsh-z; `zi` and Ctrl-B remain zoxide.
+
+After editing a project's `.envrc`, authorize it with `direnv allow`.
+Shell reloads do not update the environment of already-running programs.
+Linux-only package/service helpers require their Linux tools; they are not emulated
+on macOS. Chrome bookmark helpers use the existing local Chrome profile.
+
+Run the isolated environment, archive, and picker regression checks with:
+
+```sh
+zsh -f ~/.config/zsh/tests/environment.zsh
+zsh -f ~/.config/zsh/tests/extract.zsh
+zsh -f ~/.config/zsh/tests/fzf.zsh
 ```
 
 ## Tmux links

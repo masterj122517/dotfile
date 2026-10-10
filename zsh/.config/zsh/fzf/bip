@@ -1,12 +1,6 @@
-### BREW + FZF
-# update multiple packages at once
-# mnemonic [B]rew [U]pdate [P]lugin
-
-local inst=$(brew search "" | fzf -m --header='[brew:install]')
-
-if [[ $inst ]]; then
-  for prog in $(echo $inst)
-  do brew install $prog
-  done
-fi
+local selected
+local -a packages
+selected=$(command brew search '' | fzf -m --header='[brew:install]') || return
+packages=("${(@f)selected}")
+(( $#packages )) && command brew install -- "${packages[@]}"
 

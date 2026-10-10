@@ -1,16 +1,25 @@
-# zmodload zsh/zprof
-source ~/.config/zsh/env.zsh
-source ~/.config/zsh/plugins.zsh
-source ~/.config/zsh/aliases.zsh 
-source ~/.config/zsh/prompt.zsh
-source ~/.config/zsh/plugins/extract/extract.plugin.zsh
-source ~/.config/zsh/completion.zsh
-source ~/.config/zsh/vi.zsh
-source ~/.config/zsh/fzf.zsh
-source ~/.config/zsh/functions/cd_git_root.zsh
+# Also bootstrap when this file is sourced by an existing shell.
+export ZDOTDIR="${${(%):-%N}:a:h}"
+(( ${+functions[_zsh_load_environment]} )) || source "$ZDOTDIR/environment.zsh" || return
 
-# source ~/.config/zsh/keys.zsh
-# source ~/.config/zsh/temp.zsh
-# zprof
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+[[ -o interactive ]] || return
 
+# Reload user settings without rebuilding plugins or reactivating runtimes.
+if (( ${+_zsh_initialized} )); then
+  reload
+  return
+fi
+
+bindkey -v
+fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+source "$ZDOTDIR/runtime.zsh"
+_zsh_init_tools || return
+source "$ZDOTDIR/plugins.zsh" || return
+_zsh_source_user_config || return
+_zsh_load_environment || return
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _zsh_sync_environment
+typeset -g _zsh_initialized=1

@@ -1,0 +1,15 @@
+REPLY=${(Q)1}
+case $REPLY in
+  '~') REPLY=$HOME ;;
+  '~/'*) REPLY="$HOME/${REPLY#\~/}" ;;
+  '$'*)
+    local variable=${REPLY%%/*}
+    local suffix=${REPLY#"$variable"}
+    variable=${variable#\$}
+    variable=${variable#\{}
+    variable=${variable%\}}
+    if [[ $variable =~ '^[A-Za-z_][A-Za-z0-9_]*$' ]]; then
+      REPLY="${(P)variable}$suffix"
+    fi
+    ;;
+esac

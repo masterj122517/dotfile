@@ -1,61 +1,47 @@
-# path
-if [[ -d "${HOMEBREW_PREFIX}/share/zsh/site-functions" ]]; then
-    fpath=("${HOMEBREW_PREFIX}/share/zsh/site-functions" $fpath)
-fi
+# Base settings only; environment.zsh applies and reloads these two collections.
+local config_home="$HOME/.config"
+local data_home="$HOME/.local/share"
+local cache_home="$HOME/.cache"
+local brew_prefix=/opt/homebrew
 
-typeset -U path
-path=(
-    ~/.local/bin
-    ~/go/bin
-    ~/.ghcup/bin
-    ~/.config/emacs/bin
-    ~/scripts
-    ${HOMEBREW_PREFIX}/opt/gnu-sed/libexec/gnubin
-    ${HOMEBREW_PREFIX}/opt/gnu-getopt/bin
-    ${HOMEBREW_PREFIX}/opt/grep/libexec/gnubin
-    ${HOMEBREW_PREFIX}/opt/coreutils/bin
-    ${HOMEBREW_PREFIX}/opt/llvm/bin
-    ${HOMEBREW_PREFIX}/opt/curl/bin
-    ${HOMEBREW_PREFIX}/bin
-    ${HOMEBREW_PREFIX}/sbin
-    $path
+environment=(
+  XDG_CONFIG_HOME "$config_home"
+  XDG_DATA_HOME "$data_home"
+  XDG_CACHE_HOME "$cache_home"
+  CARGO_HOME "$data_home/cargo"
+  GOPATH "$data_home/go"
+  LANG en_US.UTF-8
+  EDITOR nvim
+  TERMINAL ghostty
+  BROWSER google-chrome
+  FILE_MANAGER yazi
+  JAVA_HOME "$brew_prefix/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
+  HOMEBREW_PREFIX "$brew_prefix"
+  HOMEBREW_CELLAR "$brew_prefix/Cellar"
+  HOMEBREW_REPOSITORY "$brew_prefix"
+  RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
+  NVM_DIR "$HOME/.nvm"
 )
-export PATH
+[[ -n $XDG_RUNTIME_DIR ]] && environment[TMUX_TMPDIR]=$XDG_RUNTIME_DIR
 
-# fast init zoxide direnv...
-_load_cache() {
-    local cache_file="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/$1.zsh"
-    if [[ ! -f "$cache_file" ]]; then
-        mkdir -p "${cache_file:h}"
-        "$1" "$2" "$3" > "$cache_file"
-    fi
-    source "$cache_file"
-}
-
-_load_cache zoxide init zsh
-_load_cache direnv hook zsh
-unset -f _load_cache
-
-# lazyload
-node() {
-    unset -f node npm npx
-    source "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh"
-    node "$@"
-}
-
-npm() {
-    unset -f node npm npx
-    source "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh"
-    npm "$@"
-}
-
-npx() {
-    unset -f node npm npx
-    source "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh"
-    npx "$@"
-}
-
-source "$HOME/.virtualenvs/global/bin/activate"
-
-
-export PATH="/Users/masterj/.cache/.bun/bin:$PATH"
+search_path=(
+  ${NVM_BIN:+"$NVM_BIN"}
+  "$brew_prefix/opt/curl/bin"
+  "$cache_home/.bun/bin"
+  ${VIRTUAL_ENV:+"$VIRTUAL_ENV/bin"}
+  "$HOME/.local/bin"
+  "$data_home/cargo/bin"
+  "$data_home/go/bin"
+  "$HOME/go/bin"
+  "$HOME/.local/src/cross/bin"
+  "$HOME/.ghcup/bin"
+  "$config_home/emacs/bin"
+  "$HOME/scripts"
+  "$brew_prefix/opt/gnu-sed/libexec/gnubin"
+  "$brew_prefix/opt/gnu-getopt/bin"
+  "$brew_prefix/opt/grep/libexec/gnubin"
+  "$brew_prefix/opt/coreutils/bin"
+  "$brew_prefix/opt/llvm/bin"
+  "$brew_prefix/bin"
+  "$brew_prefix/sbin"
+)

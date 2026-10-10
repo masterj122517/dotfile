@@ -1,28 +1,36 @@
-#!/usr/bin/env zsh
-
 _fps() {
-    local render
-    if (( $+commands[grcat] )); then
-        render='grcat fps.grc'
-    else
-        render='cat'
-    fi
+  local pgid
+  pgid=$(command ps -o pgid= -p $$) || return
+  pgid=${pgid//[[:space:]]/}
 
-    ps -eo user,pid,ppid,pgid,stat,tname,cmd | awk '
-    BEGIN { "ps -p $$ -o pgid --no-headers | tr -d \"[:blank:]\"" | getline pgid } {
-        if ($4 != pgid || $2 == pgid)
-            print
-    }' | ${(z)render}
+  command ps -eo user,pid,ppid,pgid,stat,tty,command |
+    awk -v pgid="$pgid" 'NR == 1 || $4 != pgid || $2 == pgid'
 }
 
 setopt localoptions pipefail
 
-local fzf_opts="--header-lines=1 -m \
-${commands[grcat]:+--ansi} --height=50% \
---min-height=15 --tac --reverse \
---preview-window=down:2"
+local -a fzf_opts pids
+local pid separator=''
+fzf_opts=(
+  --header-lines=1 -m
+  ${commands[grcat]:+--ansi} --height=50%
+  --min-height=15 --tac --reverse
+  --preview-window=down:2
+)
 
-local fzf_preview_cmd="ps -o pcpu,pmem,vsz,rss,thcount,start_time,time -p {2}"
+if (( $+commands[grcat] )); then
+  pids=("${(@f)$(_fps | command grcat fps.grc |
+    fzf "${fzf_opts[@]}" --preview 'ps -o pcpu,pmem,vsz,rss,lstart,time -p {2}' |
+    awk '{print $2}')}")
+else
+  pids=("${(@f)$(_fps |
+    fzf "${fzf_opts[@]}" --preview 'ps -o pcpu,pmem,vsz,rss,lstart,time -p {2}' |
+    awk '{print $2}')}")
+fi
+[[ -n $pids[1] ]] || return 1
 
-_fps | fzf ${(z)fzf_opts} --preview=$fzf_preview_cmd |
-    awk -v sep=${FZF_MUL_DELIM:- } '{ printf "%s%c", $2, sep }' | sed -E "s/${FZF_MUL_DELIM:- }$//"
+for pid in "${pids[@]}"; do
+  print -rn -- "$separator$pid"
+  separator=${FZF_MUL_DELIM:-' '}
+done
+(( $#pids )) && print

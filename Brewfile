@@ -48,10 +48,14 @@ brew "git-lfs"
 brew "gnu-getopt"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU implementation of grep
+brew "grep"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Improved top (interactive process viewer)
 brew "htop"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Generic library support script
@@ -60,18 +64,34 @@ brew "libtool"
 brew "lua"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
+# Collection of modular and reusable compiler and toolchain technologies
+brew "llvm"
+# Fast LZ compression algorithm
+brew "lz4"
+# LZ77 data compressor
+brew "lzip"
+# Long-range data compressor
+brew "lrzip"
 # Mac App Store command-line interface
 brew "mas"
 # Media player based on MPlayer and mplayer2
 brew "mpv"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# RSS/Atom feed reader for text terminals
+brew "newsboat"
+# Manage multiple active Node.js versions
+brew "nvm"
+# Development kit for the Java programming language
+brew "openjdk@17"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Cross-platform library for audio I/O
 brew "portaudio"
 # Python version management
 brew "pyenv"
+# RPM package manager
+brew "rpm"
 # CPU/RAM/battery stats chart bar for tmux (and GNU screen)
 brew "rainbarf"
 # Reattach process (e.g., tmux) to background
@@ -94,12 +114,22 @@ brew "tmux"
 brew "tmuxinator"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Reimplementation of ctags
+brew "universal-ctags"
+# Extremely fast Python package installer and resolver
+brew "uv"
 # Internet file retriever
 brew "wget"
+# General-purpose data compression with a high compression ratio
+brew "xz"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# Plain text note-taking assistant
+brew "zk"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Fast lossless compression algorithm
+brew "zstd"
 # PDF viewer
 brew "homebrew-zathura/zathura/zathura", args: ["with-synctex"]
 # Comic book plugin for zathura

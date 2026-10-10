@@ -1,43 +1,29 @@
-### UTILS
-# show utils commands and custom aliasses
+local choice command_name
+choice=$(print -l \
+  'bcp    [brew:clean]' \
+  'bip    [brew:install]' \
+  'bup    [brew:update]' \
+  'cani   [caniuse:features]' \
+  'fp     [find:path]' \
+  'kp     [kill:process]' \
+  'ks     [kill:tcp]' \
+  'lg     [lazygit]' \
+  'r      [yazi]' \
+  's      [fastfetch]' |
+  fzf --header='[utils:show]')
+[[ -n $choice ]] || return
+command_name=${choice%%[[:space:]]*}
 
-local helptxt="bcp    [brew:clean]
-bip    [brew:install]
-bup    [brew:update]
-cani   [caniuse:features]
-fp     [find:path]
-kp     [kill:path]
-ks     [kill:tcp]
-av     [alias]              source venv/bin/activate
-c      [alias]              clear
-cdiff  [alias]              colordiff
-cs     [alias]              calcurse
-dv     [alias]              deactivate
-gc     [alias]              git config credential.helper store
-ipy    [alias]              ipython
-l      [alias]              ls -la
-lg     [alias]              lazygit
-ms     [alias]              mailsync
-mt     [alias]              neomutt
-r      [alias]              echo $RANGER_LEVEL
-pu     [alias]              python3 -m pudb
-ra     [alias]              ranger
-s      [alias]              neofetch
-g      [alias]              onefetch
-sra    [alias]              sudo -E ranger
-sudo   [alias]              sudo -E
-vim    [alias]              nvim
-gs     [alias]              git config credential.helper store
-bat    [alias]              sudo tlp bat
-ac     [alias]              sudo tlp ac
-gy     [alias]              git-yolo
-nb     [alias]              newsboat -r
-nt     [alias]              sh -c 'cd $(pwd); st' > /dev/null 2>&1 &"
-lo     [alias]              lsof -p $(fps) +w
-
-local cmd=$(echo $helptxt | fzf  --header='[utils:show]' | awk '{print $1}')
-
-if [[ -n $cmd ]]; then
-  eval ${cmd}
-fi
+case $command_name in
+  (bcp) bcp ;;
+  (bip) bip ;;
+  (bup) bup ;;
+  (cani) cani ;;
+  (fp) fp ;;
+  (kp) kp ;;
+  (ks) ks ;;
+  (lg) lazygit ;;
+  (r) r ;;
+  (s) fastfetch ;;
+esac
 

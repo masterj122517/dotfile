@@ -1,15 +1,4 @@
-#     ____      ____
-#    / __/___  / __/
-#   / /_/_  / / /_
-#  / __/ / /_/ __/
-# /_/   /___/_/-completion.zsh
-#
-# - $FZF_TMUX               (default: 0)
-# - $FZF_TMUX_HEIGHT        (default: '40%')
-# - $FZF_COMPLETION_TRIGGER (default: '**')
-# - $FZF_COMPLETION_OPTS    (default: empty)
-
-if [[ $- =~ i ]]; then
+if [[ $- == *i* ]]; then
 
 # To use custom commands instead of find, override _fzf_compgen_{path,dir}
 if ! declare -f _fzf_compgen_path > /dev/null; then
@@ -47,16 +36,17 @@ __fzf_generic_path_completion() {
   fzf="$(__fzfcmd_complete)"
 
   setopt localoptions nonomatch
-  eval "base=$base"
-  [[ $base = *"/"* ]] && dir="$base"
+  _fzf_expand_path "$base"
+  base=$REPLY
+  [[ $base = */* ]] && dir=$base
   while [ 1 ]; do
     if [[ -z "$dir" || -d ${dir} ]]; then
       leftover=${base/#"$dir"}
       leftover=${leftover/#\/}
       [ -z "$dir" ] && dir='.'
       [ "$dir" != "/" ] && dir="${dir/%\//}"
-      matches=$(eval "$compgen $(printf %q "$dir")" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" | while read item; do
-        echo -n "${(q)item}$suffix "
+      matches=$("$compgen" "$dir" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" | while IFS= read -r item; do
+        print -rn -- "${(q)item}$suffix "
       done)
       matches=${matches% }
       if [ -n "$matches" ]; then
@@ -65,7 +55,7 @@ __fzf_generic_path_completion() {
       zle reset-prompt
       break
     fi
-    dir=$(dirname "$dir")
+    dir=${dir:h}
     dir=${dir%/}/
   done
 }
@@ -180,8 +170,9 @@ fzf-completion() {
     [ -z "$trigger"      ] && prefix=${tokens[-1]} || prefix=${tokens[-1]:0:-${#trigger}}
     [ -z "${tokens[-1]}" ] && lbuf=$LBUFFER        || lbuf=${LBUFFER:0:-${#tokens[-1]}}
 
-    if eval "type _fzf_complete_${cmd} > /dev/null"; then
-      eval "prefix=\"$prefix\" _fzf_complete_${cmd} \"$lbuf\""
+    local complete_func="_fzf_complete_${cmd}"
+    if [[ $cmd == [A-Za-z_]* && $cmd != *[^A-Za-z0-9_]* && -n ${functions[$complete_func]} ]]; then
+      prefix=$prefix "$complete_func" "$lbuf"
     elif [ ${d_cmds[(i)$cmd]} -le ${#d_cmds} ]; then
       _fzf_dir_completion "$prefix" "$lbuf"
     else
@@ -193,13 +184,18 @@ fzf-completion() {
   fi
 }
 
-[ -z "$fzf_default_completion" ] && {
-  binding=$(bindkey '^I')
-  [[ $binding =~ 'undefined-key' ]] || fzf_default_completion=$binding[(s: :w)2]
+if (( ! ${+_fzf_completion_fallback_captured} )); then
+  binding=$(bindkey -M viins '^I')
+  if [[ $binding != *undefined-key* && $binding != *' fzf-completion' ]]; then
+    fzf_default_completion=${binding##* }
+  fi
+  typeset -g _fzf_completion_fallback_captured=1
   unset binding
-}
-
-zle     -N   fzf-completion
-bindkey '^I' fzf-completion
-
 fi
+
+zle -N fzf-completion
+bindkey -M viins '^I' fzf-completion
+bindkey -M emacs '^I' fzf-tab-complete
+fi
+
+return 0

@@ -1,14 +1,12 @@
-### SERVER
-# mnemonic: [K]ill [S]erver
-# show output of "lsof -Pwni tcp", use [tab] to select one or multiple entries
-# press [enter] to kill selected processes and go back to the process list.
-# or press [escape] to go back to the process list. Press [escape] twice to exit completely.
+setopt localoptions pipefail
+local selected
+local signal=${1:-9}
+local -a pids
 
-local pid=$(lsof -Pwni tcp | sed 1d | fzf  -m --header='[kill:tcp]' | awk '{print $2}')
-
-if [ "x$pid" != "x" ]
-then
-  echo $pid | xargs kill -${1:-9}
-  ks
-fi
+while true; do
+  selected=$(command lsof -Pwni tcp | fzf --header-lines=1 -m --header='[kill:tcp]' | awk '{print $2}') || return
+  [[ -n $selected ]] || return
+  pids=("${(@f)selected}")
+  command kill -"$signal" -- "${pids[@]}"
+done
 
