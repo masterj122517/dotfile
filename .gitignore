@@ -1,11 +1,53 @@
-zsh/.config/zsh/.zcompdump*
-zsh/.config/zsh/.zsh_history
-zsh/.config/zsh/.zsh_sessions/
-zsh/.config/zsh/.zcompcache/
-zsh/.config/zsh/keys.zsh
-zsh/.config/zsh/.zim/
-zsh/.config/zsh/.zim/modules/
-zsh/.config/zsh/temp.zsh
-.aider*
-
+# macOS metadata and screenshots
 .DS_Store
+._*
+截屏*.png
+Screenshot*.png
+Screen Shot*.png
+
+# Editor, Python, and shell-generated files
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.zwc
+__pycache__/
+*.py[cod]
+
+# Local secrets and tool state (keep shareable environment templates)
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+.direnv/
+.aider*
+/.agent-shell/transcripts/
+/Brewfile.lock.json
+
+# Zsh: caches, history, local overrides, and installed Zim dependencies
+/zsh/.config/zsh/.zcompdump*
+/zsh/.config/zsh/.zsh_history
+/zsh/.config/zsh/.zsh_sessions/
+/zsh/.config/zsh/.zcompcache/
+/zsh/.config/zsh/keys.zsh
+/zsh/.config/zsh/temp.zsh
+/zsh/.config/zsh/.zim/
+
+# Karabiner: keep the active configuration and reusable rule assets
+/karabiner/.config/karabiner/automatic_backups/
+
+# Application runtime state, not configuration or themes
+/lazygit/.config/lazygit/state.yml
+/tmux/.config/tmux/plugins/
+/vim/.vim/.netrwhist
+/sioyek/Library/Application Support/sioyek/*.db
+/sioyek/Library/Application Support/sioyek/*.db-*
+
+# Rime installer downloads and generated deployment tree
+/Rime/
+/Rime-custom/Rime/
+rime-wanxiang-flypy-fuzhu.zip
+wanxiang-lts-zh-hans.gram

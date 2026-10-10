@@ -33,6 +33,27 @@ duti -s com.pwmt.zathura pdf all
 brew bundle --file=./Brewfile
 ```
 
+## Karabiner-Elements
+
+The active keyboard configuration is saved in
+`karabiner/.config/karabiner/karabiner.json`. When restoring these dotfiles,
+link `~/.config/karabiner` to the repository's `karabiner/.config/karabiner`
+directory. Formatting uses two-space indentation; rule order is significant.
+Reusable rule assets under `assets/complex_modifications/` are also versioned.
+Karabiner's `automatic_backups/` stays local and is not versioned.
+
+## Repository ignore policy
+
+The root `.gitignore` excludes generated caches, shell history, installed Zim
+dependencies, local environment secrets, agent transcripts, macOS screenshots,
+application runtime state, and Rime installer downloads/deployment output.
+These rules work independently of the global ignore file in `git/.gitignore`.
+Environment templates (`.env.example`, `.env.*.example`, `.env.sample`),
+configuration files, fonts, and Yazi plugins/themes remain versioned.
+Reinstall ignored Zim dependencies with the Zsh installer below.
+Previously tracked generated files are removed from Git's index only; existing
+local copies are preserved.
+
 # When using MiniConda + direnv
 ```
 # 载入 Conda
@@ -73,6 +94,17 @@ the global Python environment are preserved. It never runs during shell startup.
   Open a new shell after changing `runtime.zsh` or `environment.zsh`.
   After changing `.zimrc`, rerun the installer and open a new shell.
 - `z` remains zsh-z; `zi` and Ctrl-B remain zoxide.
+- Command completions come from Homebrew and `zsh-completions`, loaded before Zim
+  initializes completion. `fzf-tab` displays those candidates; it does not supply
+  command definitions.
+- If Docker is already installed, the installer generates its official completion
+  in Homebrew's `share/zsh/site-functions/_docker`. After a Docker upgrade, refresh
+  it with `docker completion zsh > "$(brew --prefix)/share/zsh/site-functions/_docker"`
+  and open a new shell.
+- `completion.zsh` adds the custom `\<Tab>` fuzzy picker for paths, directories,
+  SSH hosts, and environment variables, plus the `kill <Tab>` process picker.
+  Ordinary Tab falls through to `fzf-tab`; this file is not required for Docker
+  or Brew command completion.
 
 After editing a project's `.envrc`, authorize it with `direnv allow`.
 Shell reloads do not update the environment of already-running programs.

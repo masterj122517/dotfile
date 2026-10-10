@@ -31,6 +31,13 @@ else
     printf '%s\n' 'Homebrew Zsh dependencies already installed.'
 fi
 
+# Docker's CLI ships its own completions; no Docker installation is required here.
+if command -v docker >/dev/null 2>&1; then
+    completion_dir="$("$brew_bin" --prefix)/share/zsh/site-functions"
+    mkdir -p "$completion_dir"
+    docker completion zsh > "$completion_dir/_docker"
+fi
+
 if [[ ! -f $config_dir/.zimrc ]]; then
     printf 'Missing Zim configuration: %s\n' "$config_dir/.zimrc" >&2
     exit 1

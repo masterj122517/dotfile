@@ -38,7 +38,6 @@ sesh-sessions() {
 }
 alias st='sesh-sessions'
 
-bindkey -M viins -s '^w' '~/.config/tmux/tmux-sessionizer\n'
 
 zle_eval() {
   zle -I

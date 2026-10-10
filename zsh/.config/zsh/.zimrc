@@ -3,6 +3,7 @@ zmodule git
 zmodule input
 zmodule termtitle
 zmodule utility
+zmodule zsh-users/zsh-completions
 zmodule completion
 zmodule git-info
 zmodule duration-info
@@ -15,5 +16,4 @@ zmodule hlissner/zsh-autopair
 zmodule pabloariasal/zfm
 zmodule agkozak/zsh-z
 zmodule Aloxaf/fzf-tab
-zmodule zsh-users/zsh-completions
 zmodule gitster
