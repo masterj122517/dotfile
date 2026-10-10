@@ -20,7 +20,7 @@ startup_command = "nvim"
 [[session]]
 name = "tmux config"
 path = "~/.config/tmux"
-startup_command = "ide && nvim ~/.tmux.conf"
+startup_command = "ide && nvim ~/.config/tmux/tmux.conf"
 preview_command = "bat --color=always ~/.tmux.conf"
 
 
