@@ -46,6 +46,10 @@ _zsh_load_environment() {
   path=("${(@)search_path}" "${(@)path:|_zsh_env_paths}")
   _zsh_env_paths=("${(@)search_path}")
   export PATH
+  # Restore tool precedence after rebuilding the base PATH, before direnv.
+  if (( ${+functions[_mise_hook]} )); then
+    _mise_hook --force || return
+  fi
   # Deactivation must not undo later changes to the base PATH.
   if [[ -n $VIRTUAL_ENV && -n $_OLD_VIRTUAL_PATH ]]; then
     local -a virtualenv_path=("$VIRTUAL_ENV/bin")

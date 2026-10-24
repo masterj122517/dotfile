@@ -69,6 +69,21 @@ duti -s com.pwmt.zathura pdf all
 brew bundle --file=./Brewfile
 ```
 
+## Terminal theme balance
+
+Ghostty's `themes/Kataware` and tmux's `theme.conf` share Kataware's indigo
+canvas and the Neovim ANSI palette. The cursor is starlight; terminal and tmux
+copy-mode selections use the editor's `#1D2A49` Visual surface. tmux session
+and window badges use violet/cyan text on quiet surfaces instead of solid
+accent fills. Active pane edges use the same muted blue-gray as editor line
+numbers. Fonts, key bindings, layout and terminal opacity are independent.
+
+After theme edits, use Ghostty's Reload Configuration action and run:
+
+```sh
+tmux source-file ~/.config/tmux/theme.conf
+```
+
 ## Vim theme
 
 `vim/.vim/colors/kataware.vim` is the native Vimscript version of Kataware, with

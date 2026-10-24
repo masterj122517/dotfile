@@ -30,7 +30,7 @@ if [[ $platform == darwin ]]; then
 
     formulae=(
         bat coreutils curl direnv eza fastfetch fd fzf git gnu-getopt gnu-sed grep jq
-        lazygit llvm lz4 lzip lrzip neovim newsboat nvm openjdk@17 ripgrep rpm
+        lazygit llvm lz4 lzip lrzip mise neovim newsboat nvm openjdk@17 ripgrep rpm
         sesh sevenzip the_silver_searcher tmux tree universal-ctags uv xz yazi
         zk zoxide zstd
     )
@@ -52,7 +52,7 @@ if [[ $platform == darwin ]]; then
         docker completion zsh > "$completion_dir/_docker"
     fi
 else
-    required_commands=(git curl zsh python3)
+    required_commands=(git curl mise zsh python3)
     missing=()
     for command_name in "${required_commands[@]}"; do
         command -v "$command_name" >/dev/null 2>&1 || missing+=("$command_name")

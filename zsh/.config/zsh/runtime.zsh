@@ -48,6 +48,11 @@ _zsh_init_tools() {
   if [[ -z $VIRTUAL_ENV ]]; then
     source "$HOME/.virtualenvs/global/bin/activate" || return
   fi
+
+  # Activation captures the live environment, so do not cache its output.
+  local mise_init
+  mise_init=$(command mise activate zsh) || return
+  eval "$mise_init"
 }
 
 _zsh_source_user_config() {
