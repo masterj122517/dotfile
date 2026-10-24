@@ -1,10 +1,7 @@
-" Keep Neovim's Lua highlights when both colorscheme files are installed.
-if has('nvim')
-  execute 'luafile ' . fnameescape(expand('<sfile>:p:r') . '.lua')
-  finish
-endif
-
 set background=dark
+if has('termguicolors')
+  set termguicolors
+endif
 highlight clear
 if exists('syntax_on')
   syntax reset
@@ -59,22 +56,23 @@ call s:Hi('CursorIM', 'void', 'comet')
 call s:Hi('CursorColumn', 'NONE', 'night')
 call s:Hi('CursorLine', 'NONE', 'night')
 call s:Hi('CursorLineNr', 'gold', 'night', 'bold')
-call s:Hi('LineNr', 'border', 'NONE')
-call s:Hi('LineNrAbove', 'border', 'NONE')
-call s:Hi('LineNrBelow', 'border', 'NONE')
+call s:Hi('LineNr', 'muted', s:editor_bg)
+highlight! link LineNrAbove LineNr
+highlight! link LineNrBelow LineNr
 call s:Hi('SignColumn', 'muted', s:editor_bg)
 call s:Hi('FoldColumn', 'muted', s:editor_bg)
 call s:Hi('Folded', 'dim', 'night')
 call s:Hi('VertSplit', 'border', 'NONE')
 call s:Hi('Visual', 'NONE', 'surface_high')
 call s:Hi('VisualNOS', 'NONE', 'surface_high')
-call s:Hi('Search', 'void', 'gold')
-call s:Hi('IncSearch', 'void', 'pink', 'bold')
-call s:Hi('CurSearch', 'void', 'comet', 'bold')
+call s:Hi('Search', 'fg', 'surface_high')
+call s:Hi('IncSearch', 'starlight', 'border')
+call s:Hi('CurSearch', 'starlight', 'border')
 call s:Hi('MatchParen', 'starlight', 'border', 'bold')
+call s:Hi('Substitute', 'void', 'red')
 call s:Hi('NonText', 'border', 'NONE')
 call s:Hi('Whitespace', 'border', 'NONE')
-call s:Hi('EndOfBuffer', get(g:, 'kataware_transparent', 0) ? 'border' : 'void', 'NONE')
+call s:Hi('EndOfBuffer', 'void', 'NONE')
 call s:Hi('SpecialKey', 'border', 'NONE')
 call s:Hi('Directory', 'comet', 'NONE')
 call s:Hi('Title', 'violet', 'NONE', 'bold')
@@ -97,7 +95,7 @@ call s:Hi('Pmenu', 'dim', s:surface_bg)
 call s:Hi('PmenuSel', 'starlight', 'surface_high', 'bold')
 call s:Hi('PmenuSbar', 'NONE', s:night_bg)
 call s:Hi('PmenuThumb', 'NONE', 'border')
-call s:Hi('PmenuMatch', 'comet', s:surface_bg, 'bold')
+call s:Hi('PmenuMatch', 'comet', 'NONE', 'bold')
 call s:Hi('PmenuMatchSel', 'comet', 'surface_high', 'bold')
 call s:Hi('QuickFixLine', 'starlight', 'surface_high', 'bold')
 call s:Hi('WildMenu', 'void', 'comet')

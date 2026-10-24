@@ -8,7 +8,9 @@ set_server() {
 }
 
 # set_server name cmd target(user@host) host
-set_server '1.demo' 'ssh'                        'root@demo'        'demo'
+# set_server '1.demo' 'ssh'                        'root@demo'        'demo'
+set_server '1.aliyun' 'ssh' 'root@47.103.157.66' '47.103.157.66'
+set_server '2.aliyun admin' 'ssh' 'admin@47.103.157.66' '47.103.157.66'
 
 _list() {
     for ((i = 0; i < ${#servers[@]}; i++)); do

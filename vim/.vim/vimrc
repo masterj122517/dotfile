@@ -14,6 +14,8 @@ set undodir=$HOME/.vimundo/
 set ignorecase
 set wildmenu 
 set relativenumber 
+set cursorline
+set cursorlineopt=number
 set nobackup
 set backspace=indent,eol,start
 set whichwrap=b,s,<,>,h

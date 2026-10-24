@@ -69,6 +69,18 @@ duti -s com.pwmt.zathura pdf all
 brew bundle --file=./Brewfile
 ```
 
+## Vim theme
+
+`vim/.vim/colors/kataware.vim` is the native Vimscript version of Kataware, with
+the same indigo palette, muted blue-gray line numbers, bold gold current line
+number, and restrained search highlights as the Neovim theme.
+It enables true color when Vim supports it and retains 256-color definitions.
+
+`vim/.vim/vimrc` loads Kataware with transparency enabled. Toggle it with
+`let g:kataware_transparent = 0` (opaque) or `1` (transparent), then reload with
+`colorscheme kataware`. The current line number is emphasized without shading
+the whole text row via `cursorline` and `cursorlineopt=number`.
+
 ## Karabiner-Elements
 
 The active keyboard configuration is saved in
