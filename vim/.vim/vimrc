@@ -52,6 +52,3 @@ set timeoutlen=300
 
 let g:kataware_transparent = 1
 colorscheme kataware
-
-
-
