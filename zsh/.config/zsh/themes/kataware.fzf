@@ -1,6 +1,6 @@
---color=dark,fg:#D9E2F2,bg:-1,hl:#F2C38B
---color=fg+:#EEF3FF,bg+:#1D2A49,hl+:#FFD49F
---color=selected-fg:#EEF3FF,selected-bg:#151F38,selected-hl:#F2C38B
+--color=dark,fg:#D9E2F2,bg:-1,hl:#60D7E8
+--color=fg+:#EEF3FF,bg+:#1D2A49,hl+:#86E9F2
+--color=selected-fg:#EEF3FF,selected-bg:#151F38,selected-hl:#60D7E8
 --color=preview-fg:#D9E2F2,preview-bg:-1
 --color=input-fg:#D9E2F2,input-bg:-1,header-bg:-1,footer-bg:-1
 --color=border:#2B3B62,separator:#2B3B62,scrollbar:#2B3B62,preview-scrollbar:#2B3B62
