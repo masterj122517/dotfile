@@ -26,6 +26,7 @@ environment=(
   BROWSER google-chrome
   FILE_MANAGER yazi
   RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
+  FZF_DEFAULT_OPTS_FILE "$config_home/zsh/themes/kataware.fzf"
   NVM_DIR "$HOME/.nvm"
 )
 if [[ -n $brew_prefix ]]; then

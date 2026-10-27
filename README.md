@@ -84,6 +84,24 @@ After theme edits, use Ghostty's Reload Configuration action and run:
 tmux source-file ~/.config/tmux/theme.conf
 ```
 
+### ripgrep and fzf
+
+`ripgrep/.ripgreprc` uses Kataware's blue paths, muted line/column numbers,
+and bold gold matches. Smart-case, hidden-file searching, directory exclusions,
+and plain piped output remain unchanged.
+
+`zsh/.config/zsh/themes/kataware.fzf` holds fzf's color options.
+`env.zsh` exports its path as `FZF_DEFAULT_OPTS_FILE`, including for child
+processes and tmux pickers. `fzf.zsh` keeps the existing navigation bindings,
+search commands, and previews; it no longer embeds the old color palette.
+The canvas inherits terminal transparency, current rows use `#1D2A49`,
+marked rows use `#151F38`, and cyan/gold accents identify focus and matches.
+Preview programs retain their own syntax themes.
+
+Run `reload` in an existing Zsh session to remove the old inline colors.
+New shells load both themes automatically. Avoid adding competing `--color`
+options to `FZF_DEFAULT_OPTS`, which overrides the theme file.
+
 ## Vim theme
 
 `vim/.vim/colors/kataware.vim` is the native Vimscript version of Kataware, with

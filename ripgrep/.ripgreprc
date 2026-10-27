@@ -7,14 +7,16 @@
 # Always show line numbers (rg already does this in terminals, but useful for pipes)
 --line-number
 
-# Set a custom colors
---colors=match:fg:235,168,238
+# Kataware — paths in blue, positions muted, matches in bold gold.
+--colors=path:none
+--colors=path:fg:0x6C,0xA8,0xFF
+--colors=line:none
+--colors=line:fg:0x6B,0x7F,0xA2
+--colors=column:none
+--colors=column:fg:0x6B,0x7F,0xA2
+--colors=match:none
+--colors=match:fg:0xF2,0xC3,0x8B
 --colors=match:style:bold
---colors=path:fg:166,227,161
---colors=path:style:bold
---colors=line:fg:249,226,175
---colors=line:style:bold
---colors=column:fg:249,226,175
 
 # Ignore some directories globally
 --glob=!.git/
