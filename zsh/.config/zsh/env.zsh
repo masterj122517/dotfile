@@ -54,6 +54,7 @@ search_path+=(
   "$HOME/.ghcup/bin"
   "$config_home/emacs/bin"
   "$HOME/scripts"
+  "$HOME/.local/share/solana/install/active_release/bin"
 )
 if [[ -n $brew_prefix ]]; then
   search_path+=(
