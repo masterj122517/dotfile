@@ -44,14 +44,20 @@
                         ]
                     },
                     {
-                        "description": "Caps Lock to Esc and Ctrl",
+                        "description": "Caps Lock: Instant Ctrl, Tap Esc",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "right_control" }],
+                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 200 },
+                                "to": [
+                                    {
+                                        "key_code": "right_control",
+                                        "lazy": true
+                                    }
+                                ],
                                 "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
                             }
