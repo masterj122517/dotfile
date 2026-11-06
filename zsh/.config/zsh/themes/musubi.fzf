@@ -1,0 +1,8 @@
+--color=light,fg:#48465B,bg:-1,hl:#236A70
+--color=fg+:#48465B,bg+:#DFD0AA,hl+:#613D0B
+--color=selected-fg:#48465B,selected-bg:#EDE5D8,selected-hl:#236A70
+--color=preview-fg:#48465B,preview-bg:-1
+--color=input-fg:#48465B,input-bg:-1,header-bg:-1,footer-bg:-1
+--color=border:#B8A786,separator:#B8A786,scrollbar:#B8A786,preview-scrollbar:#B8A786
+--color=label:#625B6D,info:#71644F,header:#625B6D,footer:#625B6D
+--color=prompt:#236A70,pointer:#236A70,marker:#765991,spinner:#236A70

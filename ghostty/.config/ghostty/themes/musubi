@@ -1,0 +1,26 @@
+# musubi — warm paper, quiet chrome, and ink-colored accents.
+# ANSI colors match kataware.nvim's musubi terminal palette.
+palette = 0=#343247
+palette = 1=#A43D46
+palette = 2=#4B673F
+palette = 3=#613D0B
+palette = 4=#406695
+palette = 5=#765991
+palette = 6=#236A70
+palette = 7=#625B6D
+palette = 8=#71644F
+palette = 9=#A53F49
+palette = 10=#45613B
+palette = 11=#825718
+palette = 12=#365E8D
+palette = 13=#6D508C
+palette = 14=#1E646B
+palette = 15=#343247
+
+background = #F1E8D5
+foreground = #48465B
+cursor-color = #343247
+cursor-text = #F1E8D5
+# Selection matches Neovim's musubi Visual highlight.
+selection-background = #DFD0AA
+selection-foreground = #48465B

@@ -18,6 +18,17 @@
 --colors=match:fg:0xF2,0xC3,0x8B
 --colors=match:style:bold
 
+# musubi — paths in blue, positions muted, matches in bold gold.
+# --colors=path:none
+# --colors=path:fg:0x40,0x66,0x95
+# --colors=line:none
+# --colors=line:fg:0x71,0x64,0x4F
+# --colors=column:none
+# --colors=column:fg:0x71,0x64,0x4F
+# --colors=match:none
+# --colors=match:fg:0x61,0x3D,0x0B
+# --colors=match:style:bold
+
 # Ignore some directories globally
 --glob=!.git/
 --glob=!node_modules/
