@@ -14,22 +14,6 @@ prepend_keymap = [
 {on = ["g", "r"], run = "plugin cd-git-root", desc = "Go to git repo root"},
 {on = ["b", "g"], run = '''shell --  osascript -e 'on run {img}' -e 'tell application "System Events" to set picture of every desktop to img' -e 'end run' %s1''', desc = "setwallpaper"},
 {on = ["c", "m"], run = "plugin chmod", desc = "Chmod on selected files"},
-{on = [ "u", "a" ],run = "plugin yamb -- save",desc = "Add bookmark"},
-
-{on = [ "u", "g" ],run = "plugin yamb -- jump_by_key",desc = "Jump bookmark by key"},
-
-{on = [ "u", "G" ],run = "plugin yamb -- jump_by_fzf",desc = "Jump bookmark by fzf"},
-
-{on = [ "u", "d" ],run = "plugin yamb -- delete_by_key",desc = "Delete bookmark by key"},
-
-{on = [ "u", "D" ],run = "plugin yamb -- delete_by_fzf",desc = "Delete bookmark by fzf"},
-
-{on = [ "u", "A" ],run = "plugin yamb -- delete_all",desc = "Delete all bookmarks"},
-
-{on = [ "u", "r" ],run = "plugin yamb -- rename_by_key",desc = "Rename bookmark by key"},
-
-{on = [ "u", "R" ],run = "plugin yamb -- rename_by_fzf",desc = "Rename bookmark by fzf"},
-
 { on = "f", run = "plugin jump-to-char", desc = "Jump to char" },
 {on = "T" ,run = "plugin toggle-pane max-preview",desc = "Maximize or restore preview"},
   ]

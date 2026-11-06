@@ -29,11 +29,6 @@ rev = "80e5268"
 hash = "868db729374b97871bc30b96d0e9061f"
 
 [[plugin.deps]]
-use = "h-hg/yamb"
-rev = "971b858"
-hash = "da4534745930e827a44d4585bbd965eb"
-
-[[plugin.deps]]
 use = "llanosrocas/yaziline"
 rev = "029b27d"
 hash = "ceeb45e796faf0d9eed10831ffec7701"
