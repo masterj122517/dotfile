@@ -58,7 +58,7 @@ _zsh_init_tools() {
 _zsh_source_user_config() {
   local file
   for file in aliases.zsh prompt.zsh plugins/extract/extract.plugin.zsh \
-              completion.zsh vi.zsh fzf.zsh functions/cd_git_root.zsh; do
+              completion.zsh vi.zsh fzf.zsh functions/cd_git_root.zsh osc7.zsh; do
     source "$ZDOTDIR/$file" || return
   done
   (( ${+functions[_zsh_autosuggest_start]} )) && add-zsh-hook precmd _zsh_autosuggest_start

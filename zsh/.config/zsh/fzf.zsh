@@ -133,7 +133,7 @@ fzf-grep-widget() {
   zle reset-prompt
 }
 zle -N fzf-grep-widget
-bindkey -M viins '^_' fzf-grep-widget
+# bindkey -M viins '^_' fzf-grep-widget
 
 bindkey -M viins -s '^b' 'zi\n'
 
